@@ -20,9 +20,9 @@
 
 1. 文档类型统一使用<!doctype html>
 2. 标签必须全部小写，且有效闭合
-3. css引入规范，属性位置闭合等与下面保持一致
+3. css引入规范，属性位置闭合等与下面保持一致<br/>
 `<link type="text/css" rel="stylesheet" href="css/comm.css"  />`
-4. script引入规范
+4. script引入规范<br/>
 `<script type="text/javascript" src="js/comm.js"></script>`
 5. 视情况增加内容
 
@@ -58,7 +58,7 @@
 1. 总体约定
 	本次代码按照chrome浏览器44.0+版本以上进行测试，移动端按ife要求
 
-2. 编码方式
+2. 编码方式<br/>
 `@charset "utf-8"; `
 
 3. 视情况增加内容
