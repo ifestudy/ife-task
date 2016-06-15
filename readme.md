@@ -21,9 +21,13 @@
 1. 文档类型统一使用<!doctype html>
 2. 标签必须全部小写，且有效闭合
 3. css引入规范，属性位置闭合等与下面保持一致
+```
 <link type="text/css" rel="stylesheet" href="css/comm.css"  /> 
+```
 4. script引入规范
+```
 <script type="text/javascript" src="js/comm.js"></script>
+```
 5. 具体的情况根据具体情况下添加
 ### 2.2 javascript
 
