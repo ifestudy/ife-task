@@ -35,9 +35,9 @@
 ### 2.2 javascript
 
 1. 变量命名规范(建议)
-	1.1 私有变量使用下划线前缀如： _appName
-	1.2 局部变量使用小写字母开头如： fileName
-	1.3 参数使用p前缀如：function getElementName(px){}
+	- 私有变量使用下划线前缀如： _appName
+	- 局部变量使用小写字母开头如： fileName
+	- 参数使用p前缀如：function getElementName(px){}
 
 2. 核心API编写规定（必须）
 	2.1 模块：小写
