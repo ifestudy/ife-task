@@ -1,5 +1,4 @@
 ## 前言
-
 没参加上百度前端技术学院，故在这里召集了小伙伴一起制作完成前端的课程，由于没有参加课程不需要赶时间，所以在可能的情况下尽可能的完成全部项目。
 
 
@@ -22,14 +21,10 @@
 1. 文档类型统一使用<!doctype html>
 2. 标签必须全部小写，且有效闭合
 3. css引入规范，属性位置闭合等与下面保持一致
-```
-<link type="text/css" rel="stylesheet" href="css/comm.css"  /> 
-```
+`<link type="text/css" rel="stylesheet" href="css/comm.css"  />`
 4. script引入规范
-```
-<script type="text/javascript" src="js/comm.js"></script>
-```
-5.视情况增加内容
+`<script type="text/javascript" src="js/comm.js"></script>`
+5. 视情况增加内容
 
  
 ### 2.2 javascript
@@ -49,11 +44,11 @@
 3. 注释
 	- 视情况在重要逻辑出添加注释（建议）
 	- 模块首尾添加（必须）
-```
+ ```
 	//xxx模块开始==================
 	...
 	//xxx模块结束==================
-```
+ ```
 
 4. 视情况增加内容
  
@@ -64,10 +59,6 @@
 	本次代码按照chrome浏览器44.0+版本以上进行测试，移动端按ife要求
 
 2. 编码方式
-```	
-@charset "utf-8"; 
-```
+`@charset "utf-8"; `
 
 3. 视情况增加内容
-
-
