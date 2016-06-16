@@ -1,0 +1,91 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>三栏布局</title>
+	<style>
+		* {
+			padding: 0rem;
+			margin: 0rem;
+		}
+		div {
+			padding: 20px;
+			position: relative;
+			border: solid 1px #999;
+			background: #fff
+		}
+		body {
+			padding: 20px;
+		}
+		html {
+			font-size: 100%;
+    		/*16 ÷ 16 × 100% = 62.5%*/
+		}
+		.team-logo {
+			width: 160px;
+			float:left;
+		}
+		img {
+			width: 80px;
+			height: 80px;
+			display: inline-block;
+		}
+
+		.context {
+			background: #eee;
+		}
+
+		.introduction {
+			margin-left: 240px;
+			margin-right: 160px;
+		}
+		.context::after {
+			clear: both;
+		}
+		.team-members {
+			padding: 0px;
+			float: right;
+			width: 120px;
+		}
+		.team-members img {
+			margin: 20px;
+		}
+		.clear-both {
+			clear:both;
+			visibility:hidden;
+			padding:0px;
+			margin:0px;
+		}
+	</style>
+</head>
+<body>
+
+<div class="context">
+	<div class="team-logo">
+		<img src="logo.png" />
+		<span>ife-study</span>
+	</div>
+	<div class="team-members">
+		<img src="member1.png">
+		<img src="member2.png">
+		<img src="member3.png">
+		<img src="member4.png">
+	</div>
+	<div class="introduction">
+		<p>团队名字就是为了学习前端而创立的ife前端学校组</p>
+		<p>icepro:</p>
+		<p>热爱前端，打怪升级中</p>
+		<p>高兴:</p>
+		<p>热爱前端，打怪升级中</p>
+		<p>浪人情歌:</p>
+		<p>热爱前端，打怪升级中</p>
+		<p>吟游诗人:</p>
+		<p>热爱前端，打怪升级中</p>
+		<p>楚狂人:</p>
+		<p>热爱前端，打怪升级中</p>
+	</div>
+	<div class="clear-both"></div>
+
+</div>
+
+</body>
+</html>
