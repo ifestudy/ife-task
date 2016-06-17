@@ -1,0 +1,184 @@
+<!--5:25~7：15，-->
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>通过HTML及CSS模拟报纸排版</title>
+	<style>
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+		body {
+			margin: 0px;
+			padding-left: 44px;
+			padding-right: 44px;
+			width: 980px;
+			height: 1386px;
+			position: relative;
+		}
+		p {
+			font-family: 'Microsoft YaHei';
+		}
+		hr {
+			border: 1px solid #000;
+			margin: 0px;
+			padding: 0px;
+		}
+		div {
+			position: relative;
+		}
+		nav {
+			height: 61px;
+		}
+		nav span {
+			font-family: 'SimHei';
+			position: absolute;
+			font-size: 12px;
+			margin-left: 6px;
+		}
+		nav::after {
+			clear: both;
+		}
+		.logo {
+			float: left;
+			width: 110px;
+			height: 61px;
+			background: #d45d5c;
+		}
+		.logo span {
+			bottom: 0px;
+			color: #fff;
+		}
+		.right-date {
+			color: #d45d5c;
+			bottom: 0px;
+			right: 0px;
+			margin-top: 49px;
+			font-size: 12px;
+		}
+		.hg-grey {
+			border-color: #938e8c;
+		}
+		.hg-red {
+			border-color: #cc8091;
+		}
+		.context {
+			height: 100%;
+		}
+		.context span {
+			position: relative;
+			margin: 0px;
+		}
+		footer {
+			height: 61px;
+			bottom: 0px;
+		}
+		footer p {
+			text-align: right;
+			margin: 0px;
+			font-size: 12px;
+			color: #d45d5c;
+		}
+		.mask {
+			width: 191px;
+			height: 301px;
+			opacity:0.5;
+			z-index: 10;
+		}
+		.cover {
+			margin-top: 33px;
+		}
+		.cover-pic {
+			width: 641px;
+			height: 301px;	
+		}
+		.cover-pic img {
+			position: absolute;
+			left: 0px;
+		}
+		.cover-about{
+			width: 203px;
+			height: 301px;
+			border-top: 2px solid #cc8091;
+			padding: 16px;
+		}
+		.c-alpha-green {
+			background: #428c59;
+		}
+		.c-alpha-red {
+			background: #cc7580;
+		}
+		.right {
+			float: right;
+		}
+		.left {
+			float: left;
+		}
+		.title {
+			font-size: 16px;
+			border-bottom: 1px solid #000;
+			text-transform: uppercase;
+			margin: 0px;
+			line-height: 28px;
+			margin-top: 16px;
+		}
+
+		.title  strong{
+			font-size: 24px;
+		}
+		.subtitle  {
+			word-wrap: break-word;
+			font-size: 12px;
+			color: #676767;
+			font-family: 'KaiTi';
+			margin: 0px;
+			line-height: 10px;
+		}
+		.headline {
+			line-height: 156px;
+			font-size: 116px;
+			color: #75b86b;
+		}
+	</style>
+</head>
+<body>
+<nav>
+	<div class="logo"><span>ife-baidu.com</span></div>
+	<div class="right-date right"><time>2016-03</time></div>
+</nav>
+
+<hr class="hg-grey">
+<div class="context">
+	<div class="cover">
+		<div class="cover-pic left">
+			<div class="mask c-alpha-green right"></div>
+			<div class="mask c-alpha-red left"></div>
+			<img src="right-large.png">
+		</div>
+		<div class="cover-about right"> 
+			<p>
+				<span class="title"><strong>A</strong>bout</span>
+				<br />
+				<span class="title"><strong>T</strong>echnologe</span>
+			</p>
+			<p>
+				<span class="subtitle">About technologe about technologe about technologe</span>
+			</p>
+			<p><span class="headline">700</span></p>
+			<div class="">
+				<div class="left"><p>3.2</p></div>
+				<div class="right">
+					<p>css</p>
+					<p>csscsscsscsscss</p>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<hr class="hg-grey">
+<footer><p>ife-baidu.com</p></footer>
+
+
+</body>
+</html>
