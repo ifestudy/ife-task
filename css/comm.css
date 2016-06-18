@@ -1,0 +1,59 @@
+/**
+ *清除样式
+ */
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, "Microsoft Yahei", Arial, sans-serif;
+}
+
+/**
+ * 设置行间距
+ */
+h1, h2, h3, h4, h5, h6,
+p{
+    margin-bottom: 1.2em;
+}
+
+a{
+    text-decoration: none;
+    display: block;
+    color: #0099cc;
+}
+a:hover{
+    color: #036;
+}
+
+.main a{
+    font-size: 20px;
+}
+/**
+ *header的样式
+ */
+.header{
+    width: auto;
+    height: 100px;
+    margin: 0 auto;
+    border-bottom: 1px solid #e8e8e8;
+    color: #036;
+    text-align: center;
+    line-height: 100px;
+}
+
+/**
+ *main的样式
+ */
+.main{
+min-height: 300px;
+text-align: center;
+}
+
+/**
+ *footer的样式
+ */
+.footer{
+    min-height: 100px;
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+    text-align: center;
+}
