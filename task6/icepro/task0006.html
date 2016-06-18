@@ -19,6 +19,7 @@
 		}
 		p {
 			font-family: 'Microsoft YaHei';
+			font-size: 12px;
 		}
 		hr {
 			border: 1px solid #000;
@@ -60,8 +61,11 @@
 		.hg-grey {
 			border-color: #938e8c;
 		}
-		.hg-red {
-			border-color: #cc8091;
+		.fg-grey {
+			color: #767777;
+		}
+		.fg-pink {
+			color: #cc8091;
 		}
 		.context {
 			height: 100%;
@@ -70,6 +74,7 @@
 			position: relative;
 			margin: 0px;
 		}
+
 		footer {
 			height: 61px;
 			bottom: 0px;
@@ -101,7 +106,6 @@
 			width: 203px;
 			height: 301px;
 			border-top: 2px solid #cc8091;
-			padding: 16px;
 		}
 		.c-alpha-green {
 			background: #428c59;
@@ -127,7 +131,11 @@
 		.title  strong{
 			font-size: 24px;
 		}
+		.cover-about p {
+			margin-top:16px; 
+		}
 		.subtitle  {
+			margin-top: 0px !important; 
 			word-wrap: break-word;
 			font-size: 12px;
 			color: #676767;
@@ -136,9 +144,30 @@
 			line-height: 10px;
 		}
 		.headline {
-			line-height: 156px;
 			font-size: 116px;
 			color: #75b86b;
+		}
+		.css {
+			position: absolute;
+			bottom: 0px;
+			margin-bottom: -11px;
+		}
+		.marked {
+			font-size: 55px;
+			line-height: 55px;
+			margin-top: 0px !important;
+		}
+		.mixture {
+	    	margin-top: 13px;
+		}
+		.mixture > p {
+			margin: 0px;
+		}
+		.mixture .top {
+			font-size: 22px;
+		}
+		.css > div {
+			float: left;
 		}
 	</style>
 </head>
@@ -162,17 +191,19 @@
 				<br />
 				<span class="title"><strong>T</strong>echnologe</span>
 			</p>
-			<p>
-				<span class="subtitle">About technologe about technologe about technologe</span>
+			<p class="subtitle"> 
+				About technologe about technologe about technologe
 			</p>
 			<p><span class="headline">700</span></p>
-			<div class="">
-				<div class="left"><p>3.2</p></div>
-				<div class="right">
-					<p>css</p>
-					<p>csscsscsscsscss</p>	
+			
+			<div class="fg-pink css">
+				<div><p class="marked">3.2</p></div>
+				<div class="mixture">
+					<p class="top">css</p>
+					<p class="fg-grey">csscsscsscsscss</p>	
 				</div>
 			</div>
+			
 		</div>
 	</div>
 </div>
