@@ -64,7 +64,7 @@
 		}
 		
 
-		.clear-float {
+		.clear-both {
 			clear: both;
 		}
 
@@ -104,6 +104,7 @@
 			border: 1px solid black;
 			width: 6.25rem;
 			margin: 0.625rem;
+			float: left;
 		}
 		article figure img {
 			width: 6.25rem;
@@ -113,7 +114,7 @@
 		header h2 {
 			color: rgb(98,100,94);
 		}
-		header author,time {
+		header .author,time {
 			margin-right: 0.325rem;
 			color: rgb(118,139,150);
 		}
@@ -213,7 +214,7 @@
 		<img src="baidu.png" alt="百度">
 	</div>
 	<div class="menu-right">
-		<div class="clear-float"></div>
+		<div class="clear-both"></div>
 		<ul>
 			<li><a href="#">导航链接1</a></li>
 			<li><a href="#">导航链接2</a></li>
@@ -296,7 +297,10 @@
 		<header>
 			<h1>另外一篇文章的一级标题</h1>
 			<h2>文章的二级标题</h2>
-			<p><author>文章作者</author><time>2016-1-1</time></p>
+			<p>
+				<span class="author">文章作者</span>
+				<time>2016-1-1</time>
+			</p>
 		</header>
 		<p>这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,换行了！</p>
 		<p>这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,<a href="http://ife.baidu.com/">这里有一个链接到ife.baidu.com</a>,这是一个很长很长的段落,<b>这里有个粗体字</b>,这是一个很长很长的段落.</p>
@@ -309,7 +313,10 @@
 		<header>
 			<h1>另外一篇文章的一级标题</h1>
 			<h2>文章的二级标题</h2>
-			<p><author>文章作者</author><time>2016-1-1</time></p>
+			<p>
+				<span class="author">文章作者</span>
+				<time>2016-1-1</time>
+			</p>
 		</header>
 		<p>这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,换行了！</p>
 		<img src="http://d.hiphotos.baidu.com/zhidao/pic/item/e7cd7b899e510fb38cc9205dd833c895d0430c23.jpg" alt="一个图片" width="200" height="200" />
@@ -343,6 +350,19 @@
 		<figure><p>好看的图片</p>
 			<img src="http://d.hiphotos.baidu.com/zhidao/pic/item/e7cd7b899e510fb38cc9205dd833c895d0430c23.jpg" alt="一个图片" />
 		</figure>
+		<figure><p>好看的图片</p>
+			<img src="http://d.hiphotos.baidu.com/zhidao/pic/item/e7cd7b899e510fb38cc9205dd833c895d0430c23.jpg" alt="一个图片" />
+		</figure>
+		<figure><p>好看的图片</p>
+			<img src="http://d.hiphotos.baidu.com/zhidao/pic/item/e7cd7b899e510fb38cc9205dd833c895d0430c23.jpg" alt="一个图片" />
+		</figure>
+		<figure><p>好看的图片</p>
+			<img src="http://d.hiphotos.baidu.com/zhidao/pic/item/e7cd7b899e510fb38cc9205dd833c895d0430c23.jpg" alt="一个图片" />
+		</figure>
+		<figure><p>好看的图片</p>
+			<img src="http://d.hiphotos.baidu.com/zhidao/pic/item/e7cd7b899e510fb38cc9205dd833c895d0430c23.jpg" alt="一个图片" />
+		</figure>
+		<div class="clear-both"></div>
 		
 	</article>
 
@@ -350,7 +370,7 @@
 		<header>
 			<h1>最后一篇文章的一级标题</h1>
 			<h2>文章二级标题</h2>
-			<p><author>文章作者</author><time>2016-1-1</time></p>
+			<p><span>文章作者</span><time>2016-1-1</time></p>
 		</header>
 		<ol>
 			<li>排名1</li>
