@@ -1,4 +1,4 @@
-<!--5:25~7：15，-->
+<!--1:45+12+0.5+11+1:00-->
 <!doctype html>
 <html>
 <head>
@@ -13,7 +13,7 @@
 			margin: 0px;
 			padding-left: 44px;
 			padding-right: 44px;
-			width: 980px;
+			width: 892px;
 			height: 1386px;
 			position: relative;
 		}
@@ -39,6 +39,9 @@
 			margin-left: 6px;
 		}
 		nav::after {
+			clear: both;
+		}
+		.clear-both {
 			clear: both;
 		}
 		.logo {
@@ -106,6 +109,55 @@
 			width: 203px;
 			height: 301px;
 			border-top: 2px solid #cc8091;
+		}
+		.cover article {
+			width: 641px;
+			margin-top: 24px;
+
+		}
+		.cover article p {
+			padding-right: 24px;
+			line-height: 16px;
+			font-family: 'SimSun';
+		}
+		.cover article section {
+			float: left;
+			overflow: hidden;
+			height: 168px;
+		}
+		/* TODO:chrome加粗 */
+		/* 无法实现chrome的加粗 */
+		.cover header > h2 {
+			font-size: 16px !important;
+			font-weight: bold !important;
+			text-decoration: underline;
+			margin-bottom: 16px;
+		}
+		.cover article section:nth-child(1) {
+			width: 40%;
+			color: #418c59;	
+		}
+
+		.cover article section:nth-child(2) {
+			width: 30%;
+			color: #d2994f;	
+		}
+		.cover article section:nth-child(3) {
+			width: 30%;
+			color: #cc7680;	
+		}
+		.cover article .lh-24 {
+			line-height: 24px;
+		}
+		.cover article .what{
+			font-size: 12px;
+			line-height: 16px;
+		}
+		.what span {
+			color: #cd4a48;
+			font-style: italic;
+			font-size: 12px;
+			line-height: 16px;
 		}
 		.c-alpha-green {
 			background: #428c59;
@@ -205,6 +257,36 @@
 			</div>
 			
 		</div>
+
+		<div class="clear-both"></div>
+
+		<article>
+			<section>
+				<header>
+					<h2>What</h2>
+				</header>
+				<p class="fg-grey">前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+			</section>
+			
+			<section>
+				<header>
+					<h2>When</h2>
+				</header>
+				<p class="fg-grey">前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+			</section>
+			
+			<section>
+				<header>
+					<h2>How</h2>
+				</header>
+				<p class="lh-24 fg-grey">前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+				<br />
+				<p class="what fg-grey">What---------<span>40%</span></p>
+				<p class="what fg-grey">What---------<span>30%</span></p>
+				<p class="what fg-grey">What---------<span>30%</span></p>
+			</section>
+
+		</article>
 	</div>
 </div>
 <hr class="hg-grey">
