@@ -23,13 +23,12 @@
 		nav {
 			position: fixed;
 			top: 0rem;
-			left: 0rem;
 			height: auto;
 			padding: 0.675rem;
 			width: 100%;
-			margin: 0rem;
 			z-index: 999;
 			background: #353235;
+			overflow: hidden;
 		}
 		nav > .menu-left {
 			float: left;
@@ -56,18 +55,10 @@
 			-webkit-transition: all 1s; /* Safari 和 Chrome */
 			-o-transition: all 1s; /* Opera */
 		}
-		/*nav ul li:last-child > a{
-			color:#998899;
-		}*/
+
 		nav ul li a:hover {
-			color:red;
+			color: #aaa;;
 		}
-		
-
-		.clear-both {
-			clear: both;
-		}
-
 
 		aside {
 			margin-top: 0.9375rem;
@@ -77,9 +68,6 @@
 			box-shadow: 0.315rem 0.125rem 0.315rem #888888; 
 			width: 25rem;
 			margin-bottom: 1.25rem;
-		}
-		aside::after {
-			clear: both;
 		}
 
 		aside h2 {
@@ -95,9 +83,13 @@
 			width: auto;
 			margin-left: 0rem;
 			margin-bottom: 1.25rem;
+			overflow: hidden;
 		}
 		article ul li {
 			list-style: none;
+		}
+		article ol {
+			padding-left: 1.25rem
 		}
 		article figure {
 			padding: 0.975rem;
@@ -114,7 +106,7 @@
 		header h2 {
 			color: rgb(98,100,94);
 		}
-		header .author,time {
+		header .author,header time {
 			margin-right: 0.325rem;
 			color: rgb(118,139,150);
 		}
@@ -125,7 +117,6 @@
 			color: #FFF;
 			width: 100%;
 			margin-top: 0.625rem;
-			left: 0px;
 			position: absolute;
 		}
 		footer p {
@@ -144,16 +135,8 @@
 		.table th {
 			background: rgb(51,51,51);
 			color: #FFFFFF;
-			padding: 0rem;
-			margin: 0rem;
-		}
-		.table tr {
-			padding: 0rem;
-			margin: 0rem;
 		}
 		.table td {
-			padding: 0rem;
-			margin: 0rem;
 			border:solid 1px #000;
 			padding: 0.125rem
 
@@ -179,13 +162,12 @@
 			float: left;
 			width: 60%;
 		}
-		.form-box .form-group input,select,span,textarea {
+		.form-box .form-group input,.form-box .form-group select,.form-box .form-group span,.form-box .form-group textarea {
 			float: left;
 			text-align: left;
 			vertical-align: middle;
 			display: inline;
 			margin-top: 1rem;
-			/*display: inline-block;*/
 			vertical-align: middle;
 			margin-right: 0.625rem;
 		}
@@ -194,7 +176,7 @@
 			height: 9.625rem;
 		}
 		/* 提交按钮 */
-		.submit {
+		.form-box .submit {
 			width: 100%;
 			border:1px solid;
 			background: rgb(45,86,213);
@@ -208,13 +190,11 @@
 </head>
 <body>
 
-
 <nav>
 	<div class="menu-left">
 		<img src="baidu.png" alt="百度">
 	</div>
 	<div class="menu-right">
-		<div class="clear-both"></div>
 		<ul>
 			<li><a href="#">导航链接1</a></li>
 			<li><a href="#">导航链接2</a></li>
@@ -362,7 +342,6 @@
 		<figure><p>好看的图片</p>
 			<img src="http://d.hiphotos.baidu.com/zhidao/pic/item/e7cd7b899e510fb38cc9205dd833c895d0430c23.jpg" alt="一个图片" />
 		</figure>
-		<div class="clear-both"></div>
 		
 	</article>
 
@@ -387,8 +366,6 @@
 	</article>
 
 </div><!--./context -->
-
-
 
 <footer>
 	<p>版权所有&copy;</p>
