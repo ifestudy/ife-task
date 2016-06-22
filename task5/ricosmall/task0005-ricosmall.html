@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>任务五：零基础HTML及CSS编码（二）</title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            body{
+                background: #dedede;
+            }
+            ul, ol{
+                padding-left: 20px;
+            }
+            .header{
+                width: 100%;
+                position: fixed; left: 0px; top: 0px;
+                height: 50px;
+                background: #333233;
+            }
+            .main{
+                margin-top: 50px;
+                width: 100%;
+                overflow: hidden;
+            }
+            .footer{
+                height: 50px;
+                line-height: 50px;
+                margin-top: 20px;
+                background: #000;
+                color: #fff;
+                text-align: center;
+            }
+            .header-left{
+                float: left;
+            }
+            .header-right{
+                float: right;
+            }
+            .header-left img{
+                height: 40px;
+                margin-top: 5px;
+                margin-left: 40px;
+            }
+            .navigation{
+                list-style: none;
+            }
+            .navigation li{
+                float: left;
+                margin-right: 20px;
+                height: 50px;
+                line-height: 50px;
+
+            }
+            .navigation a{
+                text-decoration: none;
+                color: #fff;
+                display: block;
+            }
+            .navigation a:hover{
+                color: #aaa;
+            }
+            .eassy1, .eassy2, .picture, .eassy3{
+                width: auto;
+                box-shadow: 0.15rem 0.15rem 1px 1px #777;
+                background: #fff;
+                padding: 40px 20px;
+                margin: 20px 20px 0;
+                overflow: hidden;
+            }
+            .slide{
+                width: 360px;
+                float: right;
+                margin: 20px 20px 0 0;
+                box-shadow: 0.15rem 0.15rem 1px 1px #777;
+                background: #fff;
+                padding: 40px 20px;
+            }
+            .mainbody{
+                overflow: hidden;
+            }
+            figure{
+                max-width: 446px;
+                width: auto;
+                border: 1px solid #666;
+                margin: 20px 20px 0 0;
+                text-align: center;
+                overflow: hidden;
+                float: left;
+            }
+            .mainbody img{
+                max-width: 446px;
+                width: 100%;
+                height: 100%;
+            }
+            table{
+                width: 100%;
+                border-top: 1px solid #cccccc;
+                border-right: 1px solid #cccccc;
+
+            }
+            td, tr{
+                border-left: 1px solid #cccccc;
+                border-bottom: 1px solid #cccccc;
+            }
+            .table-head{
+                background: #333233;
+                color: #fff;
+            }
+            .table-bottom{
+                background: #cccccc;
+            }
+            .slide h2{
+                border-left: 4px solid #cccccc;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            .profile-detail{
+                margin-bottom: 1em;
+            }
+            .profile-detail p{
+                color: #aaa;
+                margin-left: 36%;
+            }
+            .prefix{
+                width: 36%;
+                text-align: right;
+                float: left;
+            }
+            .submit{
+                width: 100%;
+                background: #334cd0;
+                color: #fff;
+                height: 30px;
+                text-align: center;
+                border: 1px solid #334cd0;
+                border-radius: 0.2em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="header-left">
+                <img src="baidu_logo.png" alt="" />
+            </div>
+            <div class="header-right">
+                <ul class="navigation">
+                    <li><a href="#">导航链接一</a></li>
+                    <li><a href="#">导航链接二</a></li>
+                    <li><a href="#">导航链接三</a></li>
+                    <li><a href="#">导航链接四</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+            <div class="slide">
+                <h2>这里以后是一个侧栏，这是侧栏的标题</h2>
+                <form class="profile">
+                    <div class="profile-detail">
+                        <label class="prefix">
+                            请输入邮箱地址：
+                        </label>
+                        <input placeholder="这是一个文本输入框">
+                        <p>邮箱地址请按要求格式输入</p>
+                    </div>
+                    <div class="profile-detail">
+                        <label class="prefix">请输入密码： </label>
+                        <input type="password">
+                    </div>
+                    <div class="profile-detail">
+                        <label class="prefix">请重复输入密码： </label>
+                        <input type="password" name="password">
+                        <p>密码请为6-16位英文数字</p>
+                    </div>
+                    <div class="profile-detail">
+                        <label class="prefix">性别： </label>
+                        <input type="radio" name="sex" value="male" checked="checked">男 <input type="radio" name="sex" value="female">女
+                    </div>
+                    <div class="profile-detail">
+                        <label class="prefix">城市： </label>
+                        <select name="city">
+                              <option value="北京" selected="selected">北京</option>
+                              <option value="上海">上海</option>
+                              <option value="深圳">深圳</option>
+                        </select>
+                    </div>
+                    <div class="profile-detail">
+                        <label class="prefix">爱好： </label>
+                        <input type="checkbox">运动
+                        <input type="checkbox">艺术
+                        <input type="checkbox">科学
+                    </div>
+                    <div class="profile-detail">
+                        <label class="prefix">个人描述： </label>
+                        <textarea rows="5" cols="25" placeholder="这里是一个多行输入框，您的个人描述"></textarea>
+                    </div>
+                    <input class="submit" type="button" name="submit" value="确认提交">
+                </form>
+            </div>
+            <div class="mainbody">
+                <div class="eassy1">
+                    <h2>文章一级标题</h2>
+                    <h3>文章二级标题</h3>
+                    <p>
+                        <span>文章作者</span>
+                        <time>文章发表时间</time>
+                    </p>
+                    <p>
+                        这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，换行了 <br>
+                        这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，换行了 <br>
+                        这是一个很长的段落，这是一个很长的段落，<a href="http://ife.baidu.com">这里有一个链接连接到http://ife.baidu.com</a>这是一个很长的段落，这是一个很长的段落，<b>这里有个粗体字</b>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落。
+                    </p>
+                    <img src="web.jpg" alt="" />
+                    <p>
+                        这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，换行了 <br>
+                        这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，换行了 <br>
+                        这是一个很长的段落，这是一个很长的段落，<a href="http://ife.baidu.com">这里有一个链接连接到http://ife.baidu.com</a>这是一个很长的段落，这是一个很长的段落，<b>这里有个粗体字</b>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落。
+                    </p>
+                </div>
+                <div class="eassy2">
+                    <h2>另一篇文章一级标题</h2>
+                    <h3>文章二级标题</h3>
+                    <p>
+                        <span>文章作者</span>
+                        <time>文章发表时间</time>
+                    </p>
+                    这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，换行了 <br>
+                    这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，换行了 <br>
+                    这是一个很长的段落，这是一个很长的段落，<a href="http://ife.baidu.com">这里有一个链接连接到http://ife.baidu.com</a>这是一个很长的段落，这是一个很长的段落，<b>这里有个粗体字</b>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落。
+                    </p>
+                    <img src="web.jpg" alt="" />
+                    <ul>
+                        <li>列表项目一</li>
+                        <li>列表项目一</li>
+                        <li>列表项目一</li>
+                    </ul>
+                </div>
+                <div class="picture">
+                    <h3>图片</h3>
+                    <figure><p>好看的图片</p>
+                    <img src="web.jpg" alt="" />
+                    </figure>
+                    <figure><p>好看的图片</p>
+                    <img src="web.jpg" alt="" />
+                    </figure>
+                    <figure><p>好看的图片</p>
+                    <img src="web.jpg" alt="" />
+                    </figure>
+                    <figure><p>好看的图片</p>
+                    <img src="web.jpg" alt="" />
+                    </figure>
+                    <figure><p>好看的图片</p>
+                    <img src="web.jpg" alt="" />
+                    </figure>
+                    <figure><p>好看的图片</p>
+                    <img src="web.jpg" alt="" />
+                    </figure>
+                    <figure><p>好看的图片</p>
+                    <img src="web.jpg" alt="" />
+                    </figure>
+                    <figure><p>好看的图片</p>
+                    <img src="web.jpg" alt="" />
+                    </figure>
+                    <figure><p>好看的图片</p>
+                    <img src="web.jpg" alt="" />
+                    </figure>
+                    <figure><p>好看的图片</p>
+                    <img src="web.jpg" alt="" />
+                    </figure>
+                </div>
+                <div class="eassy3">
+                    <h2>最后一篇文章一级标题</h2>
+                    <h3>文章二级标题</h3>
+                    <p>
+                        <span>文章作者</span>
+                        <time>文章发表时间</time>
+                    </p>
+                    <ol>
+                        <li>排名1</li>
+                        <li>排名2</li>
+                        <li>排名3</li>
+                    </ol>
+                    <p>下面是一个表格，给表格加了一个border="1"好让你看出是一个表格</p>
+                    <table cellspacing="0">
+                        <tr class="table-head">
+                            <td>表头</td>
+                            <td>表头</td>
+                            <td>表头</td>
+                        </tr>
+                        <tr>
+                            <td>表内容单元格</td>
+                            <td>表内容单元格</td>
+                            <td><a href="#">操作</a></td>
+                        </tr>
+                        <tr>
+                            <td>表内容单元格</td>
+                            <td>表内容单元格</td>
+                            <td><a href="#">操作</a></td>
+                        </tr>
+                        <tr>
+                            <td>表内容单元格</td>
+                            <td>表内容单元格</td>
+                            <td><a href="#">操作</a></td>
+                        </tr>
+                        <tr>
+                            <td>表内容单元格</td>
+                            <td>表内容单元格</td>
+                            <td><a href="#">操作</a></td>
+                        </tr>
+                        <tr class="table-bottom">
+                            <td>总计</td>
+                            <td colspan="2">1000</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>
+                版权所有&copy
+            </p>
+        </div>
+    </body>
+</html>
