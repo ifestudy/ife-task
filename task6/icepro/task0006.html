@@ -1,4 +1,4 @@
-<!--1:45+12+0.5+11+1:00-->
+<!--1:45+12+0.5+11+1:00+35-->
 <!doctype html>
 <html>
 <head>
@@ -56,10 +56,12 @@
 		}
 		.right-date {
 			color: #d45d5c;
+			height: 100%;
+			width: 200px;
+		}
+		.right-date span {
 			bottom: 0px;
 			right: 0px;
-			margin-top: 49px;
-			font-size: 12px;
 		}
 		.hg-grey {
 			border-color: #938e8c;
@@ -96,6 +98,7 @@
 		}
 		.cover {
 			margin-top: 33px;
+			overflow: hidden;
 		}
 		.cover-pic {
 			width: 641px;
@@ -117,13 +120,18 @@
 		}
 		.cover article p {
 			padding-right: 24px;
-			line-height: 16px;
+			opacity: 0.7;
 			font-family: 'SimSun';
+			font-size: 12px;
+			font-family: "SimSun";
+			color: rgb(118, 119, 119);
+			line-height: 1.333;
 		}
 		.cover article section {
 			float: left;
 			overflow: hidden;
 			height: 168px;
+
 		}
 		/* TODO:chrome加粗 */
 		/* 无法实现chrome的加粗 */
@@ -146,12 +154,19 @@
 			width: 30%;
 			color: #cc7680;	
 		}
-		.cover article .lh-24 {
-			line-height: 24px;
+		.cover article section:nth-child(3) p {
+			line-height: 1.75;
+			font-family: "SimSun";
+			color: rgb(118, 119, 119);
 		}
-		.cover article .what{
+
+		}
+		.cover article .what {
 			font-size: 12px;
 			line-height: 16px;
+		}
+		.cover-wrap {
+			overflow: hidden;
 		}
 		.what span {
 			color: #cd4a48;
@@ -171,28 +186,24 @@
 		.left {
 			float: left;
 		}
+
 		.title {
-			font-size: 16px;
-			border-bottom: 1px solid #000;
-			text-transform: uppercase;
-			margin: 0px;
-			line-height: 28px;
-			margin-top: 16px;
+			font-size: 24px;
+			text-decoration: underline;
+			font-variant: small-caps;
+			line-height: 40px;
 		}
 
-		.title  strong{
-			font-size: 24px;
-		}
 		.cover-about p {
 			margin-top:16px; 
 		}
 		.subtitle  {
-			margin-top: 0px !important; 
+			font-size: 12px;
+			margin-top: 2px !important; 
 			word-wrap: break-word;
 			font-size: 12px;
 			color: #676767;
 			font-family: 'KaiTi';
-			margin: 0px;
 			line-height: 10px;
 		}
 		.headline {
@@ -202,7 +213,10 @@
 		.css {
 			position: absolute;
 			bottom: 0px;
-			margin-bottom: -11px;
+			margin-bottom: -9px;
+		}
+		.css > div {
+			float: left;
 		}
 		.marked {
 			font-size: 55px;
@@ -218,47 +232,60 @@
 		.mixture .top {
 			font-size: 22px;
 		}
-		.css > div {
-			float: left;
+		.home-page {
+			margin-top: 48px;
+			width: 415px;
 		}
+		.home-page article header h2 {
+			font-size: 42px;
+			font-family: "SimHei";
+			color: #11456b;
+			/*line-height: 16px;*/
+		}
+		.home-page header h2 > span {
+			color: #f5e327;
+			font-size: 72px;
+		}
+
 	</style>
 </head>
 <body>
 <nav>
 	<div class="logo"><span>ife-baidu.com</span></div>
-	<div class="right-date right"><time>2016-03</time></div>
+	<div class="right-date right"><span><time>2016-03</time></span></div>
 </nav>
 
 <hr class="hg-grey">
 <div class="context">
 	<div class="cover">
-		<div class="cover-pic left">
-			<div class="mask c-alpha-green right"></div>
-			<div class="mask c-alpha-red left"></div>
-			<img src="right-large.png">
-		</div>
-		<div class="cover-about right"> 
-			<p>
-				<span class="title"><strong>A</strong>bout</span>
-				<br />
-				<span class="title"><strong>T</strong>echnologe</span>
-			</p>
-			<p class="subtitle"> 
-				About technologe about technologe about technologe
-			</p>
-			<p><span class="headline">700</span></p>
-			
-			<div class="fg-pink css">
-				<div><p class="marked">3.2</p></div>
-				<div class="mixture">
-					<p class="top">css</p>
-					<p class="fg-grey">csscsscsscsscss</p>	
-				</div>
-			</div>
-			
-		</div>
 
-		<div class="clear-both"></div>
+		<div class="cover-wrap">
+			<div class="cover-pic left">
+				<div class="mask c-alpha-green right"></div>
+				<div class="mask c-alpha-red left"></div>
+				<img src="right-large.png">
+			</div>
+			<div class="cover-about right"> 
+				<p>
+					<span class="title">About</span>
+					<br />
+					<span class="title">Technologe</span>
+				</p>
+				<p class="subtitle"> 
+					About technologe about technologe about technologe
+				</p>
+				<p><span class="headline">700</span></p>
+				
+				<div class="fg-pink css">
+					<div><p class="marked">3.2</p></div>
+					<div class="mixture">
+						<p class="top">css</p>
+						<p class="fg-grey">csscsscsscsscss</p>	
+					</div>
+				</div>
+				
+			</div>
+		</div><!--./cover-wrap -->
 
 		<article>
 			<section>
@@ -279,7 +306,7 @@
 				<header>
 					<h2>How</h2>
 				</header>
-				<p class="lh-24 fg-grey">前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+				<p class="fg-grey">前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
 				<br />
 				<p class="what fg-grey">What---------<span>40%</span></p>
 				<p class="what fg-grey">What---------<span>30%</span></p>
@@ -287,7 +314,18 @@
 			</section>
 
 		</article>
+	</div><!--./cover -->
+	<div class="home-page">
+		<article class="left">
+			<header>
+				<h2><span><b><i>THE</i></b></span><b> TECHNOLOGE OF FRONT</b></h2>
+			</header>
+		</article>
+		<div class="directory right">
+
+		</div>
 	</div>
+	
 </div>
 <hr class="hg-grey">
 <footer><p>ife-baidu.com</p></footer>
