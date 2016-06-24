@@ -1,4 +1,88 @@
 @charset "UTF-8";
+.font-cc {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -4px -4px;
+  width: 42px;
+  height: 42px; }
+
+.font-flag {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -59px -4px;
+  width: 35px;
+  height: 40px; }
+
+.font-app {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -104px -4px;
+  width: 41px;
+  height: 41px; }
+
+.font-flower {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -156px -4px;
+  width: 35px;
+  height: 41px; }
+
+.font-man {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -206px -5px;
+  width: 14px;
+  height: 17px; }
+
+.font-dropdown {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -232px -9px;
+  width: 10px;
+  height: 6px; }
+
+.font-book {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -6px -56px;
+  width: 91px;
+  height: 90px; }
+
+.font-qq {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -112px -62px;
+  width: 25px;
+  height: 25px; }
+
+.font-twtter {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -162px -62px;
+  width: 30px;
+  height: 25px; }
+
+.font-globe {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -112px -112px;
+  width: 25px;
+  height: 25px; }
+
+.font-sina {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -162px -112px;
+  width: 30px;
+  height: 25px; }
+
+.font-hook {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -267px -35px;
+  width: 12px;
+  height: 8px; }
+
 * {
   margin: 0rem;
   padding: 0rem; }
