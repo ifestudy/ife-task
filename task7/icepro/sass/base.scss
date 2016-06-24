@@ -1,0 +1,21 @@
+* {
+	margin: 0rem;
+	padding: 0rem;
+}
+
+html {
+	font-size: $base ÷ 16 × 100%;
+	/*16 ÷ 16 × 100% = 100%*/
+}
+body {
+	min-width: 1280px;
+}
+
+div {
+	position: relative;
+}
+
+p {
+	font-size: (12/$base) rem;
+	font-family: "微软雅黑"
+}

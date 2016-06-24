@@ -1,4 +1,4 @@
-$ioc:url(img/ioc.png);
+
 @mixin font-ioc($x: 0px,$y:0px,$w:42px,$h:42px){
 	background: $ioc;
 	background-repeat: no-repeat;
@@ -43,4 +43,8 @@ $ioc:url(img/ioc.png);
 
 .font-hook {
 	@include font-ioc(267px,35px,12px,8px)
+}
+
+.font-book-ms {
+	@include font-ioc(210px,59px,32px,32px)
 }

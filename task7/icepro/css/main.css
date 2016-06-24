@@ -83,10 +83,27 @@
   width: 12px;
   height: 8px; }
 
+.font-book-ms {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -210px -59px;
+  width: 32px;
+  height: 32px; }
+
 * {
   margin: 0rem;
   padding: 0rem; }
 
 html {
-  font-size: 100%;
+  font-size: 16 ÷ 16 × 100%;
   /*16 ÷ 16 × 100% = 100%*/ }
+
+body {
+  min-width: 1280px; }
+
+div {
+  position: relative; }
+
+p {
+  font-size: 0.75 rem;
+  font-family: "微软雅黑"; }
