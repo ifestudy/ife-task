@@ -1,7 +1,14 @@
 //设定图标图位置
-$ioc:url(img/ioc.png);
+$ioc: url(img/ioc.png);
 
 //根元素大小（px）
-$base:16;
-
+$base: 16;
+$width: 1280;
+//
+@function rem($n) {
+	@return (($n/$base)*1rem); 
+}
+@function per($n) {
+    @return (($n/$width)*100%); 
+}
 

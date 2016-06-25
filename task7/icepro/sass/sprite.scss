@@ -5,18 +5,19 @@
 	background-position: (-$x) (-$y);
 	width: $w;
 	height: $h;
+	display: inline-block;
 }
 .font-cc {
 	@include font-ioc(4px,4px)
 }
 .font-flag {
-	@include font-ioc(59px,4px,35px,40px)
+	@include font-ioc(59px,4px,35px,42px)
 }
 .font-app {
-	@include font-ioc(104px,4px,41px,41px)
+	@include font-ioc(104px,4px,41px,42px)
 }
 .font-flower {
-	@include font-ioc(156px,4px,35px,41px)
+	@include font-ioc(156px,4px,37px,42px)
 }
 .font-man {
 	@include font-ioc(206px,5px,14px,17px)
