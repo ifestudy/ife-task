@@ -1,10 +1,194 @@
-* {
-	margin: 0rem;
-	padding: 0rem;
+@import "var";
+@import "color/default";
+@import "sprite";
+@import "base";
+
+nav {
+	top: rem(0);
+	height: rem(65);
+	width: 100%;
+	position: fixed;
+	background-color: $white;
+	z-index:990;
+	ul > li {
+		font-size: rem(14);
+		margin-right:rem(10*7);
+		list-style: none;
+		cursor: pointer;
+		float: left;
+		line-height: rem(65-8); 
+		min-width: rem(56);
+		text-align: center;
+	}
+	.nav-right {
+		float: right;
+		.nav-nav {
+			& > li {
+				@include transition((color 1s ease,border-color 1s ease-out))
+				&:hover {
+					border-bottom: solid rem(8) $deep-red;
+					color: $deep-red;
+				}
+				&:last-child {
+					color: $red;
+				}
+			}
+		}
+	}
+
+	.nav-left {
+		float: left;
+		padding-left: rem(60);
+		h3 {
+			line-height: rem(65);
+			span {
+				margin-bottom: -rem(10);
+			}
+
+		}
+	}
 }
 
-html {
-	font-size: 100%;
-	/*16 ÷ 16 × 100% = 100%*/
+.content {
+	margin-top: rem(65);
+	width: 100%
 }
 
+.banner {
+	height: rem(950);
+	width: 100%;
+	background: url(../img/cover1.png) no-repeat center;
+	background-size: cover;
+	color: $white;
+	
+	.detail {
+		height: rem(250);
+		width: 100%;
+		position: absolute;
+		background-color: $white;
+		bottom: 0rem;
+		ul > li {
+			list-style: none;
+			cursor: pointer;
+			float: left;
+			// position: absolute;
+			margin-top:auto;
+			margin-bottom: auto;
+			width: 25%;
+			text-align: middle;
+			p {
+				text-align: center;
+				color: $font-grey;
+				margin: rem(45) auto auto  auto;
+				width: rem(155);
+			}
+
+		}
+	}
+	h3 {
+		font-size: rem(60);
+		padding-top: rem(232);
+		padding-left: rem(115);
+		line-height: 0.45;
+	}
+	& > p {
+		padding-left: rem(115);
+		font-size: rem(21);
+		line-height: rem(31);
+		margin-top: rem(31);
+	}
+	button {
+		margin-left: rem(115);
+		margin-top: rem(68);
+	}
+}
+.new-world {
+	height: rem(360);
+	background-color: $light-grey;
+	header h2 , p {
+		text-align: center;
+		font-size: rem(54);
+		padding-top: rem(52);
+	}
+}
+.btn-primary {
+	border: none;
+	background-color: $red;
+	color: $white;
+	width: rem(330);
+	height: rem(63);
+	font-size: rem(30);
+	padding: rem(14) rem(100);
+}
+
+.find-city {
+	[class^="select"] {
+		width: rem(237);
+		height: rem(36);
+		.sel-display {
+			width: rem(235);
+			height: rem(34);
+			position:absolute;
+			z-index: 10;
+			&:hover {
+				border: $red solid rem(1);
+			}
+		}
+		.sel-content {
+			display: none;
+			position: absolute;
+			background: $white;
+		}
+		.list {
+			position: absolute;
+			top:rem(-1);
+			padding-top: rem(36);
+			li {
+				height: 0rem;
+				background: $white;
+				width: rem(237-2);
+				
+				label {
+					width: 100%;
+					height: 100%;
+					display: none;
+					&:active {
+						display: block;
+						height: rem(36-2);
+
+					}
+				}
+				&:hover {
+					background: $red;
+					label {
+						color: $white;
+					}
+				}
+			}
+			&:hover {
+				border: $red solid rem(1);
+				li{
+					height: rem(36-2);
+				}
+				label {
+					display: block;
+				}
+			}
+
+		}
+		[id^="sel"]:checked ~ [id^="sel-content"] {
+			display: block !important;
+			position:absolute;
+			top: 0rem;
+			left: 0rem;
+			width: rem(235);
+			height: rem(34);
+			z-index: 11;
+		}
+		input[type="radio"] {
+		  position: absolute;
+		  top: -9999px;
+		  left: -9999px;
+		}
+	}
+}

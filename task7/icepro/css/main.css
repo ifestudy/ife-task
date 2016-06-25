@@ -1,8 +1,279 @@
 @charset "UTF-8";
+.font-cc {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -4px -4px;
+  width: 42px;
+  height: 42px;
+  display: inline-block; }
+
+.font-flag {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -59px -4px;
+  width: 35px;
+  height: 42px;
+  display: inline-block; }
+
+.font-app {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -104px -4px;
+  width: 41px;
+  height: 42px;
+  display: inline-block; }
+
+.font-flower {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -156px -4px;
+  width: 37px;
+  height: 42px;
+  display: inline-block; }
+
+.font-man {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -206px -5px;
+  width: 14px;
+  height: 17px;
+  display: inline-block; }
+
+.font-dropdown {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -232px -9px;
+  width: 10px;
+  height: 6px;
+  display: inline-block; }
+
+.font-book {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -6px -56px;
+  width: 91px;
+  height: 90px;
+  display: inline-block; }
+
+.font-qq {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -112px -62px;
+  width: 25px;
+  height: 25px;
+  display: inline-block; }
+
+.font-twtter {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -162px -62px;
+  width: 30px;
+  height: 25px;
+  display: inline-block; }
+
+.font-globe {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -112px -112px;
+  width: 25px;
+  height: 25px;
+  display: inline-block; }
+
+.font-sina {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -162px -112px;
+  width: 30px;
+  height: 25px;
+  display: inline-block; }
+
+.font-hook {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -267px -35px;
+  width: 12px;
+  height: 8px;
+  display: inline-block; }
+
+.font-book-ms {
+  background: url(img/ioc.png);
+  background-repeat: no-repeat;
+  background-position: -210px -59px;
+  width: 32px;
+  height: 32px;
+  display: inline-block; }
+
 * {
   margin: 0rem;
   padding: 0rem; }
 
 html {
   font-size: 100%;
-  /*16 ÷ 16 × 100% = 100%*/ }
+  /*16 ÷ 16 × 100% = 100%*/
+  font-family: "MicrosoftYaHei"; }
+
+body {
+  min-width: 1280px;
+  width: 100%;
+  color: #979898; }
+
+div, section, header, article, h1, h2, h3, h4, h5, h6, p {
+  position: relative; }
+
+p {
+  font-size: 0.75rem;
+  font-family: "MicrosoftYaHei"; }
+
+.hidden {
+  display: none; }
+
+nav {
+  top: 0rem;
+  height: 4.0625rem;
+  width: 100%;
+  position: fixed;
+  background-color: #fff;
+  z-index: 990; }
+  nav ul > li {
+    font-size: 0.875rem;
+    margin-right: 4.375rem;
+    list-style: none;
+    cursor: pointer;
+    float: left;
+    line-height: 3.5625rem;
+    min-width: 3.5rem;
+    text-align: center; }
+  nav .nav-right {
+    float: right; }
+    nav .nav-right .nav-nav > li {
+      transition: color 1s ease, border-color 1s ease-out;
+      -moz-transition: color 1s ease, border-color 1s ease-out;
+      /* Firefox 4 */
+      -webkit-transition: color 1s ease, border-color 1s ease-out;
+      /* Safari 和 Chrome */
+      -o-transition: color 1s ease, border-color 1s ease-out;
+      /* Opera */ }
+      nav .nav-right .nav-nav > li:hover {
+        border-bottom: solid 0.5rem #bf4f49;
+        color: #bf4f49; }
+      nav .nav-right .nav-nav > li:last-child {
+        color: #e74f4d; }
+  nav .nav-left {
+    float: left;
+    padding-left: 3.75rem; }
+    nav .nav-left h3 {
+      line-height: 4.0625rem; }
+      nav .nav-left h3 span {
+        margin-bottom: -rem(10); }
+
+.content {
+  margin-top: 4.0625rem;
+  width: 100%; }
+
+.banner {
+  height: 59.375rem;
+  width: 100%;
+  background: url(../img/cover1.png) no-repeat center;
+  background-size: cover;
+  color: #fff; }
+  .banner .detail {
+    height: 15.625rem;
+    width: 100%;
+    position: absolute;
+    background-color: #fff;
+    bottom: 0rem; }
+    .banner .detail ul > li {
+      list-style: none;
+      cursor: pointer;
+      float: left;
+      margin-top: auto;
+      margin-bottom: auto;
+      width: 25%;
+      text-align: middle; }
+      .banner .detail ul > li p {
+        text-align: center;
+        color: #979898;
+        margin: 2.8125rem auto auto auto;
+        width: 9.6875rem; }
+  .banner h3 {
+    font-size: 3.75rem;
+    padding-top: 14.5rem;
+    padding-left: 7.1875rem;
+    line-height: 0.45; }
+  .banner > p {
+    padding-left: 7.1875rem;
+    font-size: 1.3125rem;
+    line-height: 1.9375rem;
+    margin-top: 1.9375rem; }
+  .banner button {
+    margin-left: 7.1875rem;
+    margin-top: 4.25rem; }
+
+.new-world {
+  height: 22.5rem;
+  background-color: #f7f7f7; }
+  .new-world header h2, .new-world p {
+    text-align: center;
+    font-size: 3.375rem;
+    padding-top: 3.25rem; }
+
+.btn-primary {
+  border: none;
+  background-color: #e74f4d;
+  color: #fff;
+  width: 20.625rem;
+  height: 3.9375rem;
+  font-size: 1.875rem;
+  padding: 0.875rem 6.25rem; }
+
+.find-city [class^="select"] {
+  width: 14.8125rem;
+  height: 2.25rem; }
+  .find-city [class^="select"] .sel-display {
+    width: 14.6875rem;
+    height: 2.125rem;
+    position: absolute;
+    z-index: 10; }
+    .find-city [class^="select"] .sel-display:hover {
+      border: #e74f4d solid 0.0625rem; }
+  .find-city [class^="select"] .sel-content {
+    display: none;
+    position: absolute;
+    background: #fff; }
+  .find-city [class^="select"] .list {
+    position: absolute;
+    top: -0.0625rem;
+    padding-top: 2.25rem; }
+    .find-city [class^="select"] .list li {
+      height: 0rem;
+      background: #fff;
+      width: 14.6875rem; }
+      .find-city [class^="select"] .list li label {
+        width: 100%;
+        height: 100%;
+        display: none; }
+        .find-city [class^="select"] .list li label:active {
+          display: block;
+          height: 2.125rem; }
+      .find-city [class^="select"] .list li:hover {
+        background: #e74f4d; }
+        .find-city [class^="select"] .list li:hover label {
+          color: #fff; }
+    .find-city [class^="select"] .list:hover {
+      border: #e74f4d solid 0.0625rem; }
+      .find-city [class^="select"] .list:hover li {
+        height: 2.125rem; }
+      .find-city [class^="select"] .list:hover label {
+        display: block; }
+  .find-city [class^="select"] [id^="sel"]:checked ~ [id^="sel-content"] {
+    display: block !important;
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    width: 14.6875rem;
+    height: 2.125rem;
+    z-index: 11; }
+  .find-city [class^="select"] input[type="radio"] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px; }

@@ -13,7 +13,7 @@ var watch = require('gulp-watch');
 gulp.task('default',['sass','watch']);
 
 gulp.task('sass', function(){
-    return gulp.src("sass/*.scss")
+    return gulp.src("sass/main.scss")
     	//.pipe(sourcemaps.init())
         .pipe(sass({ style: 'expanded'}))
         //.pipe(sourcemaps.write('css/maps'))
