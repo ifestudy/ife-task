@@ -122,22 +122,55 @@ nav {
 }
 
 .find-city {
+	z-index:1;
+	height: rem(340);
+	background: url(../img/cover2.png) no-repeat center;
+	background-size: cover;
+	color: $white;
+	header {
+		h2 {
+			padding-top: rem(54);
+			text-align: center;
+			font-size: 21px;
+			color: rgb(255, 255, 255);
+			line-height: 1.994;
+
+		}
+		h3 {
+			text-align: center;
+			margin-bottom: rem(50);
+		}
+	}
+	.search {
+		
+		li {
+			float: left;
+			list-style: none;
+			width: 25%;
+		}
+	}
+	//select标签模拟
+	.font-dropdown {
+		z-index: 15;
+		position: absolute;
+		right: rem(20);
+		top: 50%;
+		background-color: $red;
+		margin-top: -9.5px;
+	}
 	[class^="select"] {
+		position: relative;
+		color: $font-grey;
 		width: rem(237);
 		height: rem(36);
-		.sel-display {
-			width: rem(235);
-			height: rem(34);
-			position:absolute;
-			z-index: 10;
-			&:hover {
-				border: $red solid rem(1);
-			}
-		}
 		.sel-content {
 			display: none;
 			position: absolute;
 			background: $white;
+			p {
+				line-height: rem(34);
+				text-indent: 1em;
+			}
 		}
 		.list {
 			position: absolute;
@@ -150,7 +183,8 @@ nav {
 				
 				label {
 					width: 100%;
-					height: 100%;
+					line-height: rem(36);
+					text-indent: 1.5em;
 					display: none;
 					&:active {
 						display: block;
@@ -162,11 +196,13 @@ nav {
 					background: $red;
 					label {
 						color: $white;
+						border-bottom: solid $red 2px;
 					}
 				}
 			}
 			&:hover {
 				border: $red solid rem(1);
+				margin-top: -(rem(1));
 				li{
 					height: rem(36-2);
 				}
@@ -175,6 +211,13 @@ nav {
 				}
 			}
 
+		}
+		[id^="sel"]:checked ~ label:before {
+			content:"√";
+			position:absolute;
+			left: -1em;
+			margin-top: 0em;
+			z-index: 12;
 		}
 		[id^="sel"]:checked ~ [id^="sel-content"] {
 			display: block !important;
