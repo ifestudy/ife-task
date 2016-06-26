@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -53,28 +54,27 @@
 		</section>
 		<section class="find-city">
 			<header>
-				<h2>查找新世界城市活动信息<br>——</h2
+				<h2>查找新世界城市活动信息<br>__</h2
 					>
 				<h3>每个城市有不同的活动信息，请自主查询你需要了解的城市</h3>
 			</header>
-			<ul>
+			<ul class="search">
 				<li>
 					<div class="select1">
-						<div class="sel-display"></div>
+						<span class="font-dropdown"></span>
 						<ul class="list">
 							<li>
 								<input type="radio" name="sel1" id="sel1" checked />
-								<label for="sel1">选项卡 1</label>
+								<label for="sel1">中国</label>
 								<div id="sel-content1" class="sel-content">
-									<p>选项卡内容 1</p>
+									<p>中国</p>
 								</div>
 								</li>
-
 							<li>
 								<input type="radio" name="sel1" id="sel2" />
-								<label for="sel2">选项卡 2</label>
+								<label for="sel2">中国</label>
 								<div id="sel-content2" class="sel-content">
-									<p>选项卡内容 2</p>
+									<p>中国</p>
 								</div>
 							</li>
 						</ul>
@@ -82,37 +82,230 @@
 					
 				</li>
 				<li>
-					<select>
-						<option selected class="hidden">省份</option>
-						<option>北京市</option>
-						<option>天津市</option>
-						<option>河北市</option>
-						<option>陕西市</option>
-						<option>内蒙古自治区</option>
-						<option>辽宁省</option>
-					</select>
+					<div class="select2">
+						<span class="font-dropdown"></span>
+						<ul class="list">
+							<li>
+								<input type="radio" name="sel2" id="sel3" checked />
+								<label for="sel3">北京市</label>
+								<div id="sel-content3" class="sel-content">
+									<p>北京市</p>
+								</div>
+							</li>
+							<li>
+								<input type="radio" name="sel2" id="sel4" />
+								<label for="sel4">天津市</label>
+								<div id="sel-content4" class="sel-content">
+									<p>天津市</p>
+								</div>
+							</li>
+							<li>
+								<input type="radio" name="sel2" id="sel5" />
+								<label for="sel5">河北市</label>
+								<div id="sel-content5" class="sel-content">
+									<p>河北市</p>
+								</div>
+							</li>
+							<li>
+								<input type="radio" name="sel2" id="sel6" />
+								<label for="sel6">陕西市</label>
+								<div id="sel-content6" class="sel-content">
+									<p>陕西市</p>
+								</div>
+							</li>
+							<li>
+								<input type="radio" name="sel2" id="sel7" />
+								<label for="sel7">内蒙古自治区</label>
+								<div id="sel-content7" class="sel-content">
+									<p>内蒙古自治区</p>
+								</div>
+							</li>
+							<li>
+								<input type="radio" name="sel2" id="sel8" />
+								<label for="sel8">辽宁省</label>
+								<div id="sel-content8" class="sel-content">
+									<p>辽宁省</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+					
 				</li>
 				<li>
-					<select>
-						<option selected class="hidden">城市</option>
-					</select>
+					<div class="select2">
+						<span class="font-dropdown"></span>
+						<ul class="list">
+							<li>
+								<input type="radio" name="sel3" id="sel9" checked />
+								<label for="sel9">北京市</label>
+								<div id="sel-content9" class="sel-content">
+									<p>北京市</p>
+								</div>
+							</li>
+							<li>
+								<input type="radio" name="sel3" id="sel10" />
+								<label for="sel10">天津市</label>
+								<div id="sel-content10" class="sel-content">
+									<p>天津市</p>
+								</div>
+							</li>
+							<li>
+								<input type="radio" name="sel3" id="sel11" />
+								<label for="sel11">河北市</label>
+								<div id="sel-content11" class="sel-content">
+									<p>河北市</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+					
 				</li>
 				<li>
-					<button>搜索</button>
+					<button class="btn-middle">搜索</button>
 				</li>
 			</ul>
 		</section>
 		<section class="display">
-			...
+			<figure>
+				<p><img src="img/cover3-1.png" alt="活动图"></img></p>
+				<h3>北京活动</h3>
+				<h4>新社区大联盟</h4>
+			</figure>
+			<figure>
+				<h3>上      海      活      动</h3>
+				<h4>夜上海新景观探索</h4>
+				<p><img src="img/cover3-2.png" alt="活动图"></img></p>
+			</figure>
+			<figure>
+				<p><img src="img/cover3-3.png" alt="活动图"></img></p>
+				<h3>深圳活动</h3>
+				<h4>全新海岸线观点站</h4>
+			</figure>
+			<figure>
+				<h3>香港活动</h3>
+				<h4>奢侈消费大派送</h4>
+				<p><img src="img/cover3-4.png" alt="活动图"></img></p>
+			</figure>
 		</section>
-		<section class="switch－new">
-		</section>
+		<div class="switch－new">
+			<ul>
+				<li><label for="tab1">   </label></li>
+				<li><label for="tab2">   </label></li>
+				<li><label for="tab3">   </label></li>
+			</ul>
+			<div class="tab">
+				<input type="radio" name="tab1" id="tab1" checked />
+				<div id="tab-content1" class="tab-content">
+					<div class="left-content cover-4-1">
+						<h3>新世界</h3>
+						<h1>TIME</h1>
+						<p>@新世界-上海</p>
+						<p>2016-6-12</p>
+					</div>
+					<div class="right-content">
+						<h4>新世界/<strong>01</strong></h4>
+						<p>新世界是个新世界01新世界是个新世界01新世界是个新世界 新世界是个新世界新世界01是个新世界新世界是个新世界 新世界是个新世界新世界01是个新世界新世界是个新世界 新世界是01个新世界新世界01是个新世界</p>
+						<p class="center"><button class="btn-small">更多详情</button><p>
+					</div>
+				</div>
+			</div>
+			<div class="tab">
+				<input type="radio" name="tab1" id="tab2" />
+				<div id="tab-content2" class="tab-content">
+					<div class="left-content cover-4-2">
+						<h3>新世界</h3>
+						<h1>TIME</h1>
+						<p>@新世界-上海</p>
+						<p>2016-6-12</p>
+					</div>
+					<div class="right-content">
+						<h4>新世界/<strong>02</strong></h4>
+						<p>新世界是02个新世界新世界是02个新世界新世界是个新世界 新世界是个新世界新02世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新02世界新世界是个新世界 新世界是个02新世界新世界是个新世界</p>
+						<p class="center"><button class="btn-small">更多详情</button><p>
+					</div>
+				</div>
+			</div>
+			<div class="tab">
+				<input type="radio" name="tab1" id="tab3" />
+				<div id="tab-content3" class="tab-content">
+					<div class="left-content cover-4-3">
+						<h3>新世界</h3>
+						<h1>TIME</h1>
+						<p>@新世界-上海</p>
+						<p>2016-6-12</p>
+					</div>
+					<div class="right-content">
+						<h4>新世界/<strong>03</strong></h4>
+						<p>新世界是个03新世界新世界是个03新世界新世界是个新世界 新世界是个新03世界新世界是个新世界新世03界是个新世界 新世界是03个新世界新世界是个新世界03新世界是个新世界 新世界是个新世03界新世界是个新世界</p>
+						<p class="center"><button class="btn-small">更多详情</button><p>
+					</div>
+				</div>
+			</div>
+		</div>
 		<section class="read-more">
+			<div class="new-love-red">
+				<h2>新时代<br>关于爱生活的我们</h2>
+				<h3>__</h3>
+				<button class="btn-love">查看更多</button>
+			</div>
+			<div class="new-love-white">
+				<h2>新时代<br>关于爱生活的我们</h2>
+				<h3>__</h3>
+				<button class="btn-love-red">查看更多</button>
+			</div>
+			<div class="new-love-photo">
+				<div></div>
+				<img src="img/cover5.png">
+			</div>
 		</section>
 		<section class="join-us">
+			<h2>成为我们的志愿者</h2>
+			<h3>__</h3>
+			<p>新世界的大家庭需要每一个爱生活的人的加入，如果你够年轻，有梦想，有激情 那就不要犹豫，快来加入我们，成为改变所有人生活的人 </p>
+			<div class="provision">
+				<div class="more">
+					<h4>新世界志愿者协议</h4>
+					<p>加入新世界志愿者的人员必须遵守中华人民共共和国的 相关法律法规，并且本着平等资源的原则......</p>
+					<p><span class="font-dropdown"></span>more</p>
+					<h4>新世界志愿者权利</h4>
+					<p>新世界的大家庭需要每一个爱生活的人的加入，如果你够年轻，有梦想，有激情 那就不要犹豫，快来加入我们，成为改变所有人生活的人 </p>
+					<p><span class="font-dropdown"></span>more</p>
+					<h4>更多条款</h4>
+					<p><span class="font-dropdown"></span>more</p>
+				</div>
+				<div class="forms">
+					<p><span><label>姓名</label><input><span></p>
+				</div>
+
+			</div>
 		</section>
 	</article>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<input>
 <footer>
 	<div class="contract-us">
 	</div>
