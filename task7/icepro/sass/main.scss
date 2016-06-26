@@ -120,7 +120,16 @@ nav {
 	font-size: rem(30);
 	padding: rem(14) rem(100);
 }
-
+.btn-middle {
+	border: none;
+	background-color: $red;
+	color: $white;
+	width: rem(235);
+	height: rem(35);
+	font-size: rem(14);
+	line-height: rem(14);
+	padding: rem(10) rem(91);
+}
 .find-city {
 	z-index:1;
 	height: rem(340);
@@ -149,60 +158,58 @@ nav {
 			width: 25%;
 		}
 	}
-	//select标签模拟
+	//select标签模拟 start===========
 	.font-dropdown {
+		//下拉菜单的额外样式设置
 		z-index: 15;
 		position: absolute;
 		right: rem(20);
 		top: 50%;
 		background-color: $red;
-		margin-top: -9.5px;
+		margin-top: -(rem(10.5));
 	}
+	//匹配开头为select的class
 	[class^="select"] {
 		position: relative;
 		color: $font-grey;
-		width: rem(237);
+		//固定宽高
+		width: rem(235);
 		height: rem(36);
+		//显示内容设定，默认不显示
 		.sel-content {
 			display: none;
 			position: absolute;
 			background: $white;
 			p {
-				line-height: rem(34);
+				line-height: rem(36);
 				text-indent: 1em;
 			}
 		}
+		//列表栏
 		.list {
 			position: absolute;
-			top:rem(-1);
 			padding-top: rem(36);
 			li {
 				height: 0rem;
-				background: $white;
-				width: rem(237-2);
-				
+				background: $deep-grey;
+				width: rem(235);
 				label {
 					width: 100%;
 					line-height: rem(36);
 					text-indent: 1.5em;
 					display: none;
-					&:active {
-						display: block;
-						height: rem(36-2);
-
-					}
 				}
+				//划过选择列表时更换颜色
 				&:hover {
 					background: $red;
 					label {
 						color: $white;
-						border-bottom: solid $red 2px;
 					}
 				}
 			}
+			//列表出现时添加边框
 			&:hover {
 				border: $red solid rem(1);
-				margin-top: -(rem(1));
 				li{
 					height: rem(36-2);
 				}
@@ -212,6 +219,7 @@ nav {
 			}
 
 		}
+		//id为sel的input被选中时在开头添加对勾
 		[id^="sel"]:checked ~ label:before {
 			content:"√";
 			position:absolute;
@@ -219,19 +227,48 @@ nav {
 			margin-top: 0em;
 			z-index: 12;
 		}
+		//只有被选中的sel的内容才能被显示
 		[id^="sel"]:checked ~ [id^="sel-content"] {
 			display: block !important;
 			position:absolute;
 			top: 0rem;
 			left: 0rem;
 			width: rem(235);
-			height: rem(34);
+			height: rem(36);
 			z-index: 11;
 		}
 		input[type="radio"] {
 		  position: absolute;
 		  top: -9999px;
 		  left: -9999px;
+		}
+	}
+	//select标签模拟 end===========
+}
+.display {
+	padding: rem(100) rem(150) rem(110) rem(150);
+	background-color: $light-grey;
+	overflow: hidden;
+	figure {
+		width: 25%;
+		float: left;
+		
+		img {
+			background-color: $white;
+			padding: rem(12) rem(7);
+			border: $grey solid 1px;
+			margin: auto auto;
+			width: rem(203);
+			height: rem(311);
+		}
+		p {
+			text-align: center;
+			color: $font-grey;
+		}
+		h3 {
+			font-size: rem(14);
+			color: $black;
+			text-align: center;
 		}
 	}
 }

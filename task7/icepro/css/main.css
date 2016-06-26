@@ -226,6 +226,16 @@ nav {
   font-size: 1.875rem;
   padding: 0.875rem 6.25rem; }
 
+.btn-middle {
+  border: none;
+  background-color: #e74f4d;
+  color: #fff;
+  width: 14.6875rem;
+  height: 2.1875rem;
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+  padding: 0.625rem 5.6875rem; }
+
 .find-city {
   z-index: 1;
   height: 21.25rem;
@@ -251,43 +261,37 @@ nav {
     right: 1.25rem;
     top: 50%;
     background-color: #e74f4d;
-    margin-top: -9.5px; }
+    margin-top: -0.65625rem; }
   .find-city [class^="select"] {
     position: relative;
     color: #979898;
-    width: 14.8125rem;
+    width: 14.6875rem;
     height: 2.25rem; }
     .find-city [class^="select"] .sel-content {
       display: none;
       position: absolute;
       background: #fff; }
       .find-city [class^="select"] .sel-content p {
-        line-height: 2.125rem;
+        line-height: 2.25rem;
         text-indent: 1em; }
     .find-city [class^="select"] .list {
       position: absolute;
-      top: -0.0625rem;
       padding-top: 2.25rem; }
       .find-city [class^="select"] .list li {
         height: 0rem;
-        background: #fff;
+        background: #e3e3e4;
         width: 14.6875rem; }
         .find-city [class^="select"] .list li label {
           width: 100%;
           line-height: 2.25rem;
           text-indent: 1.5em;
           display: none; }
-          .find-city [class^="select"] .list li label:active {
-            display: block;
-            height: 2.125rem; }
         .find-city [class^="select"] .list li:hover {
           background: #e74f4d; }
           .find-city [class^="select"] .list li:hover label {
-            color: #fff;
-            border-bottom: solid #e74f4d 2px; }
+            color: #fff; }
       .find-city [class^="select"] .list:hover {
-        border: #e74f4d solid 0.0625rem;
-        margin-top: -0.0625rem; }
+        border: #e74f4d solid 0.0625rem; }
         .find-city [class^="select"] .list:hover li {
           height: 2.125rem; }
         .find-city [class^="select"] .list:hover label {
@@ -304,9 +308,31 @@ nav {
       top: 0rem;
       left: 0rem;
       width: 14.6875rem;
-      height: 2.125rem;
+      height: 2.25rem;
       z-index: 11; }
     .find-city [class^="select"] input[type="radio"] {
       position: absolute;
       top: -9999px;
       left: -9999px; }
+
+.display {
+  padding: 6.25rem 9.375rem 6.875rem 9.375rem;
+  background-color: #f7f7f7;
+  overflow: hidden; }
+  .display figure {
+    width: 25%;
+    float: left; }
+    .display figure img {
+      background-color: #fff;
+      padding: 0.75rem 0.4375rem;
+      border: #676768 solid 1px;
+      margin: auto auto;
+      width: 12.6875rem;
+      height: 19.4375rem; }
+    .display figure p {
+      text-align: center;
+      color: #979898; }
+    .display figure h3 {
+      font-size: 0.875rem;
+      color: #323333;
+      text-align: center; }
