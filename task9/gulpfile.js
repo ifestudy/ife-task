@@ -31,5 +31,5 @@ gulp.task('sass', function(){
 });
 
 gulp.task('work',function(cb){
-	gulpSequence('sass','html')(cb);
+	gulpSequence(['sass'],'html')(cb);
 });//,'watch']);
