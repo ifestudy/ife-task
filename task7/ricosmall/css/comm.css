@@ -4,10 +4,7 @@
 }
 body{
     width: 1280px;
-    background: #ccc;/* TODO:  */
-    position: absolute;
-    left: 50%;
-    margin-left: -640px;
+    margin: 0 auto;
 }
 /* TODO: 顶部样式 */
 .header{
