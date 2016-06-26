@@ -10,6 +10,7 @@ nav {
 	position: fixed;
 	background-color: $white;
 	z-index:990;
+	min-width: $width;
 	ul > li {
 		font-size: rem(14);
 		margin-right:rem(10*7);
@@ -130,7 +131,15 @@ nav {
 	line-height: rem(14);
 	padding: rem(10) rem(91);
 }
+.btn-small {
+	background-color: $white;
+	border: 1px $red solid;
+	width: rem(105);
+	height: rem(31);
+	color: $red;
+}
 .find-city {
+	//提高一层防止下拉超过内容时被覆盖
 	z-index:1;
 	height: rem(340);
 	background: url(../img/cover2.png) no-repeat center;
@@ -161,6 +170,7 @@ nav {
 	//select标签模拟 start===========
 	.font-dropdown {
 		//下拉菜单的额外样式设置
+		//提高到顶层（尚未解决覆盖问题）
 		z-index: 15;
 		position: absolute;
 		right: rem(20);
@@ -209,6 +219,9 @@ nav {
 			}
 			//列表出现时添加边框
 			&:hover {
+				//反向处理阻止抖动
+				margin-top: -(rem(1));
+				margin-left: -(rem(1));
 				border: $red solid rem(1);
 				li{
 					height: rem(36-2);
@@ -225,6 +238,7 @@ nav {
 			position:absolute;
 			left: -1em;
 			margin-top: 0em;
+			//让其显示在最上面防止被覆盖
 			z-index: 12;
 		}
 		//只有被选中的sel的内容才能被显示
@@ -238,9 +252,8 @@ nav {
 			z-index: 11;
 		}
 		input[type="radio"] {
-		  position: absolute;
-		  top: -9999px;
-		  left: -9999px;
+			position: absolute;
+			left: -9999px;
 		}
 	}
 	//select标签模拟 end===========
@@ -252,7 +265,6 @@ nav {
 	figure {
 		width: 25%;
 		float: left;
-		
 		img {
 			background-color: $white;
 			padding: rem(12) rem(7);
@@ -263,12 +275,275 @@ nav {
 		}
 		p {
 			text-align: center;
-			color: $font-grey;
 		}
 		h3 {
+			padding-top : rem(8);
 			font-size: rem(14);
 			color: $black;
 			text-align: center;
 		}
+		h4 {
+			font-size: rem(12);
+			text-align: center;
+			color: $font-grey;
+			padding: rem(8) rem(0);
+		}
 	}
 }
+.switch－new {
+	height: rem(567);
+	width: 100%;
+	ul {
+		top: rem(432);
+		right: per(213-45);
+		position:absolute;
+		z-index: 10;
+		li {
+			padding: rem(10);
+			list-style: none;
+			float: left;
+			label {
+				display: block;
+				width: rem(10);
+				height: rem(10);
+				background: $bg-grey;
+				-moz-border-radius: rem(5);
+				-webkit-border-radius: rem(5);
+				border-radius: rem(5);
+			} 
+		}
+	}
+	.tab {
+		overflow: hidden;
+		background: $white;
+		height: rem(567);
+		width: 100%;
+		position:absolute;
+		left: rem(0);
+		right: rem(0);
+		@include transition(opacity 2s ease)
+	}
+	input[type="radio"] {
+		position: absolute;
+		left: -9999px;
+	}
+	.left-content {
+		float: left;
+		width: per(850);
+		height: rem(567);
+		color: $white;
+		text-align: center;
+		h3 {
+			margin-top: rem(130);
+			opacity: 0.5;
+			font-size: rem(49.473);
+
+		}
+		h1 {
+			margin-top: rem(10);
+			font-size: rem(157.788);
+
+		}
+		p {
+			margin-bottom: rem(25);
+			font-size: rem(21.91);
+		}
+	}
+	.right-content {
+		float: right;
+		height: rem(567);
+		width: per(430);
+		h4 {
+			margin-top: rem(166);
+			margin-bottom: rem(30);
+			text-align: center;
+			font-size: rem(18);
+			strong {
+				color: $red;
+			}
+		}
+		p {
+			font-family: "SimSun";
+			line-height: 2.5;
+			width: rem(288);
+			line-height: rem(30);
+			margin-right: auto;
+			margin-left: auto;
+			margin-bottom: rem(18);
+		}
+		.center {
+			text-align: center;
+		}
+	}
+	.cover-4-1 {
+		background: url(../img/cover4.png) no-repeat;
+		background-size: cover;
+		opacity: 0.2;
+	}
+	.cover-4-2 {
+		background: url(../img/cover4.png) no-repeat;
+		background-size: cover;
+		opacity: 0.7;
+	}
+	.cover-4-3 {
+		background: url(../img/cover4.png) no-repeat;
+		background-size: cover;
+		opacity: 1;
+	}
+	//切换 start===========
+
+	.tab-content {
+		display: none;
+		height: 100%;
+		opacity: 0;
+
+	} 
+	[id^="tab"]:checked ~ [id^="tab-content"] {
+		display: block !important;
+		z-index: 2;
+		opacity: 1;
+	}
+	//切换 end=============
+}
+
+.read-more {
+	overflow:hidden;
+	font-family: "SimHei";
+	& > div {
+		float: left;
+	}
+	.new-love-photo {
+		width: 33.34%;
+		overflow: hidden;
+	}
+	.new-love-red {
+		height: rem(521);
+		width: 33.33%;
+		background-color: $lighter-red;
+		color: $white;
+		h2 {
+			padding-top: rem(173);
+			font-size: 21px;
+			line-height: 1.446;
+			text-align: center;
+
+		}
+		h3 {
+			text-align: center;
+		}
+		button {
+			display: block;
+			margin-top: rem(15);
+			margin-left: auto;
+			margin-right: auto;
+			background-color: $lighter-red;
+			border: 1px $white solid;
+			width: rem(116);
+			height: rem(41);
+			color: $white;
+			font-size: rem(21);
+			font-family: "SimHei";
+			line-height: rem(41);
+		}
+	}
+	.new-love-white {
+		height: rem(521);
+		width: 33.33%;
+		background-color: $white;
+		color: $lighter-red;
+		h2 {
+			padding-top: rem(173);
+			font-size: 21px;
+			line-height: 1.446;
+			text-align: center;
+		}
+		h3 {
+			text-align: center;
+			
+		}
+		button {
+			display: block;
+			margin-top: rem(15);
+			margin-left: auto;
+			margin-right: auto;
+			background-color: $white;
+			border: 1px $red solid;
+			width: rem(116);
+			height: rem(41);
+			color: $red;
+			font-size: rem(21);
+			font-family: "SimHei";
+			line-height: rem(41);
+		}
+	}
+}
+.join-us {
+	h2 {
+		margin-top: rem(118);
+		color: black;
+		text-align: center;
+		font-size: rem(21);
+	}
+	h3 {
+		color: $red;
+		// border-bottom: $red rem(2) solid;
+		text-align: center;
+		margin-bottom: rem(15);
+	}
+	& > p {
+		width: rem(420);
+		margin: auto;
+		text-align: center;
+	}
+	.provision {
+		width: per(1000);
+		height: rem(285+14);
+		padding: rem(90) rem(140) rem(150) rem(140);
+		p {
+
+		}
+		& > div {
+			float: left;
+		}
+		.more {
+			width: 50%;
+		}
+		.forms {
+			width: 50%;
+			span {
+				background-color: $deep-grey;
+				line-height: rem(38);
+			}
+			input {
+				height: rem(38);
+				width: rem(255);
+				margin-right: rem(15);
+				margin-bottom: rem(15);
+				appearance: none;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				-o-appearance: none;
+				border: none;
+				background-color: $deep-grey;
+			}
+			textarea {
+				height: rem(120);
+				width: rem(620);
+				margin-right: rem(15);
+				margin-bottom: rem(15);
+				appearance: none;
+			    -webkit-appearance: none;
+			    -moz-appearance: none;
+			    -o-appearance: none;
+			    border: none;
+			    background-color: $deep-grey;
+			    resize: none;
+			}
+		}
+	}
+}
+// @keyframes mymove
+// {
+// 	from {opacity: 0;}
+// 	to {opacity: 1;}
+// }
