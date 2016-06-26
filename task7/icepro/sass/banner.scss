@@ -1,0 +1,48 @@
+.banner {
+	height: rem(950);
+	width: 100%;
+	background: url(../img/cover1.png) no-repeat center;
+	background-size: cover;
+	color: $white;
+	
+	.detail {
+		height: rem(250);
+		width: 100%;
+		position: absolute;
+		background-color: $white;
+		bottom: 0rem;
+		ul > li {
+			list-style: none;
+			cursor: pointer;
+			float: left;
+			// position: absolute;
+			margin-top:auto;
+			margin-bottom: auto;
+			width: 25%;
+			text-align: middle;
+			p {
+				text-align: center;
+				color: $font-grey;
+				margin: rem(45) auto auto  auto;
+				width: rem(155);
+			}
+
+		}
+	}
+	h3 {
+		font-size: rem(60);
+		padding-top: rem(232);
+		padding-left: rem(115);
+		line-height: 0.45;
+	}
+	& > p {
+		padding-left: rem(115);
+		font-size: rem(21);
+		line-height: rem(31);
+		margin-top: rem(31);
+	}
+	button {
+		margin-left: rem(115);
+		margin-top: rem(68);
+	}
+}

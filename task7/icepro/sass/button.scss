@@ -1,0 +1,26 @@
+.btn-primary {
+	border: none;
+	background-color: $red;
+	color: $white;
+	width: rem(330);
+	height: rem(63);
+	font-size: rem(30);
+	padding: rem(14) rem(100);
+}
+.btn-middle {
+	border: none;
+	background-color: $red;
+	color: $white;
+	width: rem(235);
+	height: rem(35);
+	font-size: rem(14);
+	line-height: rem(14);
+	padding: rem(10) rem(91);
+}
+.btn-small {
+	background-color: $white;
+	border: 1px $red solid;
+	width: rem(105);
+	height: rem(31);
+	color: $red;
+}

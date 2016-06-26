@@ -2,107 +2,11 @@
 @import "color/default";
 @import "sprite";
 @import "base";
+@import "button";
 
-nav {
-	top: rem(0);
-	height: rem(65);
-	width: 100%;
-	position: fixed;
-	background-color: $white;
-	z-index:990;
-	min-width: $width;
-	ul > li {
-		font-size: rem(14);
-		margin-right:rem(10*7);
-		list-style: none;
-		cursor: pointer;
-		float: left;
-		line-height: rem(65-8); 
-		min-width: rem(56);
-		text-align: center;
-	}
-	.nav-right {
-		float: right;
-		.nav-nav {
-			& > li {
-				@include transition((color 1s ease,border-color 1s ease-out))
-				&:hover {
-					border-bottom: solid rem(8) $deep-red;
-					color: $deep-red;
-				}
-				&:last-child {
-					color: $red;
-				}
-			}
-		}
-	}
+@import "nav";
+@import "banner";
 
-	.nav-left {
-		float: left;
-		padding-left: rem(60);
-		h3 {
-			line-height: rem(65);
-			span {
-				margin-bottom: -rem(10);
-			}
-
-		}
-	}
-}
-
-.content {
-	margin-top: rem(65);
-	width: 100%
-}
-
-.banner {
-	height: rem(950);
-	width: 100%;
-	background: url(../img/cover1.png) no-repeat center;
-	background-size: cover;
-	color: $white;
-	
-	.detail {
-		height: rem(250);
-		width: 100%;
-		position: absolute;
-		background-color: $white;
-		bottom: 0rem;
-		ul > li {
-			list-style: none;
-			cursor: pointer;
-			float: left;
-			// position: absolute;
-			margin-top:auto;
-			margin-bottom: auto;
-			width: 25%;
-			text-align: middle;
-			p {
-				text-align: center;
-				color: $font-grey;
-				margin: rem(45) auto auto  auto;
-				width: rem(155);
-			}
-
-		}
-	}
-	h3 {
-		font-size: rem(60);
-		padding-top: rem(232);
-		padding-left: rem(115);
-		line-height: 0.45;
-	}
-	& > p {
-		padding-left: rem(115);
-		font-size: rem(21);
-		line-height: rem(31);
-		margin-top: rem(31);
-	}
-	button {
-		margin-left: rem(115);
-		margin-top: rem(68);
-	}
-}
 .new-world {
 	height: rem(360);
 	background-color: $light-grey;
@@ -111,32 +15,6 @@ nav {
 		font-size: rem(54);
 		padding-top: rem(52);
 	}
-}
-.btn-primary {
-	border: none;
-	background-color: $red;
-	color: $white;
-	width: rem(330);
-	height: rem(63);
-	font-size: rem(30);
-	padding: rem(14) rem(100);
-}
-.btn-middle {
-	border: none;
-	background-color: $red;
-	color: $white;
-	width: rem(235);
-	height: rem(35);
-	font-size: rem(14);
-	line-height: rem(14);
-	padding: rem(10) rem(91);
-}
-.btn-small {
-	background-color: $white;
-	border: 1px $red solid;
-	width: rem(105);
-	height: rem(31);
-	color: $red;
 }
 .find-city {
 	//提高一层防止下拉超过内容时被覆盖
@@ -258,6 +136,7 @@ nav {
 	}
 	//select标签模拟 end===========
 }
+
 .display {
 	padding: rem(100) rem(150) rem(110) rem(150);
 	background-color: $light-grey;
@@ -290,6 +169,7 @@ nav {
 		}
 	}
 }
+
 .switch－new {
 	height: rem(567);
 	width: 100%;
@@ -477,6 +357,7 @@ nav {
 		}
 	}
 }
+
 .join-us {
 	h2 {
 		margin-top: rem(118);
@@ -513,6 +394,14 @@ nav {
 			span {
 				background-color: $deep-grey;
 				line-height: rem(38);
+			}
+			.col-span1 {
+				margin-bottom: 15px;
+    			margin-right: 20px;
+    			float: left;
+			}
+			.col-span1 {
+
 			}
 			input {
 				height: rem(38);

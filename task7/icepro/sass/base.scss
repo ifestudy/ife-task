@@ -29,6 +29,12 @@ p {
 	display: none;
 }
 
+
+.content {
+	margin-top: rem(65);
+	width: 100%
+}
+
 @mixin transition($param){
 	transition: $param;
 	-moz-transition: $param; /* Firefox 4 */

@@ -127,6 +127,36 @@ p {
 .hidden {
   display: none; }
 
+.content {
+  margin-top: 4.0625rem;
+  width: 100%; }
+
+.btn-primary {
+  border: none;
+  background-color: #e74f4d;
+  color: #fff;
+  width: 20.625rem;
+  height: 3.9375rem;
+  font-size: 1.875rem;
+  padding: 0.875rem 6.25rem; }
+
+.btn-middle {
+  border: none;
+  background-color: #e74f4d;
+  color: #fff;
+  width: 14.6875rem;
+  height: 2.1875rem;
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+  padding: 0.625rem 5.6875rem; }
+
+.btn-small {
+  background-color: #fff;
+  border: 1px #e74f4d solid;
+  width: 6.5625rem;
+  height: 1.9375rem;
+  color: #e74f4d; }
+
 nav {
   top: 0rem;
   height: 4.0625rem;
@@ -166,10 +196,6 @@ nav {
       line-height: 4.0625rem; }
       nav .nav-left h3 span {
         margin-bottom: -rem(10); }
-
-.content {
-  margin-top: 4.0625rem;
-  width: 100%; }
 
 .banner {
   height: 59.375rem;
@@ -217,32 +243,6 @@ nav {
     text-align: center;
     font-size: 3.375rem;
     padding-top: 3.25rem; }
-
-.btn-primary {
-  border: none;
-  background-color: #e74f4d;
-  color: #fff;
-  width: 20.625rem;
-  height: 3.9375rem;
-  font-size: 1.875rem;
-  padding: 0.875rem 6.25rem; }
-
-.btn-middle {
-  border: none;
-  background-color: #e74f4d;
-  color: #fff;
-  width: 14.6875rem;
-  height: 2.1875rem;
-  font-size: 0.875rem;
-  line-height: 0.875rem;
-  padding: 0.625rem 5.6875rem; }
-
-.btn-small {
-  background-color: #fff;
-  border: 1px #e74f4d solid;
-  width: 6.5625rem;
-  height: 1.9375rem;
-  color: #e74f4d; }
 
 .find-city {
   z-index: 1;
@@ -535,6 +535,10 @@ nav {
     .join-us .provision .forms span {
       background-color: #e3e3e4;
       line-height: 2.375rem; }
+    .join-us .provision .forms .col-span1 {
+      margin-bottom: 15px;
+      margin-right: 20px;
+      float: left; }
     .join-us .provision .forms input {
       height: 2.375rem;
       width: 15.9375rem;

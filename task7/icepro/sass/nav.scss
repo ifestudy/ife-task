@@ -1,0 +1,46 @@
+nav {
+	top: rem(0);
+	height: rem(65);
+	width: 100%;
+	position: fixed;
+	background-color: $white;
+	z-index:990;
+	min-width: $width;
+	ul > li {
+		font-size: rem(14);
+		margin-right:rem(10*7);
+		list-style: none;
+		cursor: pointer;
+		float: left;
+		line-height: rem(65-8); 
+		min-width: rem(56);
+		text-align: center;
+	}
+	.nav-right {
+		float: right;
+		.nav-nav {
+			& > li {
+				@include transition((color 1s ease,border-color 1s ease-out))
+				&:hover {
+					border-bottom: solid rem(8) $deep-red;
+					color: $deep-red;
+				}
+				&:last-child {
+					color: $red;
+				}
+			}
+		}
+	}
+
+	.nav-left {
+		float: left;
+		padding-left: rem(60);
+		h3 {
+			line-height: rem(65);
+			span {
+				margin-bottom: -rem(10);
+			}
+
+		}
+	}
+}
