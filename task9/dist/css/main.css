@@ -4,11 +4,11 @@
   padding: 0rem; }
 
 html {
-  font-size: 100%;
-  /*16 ÷ 16 × 100% = 100%*/
   font-family: "MicrosoftYaHei"; }
 
 body {
+  font-size: 100%;
+  /*16 ÷ 16 × 100% = 100%*/
   min-width: 1280px;
   width: 100%;
   color: #000; }
@@ -25,6 +25,42 @@ p {
 .hidden {
   display: none; }
 
+/*constructure start==============*/
+nav {
+  background-color: red;
+  height: 3.5rem; }
+
+.content {
+  background-color: green;
+  overflow: hidden; }
+  .content .inside {
+    float: right;
+    width: 79.6875%; }
+    .content .inside > div {
+      width: 69.53125%;
+      padding: 1.25rem;
+      margin: 1.25rem auto 0rem auto; }
+    .content .inside .position {
+      background-color: grey;
+      padding: 1.25rem;
+      margin-top: 0rem;
+      width: 63.75rem; }
+  .content aside {
+    padding: 1.25rem;
+    background-color: brown;
+    width: 17.1875%;
+    float: left; }
+
+.statistic {
+  background-color: blue; }
+
+.form {
+  background-color: yellow; }
+
+.date {
+  background-color: pink; }
+
+/*constructure end===============*/
 /* 以下内容将会输出:仅仅做演示使用; */
 b {
   display: block; }

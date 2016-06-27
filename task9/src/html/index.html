@@ -12,14 +12,15 @@
 		<!-- TODO:  -->
 		@@include('util/nav.html')
 	</nav>
-
-	<!-- 这里将会是float:left的左边栏-->
-	<div>
-		@@include('util/aside.html')
-	</div>
-	<!-- 这里将会是float:left的正文内容-->
-	<div>
-		@@include('content.html')
+	<div class="content">
+		<!-- 这里将会是float:left的左边栏-->
+		<aside>
+			@@include('util/aside.html')
+		</aside>
+		<!-- 这里将会是float:left的正文内容-->
+		<div class="inside">
+			@@include('content.html')
+		</div>
 	</div>
 </body>
 </html>
