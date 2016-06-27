@@ -1,0 +1,31 @@
+
+* {
+	margin: 0rem;
+	padding: 0rem;
+}
+
+html {
+	font-size: 100%;
+	/*16 ÷ 16 × 100% = 100%*/
+	font-family: "MicrosoftYaHei";
+}
+body {
+	min-width: 1280px;
+	width: 100%;
+	color: #000;
+}
+
+div ,section,header,article,h1,h2,h3,h4,h5,h6,p{
+	position: relative;
+}
+
+/*默认的p样式*/
+p {
+	font-size: 12px;
+	font-family: "MicrosoftYaHei";
+}
+
+/*默认的隐藏样式*/
+.hidden {
+	display: none;
+}
