@@ -539,6 +539,8 @@ nav {
       margin-bottom: 15px;
       margin-right: 20px;
       float: left; }
+    .join-us .provision .forms .col-span1 {
+      float: left; }
     .join-us .provision .forms input {
       height: 2.375rem;
       width: 15.9375rem;

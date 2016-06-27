@@ -1,0 +1,58 @@
+/*constructure start==============*/
+$width:1280;
+@function per($n) {
+    @return (($n/$width)*100%); 
+}
+@function rem($n) {
+	@return (($n/16)*1rem); 
+}
+//TODO:padding调整
+nav {
+	//TODO:清除颜色
+	background-color: red;
+	height: rem(56);
+}
+
+.content {
+	//TODO:清除颜色
+	background-color: green;
+	overflow: hidden;
+	.inside{
+		float: right;
+		width: per(1020);
+		& > div {
+			width: per(890);
+			padding: rem(20);
+			margin: rem(20) auto rem(0) auto;
+		}
+		.position {
+			//TODO:清除颜色
+			background-color: grey;
+			padding: rem(20);
+			margin-top: rem(0);
+			width: rem(($width - 260));
+		}
+	}
+
+	aside {
+		padding: rem(20);
+		background-color: brown;
+		width: per(260-40);
+		float: left;
+	}
+}
+.statistic {
+	//TODO:清除颜色
+	background-color: blue;
+}
+
+.form {
+	//TODO:清除颜色
+	background-color: yellow;
+}
+.date {
+	//TODO:清除颜色
+	background-color: pink;
+}
+
+/*constructure end===============*/
