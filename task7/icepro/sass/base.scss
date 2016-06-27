@@ -5,11 +5,11 @@
 }
 
 html {
-	font-size: ($base/16*100%);
-	/*16 ÷ 16 × 100% = 100%*/
 	font-family: "MicrosoftYaHei";
 }
 body {
+	font-size: ($base/16*100%);
+	/*16 ÷ 16 × 100% = 100%*/
 	min-width: $width * 1px;
 	width: 100%;
 	color: $font-grey;
