@@ -51,7 +51,14 @@
             //TODO: 
             // 尚未完成！TODO：
             if ( selector !== undefined ) {}
-
+            if ( (typeof selector == 'array') ||(typeof selector == 'object')) {
+                var elem = selector;
+                for (var i = 0; i < elem.length; i++) {
+                    this[i] = elem[i].concat();
+                }
+                this.length = elem.length;
+                return this;
+            }
             if ( selector.isQuery) {
                 //如果判断为query，还存在说明这个已经一个query对象了，现在直接返回就行了
                 var elem = selector;
@@ -84,7 +91,7 @@
         },
         append: function (str) {
             for (var i = 0; i < this.length; i++) {
-               item[i].insertAdjacentHTML('beforeEnd', str);
+               this[i].insertAdjacentHTML('beforeEnd', str);
             }
             return this;
         },
