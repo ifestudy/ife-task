@@ -27,6 +27,7 @@
             if ( !selector ) {
                 return this;
             }
+            //TODO:
             // $0:代表表达式匹配结果默认为空（留作他用）
             // $1:代表表达式匹配结果为id类
             // $2:代表表达式匹配结果为class类
@@ -34,17 +35,25 @@
             // $4:预留一个tag检测位置
             // $5:预留一个~
             if(matchs){
-                this.selector = selector;
-                var elem = document.querySelectorAll(selector);
-                for (var i = 0; i < elem.length; i++) {
-                    this[i] = elem[i];
+               if(document.querySelectorAll){
+                    this.selector = selector;
+                    //TODO: 低版本浏览器兼容
+                    var elem = document.querySelectorAll(selector);
+                    for (var i = 0; i < elem.length; i++) {
+                        this[i] = elem[i];
+                    }
+                    this.length = elem.length;
+                    return this;
                 }
-                this.length = elem.length;
-                return this;
                 //预留ie接口
             }
-            if ( selector !== undefined ) {
-                //如果全部判断完成，还存在说明这个以及一个query对象了，现在直接返回就行了
+            //TODO: tag
+            //TODO: 
+            // 尚未完成！TODO：
+            if ( selector !== undefined ) {}
+
+            if ( selector.isQuery) {
+                //如果判断为query，还存在说明这个已经一个query对象了，现在直接返回就行了
                 var elem = selector;
                 for (var i = 0; i < elem.length; i++) {
                     this[i] = elem[i];
@@ -52,26 +61,49 @@
                 this.length = elem.length;
                 return this;
             }
-            console.log(this.version);
             //开始判断
             this.selector = selector;
             return this;
         },
+        //class
         addClass : function( ClassName ) {
 
         },
         removeClass : function( ClassName ) {
 
         },
+        //dom操作
+        find : function(){
+
+        },
+        first : function(){
+
+        },
+        last : function(){
+
+        },
+        append: function (str) {
+            for (var i = 0; i < this.length; i++) {
+               item[i].insertAdjacentHTML('beforeEnd', str);
+            }
+            return this;
+        },
+        before: function (str) {
+            for (var i = 0; i < this.length; i++) {
+               this[i].insertAdjacentHTML('beforeBegin', str);
+            }
+            return this;
+        },
+        after: function (str) {
+            for (var i = 0; i < this.length; i++) {
+                this[i].insertAdjacentHTML('afterEnd', str);
+            }
+            return this;
+        },
+        //遍历器
         each : function( callback ){
-            // function(index,element)
-            // if(callback.arguments.length = 2){
-            //     index,callback.arguments[0];
-            // }else{
-            //     throw("you need input enought arguments");
-            // }
             for ( var index = 0 ; index < this.length ; index++ ) {
-               if(false === callback.call( index ,  index  , this[index] )) break;
+               if(false === callback.call( this[index]  ,  index  , this[index])) break;
             };
         },
         getPosition : function(){
@@ -79,10 +111,13 @@
         },
         on : function( name,listener ){
             this[0].addEventListener(name,listener);
-            //预留ie位置
+            //TODO:预留ie位置
+        },
+        val : function() {
+            return this[0].value;
         }
     };
-    
+    //全局声明
     _$.fn.init.prototype = _$.fn;
     window.$ = _$;
 })(window);
