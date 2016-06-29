@@ -9,7 +9,7 @@ html {
 body {
   font-size: 100%;
   /*16 ÷ 16 × 100% = 100%*/
-  min-width: 1280px;
+  min-width: 768px;
   width: 100%;
   color: #000; }
 
@@ -45,10 +45,12 @@ nav {
       padding: 1.25rem;
       margin-top: 0rem;
       width: 63.75rem; }
-  .content aside {
-    padding: 1.25rem;
-    background-color: brown;
-    width: 17.1875%;
+  .content .aside {
+    font-size: 0.75rem;
+    background-color: #2a2e3d;
+    color: #6e8095;
+    width: 20.3125%;
+    border-box: inside;
     float: left; }
 
 .statistic {
@@ -61,6 +63,60 @@ nav {
   background-color: pink; }
 
 /*constructure end===============*/
-/* 以下内容将会输出:仅仅做演示使用; */
-b {
-  display: block; }
+.aside .name {
+  margin: auto;
+  width: 7rem;
+  color: white; }
+  .aside .name .font-round {
+    width: 2.875rem;
+    height: 2.875rem;
+    border-radius: 50%;
+    background-color: #b9babe;
+    position: absolute; }
+  .aside .name p {
+    height: 2.875rem;
+    margin: 1.5rem;
+    line-height: 2.875rem;
+    padding-left: 2.875rem; }
+
+.aside .collection {
+  width: 7rem;
+  margin: auto;
+  overflow: hidden; }
+  .aside .collection .right {
+    float: right;
+    width: 50%;
+    text-align: center;
+    box-sizing: border-box; }
+  .aside .collection .left {
+    box-sizing: border-box;
+    border-right: 1px solid;
+    float: left;
+    width: 50%;
+    text-align: center; }
+
+.aside .list-container {
+  margin-top: 1.5rem; }
+  .aside .list-container li {
+    list-style: none; }
+  .aside .list-container .title {
+    padding-top: 0.9375rem;
+    padding-bottom: 0.9375rem; }
+    .aside .list-container .title.active {
+      background-color: #383d4e; }
+      .aside .list-container .title.active p {
+        color: white; }
+    .aside .list-container .title > p, .aside .list-container .title li {
+      padding-left: 2.8125rem;
+      margin-top: 1.125rem; }
+    .aside .list-container .title .list-folder.active {
+      color: white; }
+    .aside .list-container .title .list-file {
+      padding-left: 4.6875rem; }
+    .aside .list-container .title ul {
+      padding-left: 1.375rem; }
+
+.nav {
+  /* 以下内容将会输出:仅仅做演示使用; */ }
+  .nav b {
+    display: block; }

@@ -6,7 +6,8 @@ $width:1280;
 @function rem($n) {
 	@return (($n/16)*1rem); 
 }
-//TODO:padding调整
+//TODO:padding调整 =清除必要padding
+
 nav {
 	//TODO:清除颜色
 	background-color: red;
@@ -34,10 +35,12 @@ nav {
 		}
 	}
 
-	aside {
-		padding: rem(20);
-		background-color: brown;
-		width: per(260-40);
+	.aside {
+		font-size: rem(12);
+		background-color: #2a2e3d;
+		color: #6e8095;
+		width: per(260);
+		border-box: inside;
 		float: left;
 	}
 }
