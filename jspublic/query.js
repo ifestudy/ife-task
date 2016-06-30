@@ -6,6 +6,7 @@
         _$ = function(selector){
         return new _$.fn.init(selector,rootQuery);
     };
+
     //定义一个fn来初始化并执行一些操作
     /**
     * version 0.0.1存在以下目标
@@ -22,7 +23,8 @@
         selector : '',
         init: function(selector,rootQuery){
             var quickCheck = /^(?=(#[\w-]+$)|([.][\w-]+$)|((?:[#|.][\w-]+[\s]+)+(?:[#|.][\w-]*)$))/g;
-            var matchs = quickCheck.exec(selector);
+            var quickTag = /^\s(<[\w\W]+>)[^>]$/g,
+                matchs = quickCheck.exec(selector);
             //如果是null，undefined，和false则直接返回自己就好了
             if ( !selector ) {
                 return this;
@@ -34,34 +36,51 @@
             // $3:一个多级列表
             // $4:预留一个tag检测位置
             // $5:预留一个~
-            if(matchs){
-               if(document.querySelectorAll){
-                    this.selector = selector;
-                    //TODO: 低版本浏览器兼容
-                    var elem = document.querySelectorAll(selector);
-                    for (var i = 0; i < elem.length; i++) {
-                        this[i] = elem[i];
-                    }
-                    this.length = elem.length;
-                    return this;
-                }
-                //预留ie接口
-            }
-            //TODO: tag
-            //TODO: 
+
+            //匹配到的情况下
+            // if(matchs){
+            //     //id类
+            //     if(matchs[1]) {
+            //         //var elem = document.getElementById(selector.replace('#',""));
+                    
+            //         for (var i = 0; i < elem.length; i++) {
+            //             this[i] = elem[i];
+            //         }
+            //         this.length = elem.length;
+            //         return this;
+            //     }
+            //     //class 以及被上文使用
+            //     //预留ie接口
+            // }
             // 尚未完成！TODO：
             if ( selector !== undefined ) {}
-            if ( (typeof selector == 'array') ||(typeof selector == 'object')) {
+            // 数组和object类别(不做深拷贝处理)
+            if ( (typeof selector == 'array') || (typeof selector == 'object')) {
                 var elem = selector;
+                this.selector = elem.selector;
                 for (var i = 0; i < elem.length; i++) {
                     this[i] = elem[i].concat();
                 }
                 this.length = elem.length;
                 return this;
             }
-            if ( selector.isQuery) {
+            //如果本身是query对象
+            if ( selector.isQuery ) {
                 //如果判断为query，还存在说明这个已经一个query对象了，现在直接返回就行了
                 var elem = selector;
+                this.selector = elem.selector;
+                for (var i = 0; i < elem.length; i++) {
+                    this[i] = elem[i];
+                }
+                this.length = elem.length;
+                return this;
+            }
+            //最后使用queryselectorAll
+            //检测是否是queryselectorAll
+            if(document.querySelectorAll && document.querySelectorAll(selector)){
+                this.selector = selector;
+                //TODO: 低版本浏览器兼容==暂不做低版本处理
+                var elem = document.querySelectorAll(selector);
                 for (var i = 0; i < elem.length; i++) {
                     this[i] = elem[i];
                 }
@@ -80,8 +99,8 @@
 
         },
         //dom操作
-        find : function(){
-
+        find : function(selector){
+            // tsk;
         },
         first : function(){
 
