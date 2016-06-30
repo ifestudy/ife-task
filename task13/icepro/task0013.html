@@ -23,8 +23,7 @@
   获取aqi-input输入的值，并显示在aqi-display中
   */
   $("#button").on('click',function(){
-    var tq = $("#aqi-input").val();
-    $("#aqi-display")[0].innerHTML = tq;
+    $("#aqi-display")[0].innerHTML = $("#aqi-input").val();
   })
 })();
 
