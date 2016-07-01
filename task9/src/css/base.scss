@@ -1,0 +1,45 @@
+
+* {
+	margin: 0rem;
+	padding: 0rem;
+}
+
+html {
+	font-family: "MicrosoftYaHei";
+}
+body {
+	font-size: 100%;
+	/*16 ÷ 16 × 100% = 100%*/
+	min-width: 768px;
+	width: 100%;
+	color: #000;
+}
+
+div ,section,header,article,h1,h2,h3,h4,h5,h6,p{
+	position: relative;
+}
+
+/*默认的p样式*/
+p {
+	font-size: 12px;
+	font-family: "MicrosoftYaHei";
+}
+
+/*默认的隐藏样式*/
+.hidden {
+	display: none;
+}
+$ioc:url(../img/icon.png);
+@mixin font-ioc($x: 0px,$y:0px,$w:42px,$h:42px,$important:false){
+	background: $ioc;
+	background-repeat: no-repeat;
+	@if $important {
+		background-position: (-$x) (-$y)!important;
+	}@else{
+		background-position: (-$x) (-$y);
+	}
+
+	width: $w;
+	height: $h;
+	display: inline-block;
+}

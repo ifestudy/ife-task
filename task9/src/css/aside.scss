@@ -1,0 +1,121 @@
+// .aside {
+.active {
+	& > .font-file {
+		@include font-ioc(8px,7px,10px,11px,true);
+	}
+	& > .font-folder {
+		@include font-ioc(82px,56px,12px,12px,true);
+	}
+}
+.font-file {
+	@include font-ioc(33px,7px,10px,11px);
+}
+.font-book {
+	@include font-ioc(57px,7px,11px,12px);
+}
+.font-folder {
+	
+	@include font-ioc(57px,31px,12px,12px);
+}
+.font-star {
+	
+	@include font-ioc(31px,32px,12px,12px);
+}
+.font-outer {
+	
+	@include font-ioc(7px,31px,12px,12px);
+}
+.font-table {
+	
+	@include font-ioc(81px,81px,12px,12px);
+}
+.name {
+	margin: auto;
+	width: rem(112+57);
+	color: white;
+	.font-round {
+		@include font-ioc(9px,59px,57px,57px);
+		// line-height: rem(57);
+		// width: rem(57);
+		// height: rem(46);
+		// border-radius: 50%;
+		// background-color: #b9babe;
+		position: absolute;
+		// display: inline-block;
+	}
+	p {
+		vertical-align: middle;
+		// height: rem(57);
+		margin: rem(24);
+		padding-top: rem(6);
+		line-height: rem(57);
+		padding-left: rem(46);
+	}
+
+}
+.collection {
+	width: rem(112+57);
+	margin-left: rem(63-112/2);
+	overflow: hidden;
+	.right {
+		float: right;
+		width: 50%;
+		text-align: center;
+    	box-sizing: border-box;
+	}
+	.left {
+    	box-sizing: border-box;
+	    border-right: 1px solid;
+		float: left;
+		width: 50%;
+		text-align: center;
+	}
+
+}
+.list-container {
+	margin-top: rem(24);
+	& > ul {
+	}
+	li {
+		list-style: none;
+	}
+	.title {
+		padding-top: rem(15);
+		padding-bottom: rem(15);
+		&.active {
+			background-color: #383d4e;
+			p {
+				color: white;
+			}
+		}
+		& > p, li{
+			padding-left: rem(45);
+			margin-top: rem(18);
+			& > span {
+				margin-right: rem(3);
+			}
+		}
+		.list-folder {
+			&.active{
+				color: white;
+				&:before {
+					@include font-ioc(82px,31px,12px,9px,true);
+				}
+			}
+			&:before {
+				@include font-ioc(82px,7px,12px,12px);
+				content: "";
+				position: absolute;
+				margin-left: rem(-15);
+				display: block;
+			}
+		}
+		.list-file {
+			padding-left: rem(45+30);
+		}
+		ul {
+			padding-left: rem(22);
+		}
+	}
+}
+// }

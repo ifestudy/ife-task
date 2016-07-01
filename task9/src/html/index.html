@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>task9</title>
+	<link rel="stylesheet" type="text/css" href="css/main.min.css?rev=@@hash">
+</head>
+<body>
+	<!-- 这里是一个注释的修改 -->
+	<!-- 这里将会是fixed的导航条-->
+	<nav>
+		<!-- TODO:  -->
+		@@include('util/nav.html')
+	</nav>
+	<div class="content">
+		<!-- 这里将会是float:left的左边栏-->
+		<aside class="aside">
+			@@include('util/aside.html')
+		</aside>
+		<!-- 这里将会是float:left的正文内容-->
+		<div class="inside">
+			@@include('content.html')
+		</div>
+	</div>
+</body>
+</html>

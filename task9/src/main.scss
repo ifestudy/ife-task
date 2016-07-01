@@ -1,0 +1,11 @@
+//基础css类
+@import "css/base";
+//结构的css，同时定义了一些常用的函数
+@import "css/constructure";
+//下面是需要添加的css,请使用和下面一样的策略来布置css以避免冲突
+.aside {
+	@import "css/aside";
+}
+.nav {
+	@import "css/nav";
+}

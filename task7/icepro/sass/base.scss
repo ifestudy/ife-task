@@ -1,0 +1,43 @@
+
+* {
+	margin: 0rem;
+	padding: 0rem;
+}
+
+html {
+	font-family: "MicrosoftYaHei";
+}
+body {
+	font-size: ($base/16*100%);
+	/*16 ÷ 16 × 100% = 100%*/
+	min-width: $width * 1px;
+	width: 100%;
+	color: $font-grey;
+}
+
+div ,section,header,article,h1,h2,h3,h4,h5,h6,p{
+	position: relative;
+}
+//默认的p样式
+p {
+	font-size: rem(12);
+	font-family: "MicrosoftYaHei";
+}
+
+//默认的隐藏样式
+.hidden {
+	display: none;
+}
+
+
+.content {
+	margin-top: rem(65);
+	width: 100%
+}
+
+@mixin transition($param){
+	transition: $param;
+	-moz-transition: $param; /* Firefox 4 */
+	-webkit-transition: $param; /* Safari 和 Chrome */
+	-o-transition: $param; /* Opera */
+}

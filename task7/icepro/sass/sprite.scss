@@ -1,0 +1,51 @@
+
+@mixin font-ioc($x: 0px,$y:0px,$w:42px,$h:42px){
+	background: $ioc;
+	background-repeat: no-repeat;
+	background-position: (-$x) (-$y);
+	width: $w;
+	height: $h;
+	display: inline-block;
+}
+.font-cc {
+	@include font-ioc(4px,4px)
+}
+.font-flag {
+	@include font-ioc(59px,4px,35px,42px)
+}
+.font-app {
+	@include font-ioc(104px,4px,41px,42px)
+}
+.font-flower {
+	@include font-ioc(156px,4px,37px,42px)
+}
+.font-man {
+	@include font-ioc(206px,5px,14px,17px)
+}
+.font-dropdown {
+	@include font-ioc(228.5px,3.5px,17px,17px)
+}
+.font-book {
+	@include font-ioc(6px,56px,91px,90px)
+}
+
+.font-qq {
+	@include font-ioc(112px,62px,25px,25px)
+}
+.font-twtter {
+	@include font-ioc(162px,62px,30px,25px)
+}
+.font-globe {
+	@include font-ioc(112px,112px,25px,25px)
+}
+.font-sina {
+	@include font-ioc(162px,112px,30px,25px)
+}
+
+.font-hook {
+	@include font-ioc(267px,35px,12px,8px)
+}
+
+.font-book-ms {
+	@include font-ioc(210px,59px,32px,32px)
+}
