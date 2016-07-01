@@ -16,7 +16,7 @@ var value = $("#aqi-value-input");
 function addAqiData() {
 	var cityName = city.val().trim(),
 		cityValue = value.val().trim();
-	if(/(^[a-zA-Z]+$)|(^[^x00-xff]+$)/g.test(cityName)&&/^[\d]+$/g.test(cityValue)){
+	if(/(^[a-zA-Z\s]+$)|(^[^x00-xff]+$)/g.test(cityName)&&/^[\d]+$/g.test(cityValue)){
 		aqiData[cityName] = cityValue;
 		$("#aqi-table").append('<td>'+cityName+'</td><td>'+cityValue+'</td><td><button data="'+cityName+'">删除</button></td></td>');
 		return true;
