@@ -29,3 +29,17 @@ p {
 .hidden {
 	display: none;
 }
+$ioc:url(../img/icon.png);
+@mixin font-ioc($x: 0px,$y:0px,$w:42px,$h:42px,$important:false){
+	background: $ioc;
+	background-repeat: no-repeat;
+	@if $important {
+		background-position: (-$x) (-$y)!important;
+	}@else{
+		background-position: (-$x) (-$y);
+	}
+
+	width: $w;
+	height: $h;
+	display: inline-block;
+}
