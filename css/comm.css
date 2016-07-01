@@ -32,20 +32,31 @@ a:hover{
  */
 .header{
     width: auto;
-    height: 100px;
+    /*height: 100px;*/
     margin: 0 auto;
+    min-width: 400px;
     border-bottom: 1px solid #e8e8e8;
     color: #036;
     text-align: center;
     line-height: 100px;
+}
+.header h1{
+    margin: 0.325rem !important;
+    padding: 0px;
+}
+.header p{
+    margin: 0px !important;
+    padding: 0px;
 }
 
 /**
  *main的样式
  */
 .main{
-min-height: 300px;
-text-align: center;
+    min-height: 300px;
+    text-align: center;
+    overflow: hidden;
+    padding: 20px;
 }
 
 /**
@@ -56,4 +67,42 @@ text-align: center;
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
     text-align: center;
+}
+/**
+*各个作者的div展示板
+*/
+.author {
+    float: left;
+    /*height: */
+    margin: 20px;
+}
+.author .move-l {
+    border: 1px solid #3e3d33;
+    padding: 20px;
+    width: 250px;
+    height: 350px;
+    background-color: #fff;
+    border: 1px solid rgba(223,231,239, .7);
+    color: rgb(32,40,48);
+    text-shadow: 0 1px 1px rgb(255,255,255);
+    font-size: 14px;
+    transition: all .5s ease;
+}
+.author .move-l img {
+    /*border: 1px solid #3e3d33;*/
+    padding: 20px;
+    width: 210px;
+    height: 300px;
+}
+.author .move-l:hover {
+    /*position: absolute;*/
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    transform: scale(1.1);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 -1px 10px rgba(0,0,0,.5);
+    -moz-box-shadow: 0 -1px 10px rgba(0,0,0,.5);
+    box-shadow: 0 -1px 10px rgba(0,0,0,.5);
 }
