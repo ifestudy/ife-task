@@ -34,6 +34,11 @@ gulp.task('sass', function(){
         .pipe(gulp.dest("dist/css"))
 });
 
+gulp.task('img', function(){
+    return gulp.src('src/img/**/*.png')
+        .pipe(gulp.dest("dist/img"))
+});
+
 gulp.task('watch', function(){
 	//监视css和sass
     watch(["src/css/**/*.scss","src/css/**/*.css"], function(){  //监听所有less
@@ -43,10 +48,14 @@ gulp.task('watch', function(){
     watch("src/html/**/*.html", function(){  //监听所有html
         gulp.start('html');             //出现修改、立马执行html任务
     })
+    //监视img
+    watch("src/html/img/**/*.png", function(){  //监听所有html
+        gulp.start('html');             //出现修改、立马执行html任务
+    })
 })
 //执行一遍work，理论上应该先删除的（先手动吧）
 gulp.task('work',function(cb){
-	gulpSequence(['sass'],'html')(cb);
+	gulpSequence(['sass'],'img','html')(cb);
 });//,'watch']);
 
 gulp.task('default',['work','watch']);
