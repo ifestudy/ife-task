@@ -29,7 +29,7 @@ var aqiData = [
 (function () {
   aqiData.sort(function(a,b){return a[1]-b[1];});
   $(aqiData).each(function(i,item){
-    var ap = '<li>第'+(i+1)+"名："+item[0]+","+item[1]+"</li>";
+    var ap = '<li>第'+(parseInt(i)+1)+"名："+item[0]+","+item[1]+"</li>";
     $("#aqi-list").append(ap);
   });
   /*
