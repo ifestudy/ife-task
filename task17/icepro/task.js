@@ -77,6 +77,7 @@ function renderChart() {
         lighterColor = Math.floor(rand2).toString(16),
         darkerColor = Math.floor(delata).toString(16);
     // #d33434测试通过！
+    $("#title")[0].innerHTML = parseInt(detail.max) + "<hr>";
     $(chartData).each(function(i,item){
         //首位位置添加空白
         sum += deltaWidth/2;
