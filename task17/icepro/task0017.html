@@ -1,0 +1,113 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+      }
+      body {
+        margin: 0 auto;
+      }
+      fieldset {
+        position: relative;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 15px;
+        vertical-align: middle;       
+      }
+      label {
+        margin-right: 8px;
+        border-radius: 30px;
+        background-color: #c2608f;
+        font-size: 25px;
+        padding: 12px;
+        color: #fff;
+        display: inline-block;
+      }
+      label > input {
+        display: none;
+      }
+      .column{
+        position:absolute;
+        bottom: 0px;
+        box-sizing: border-box;
+        animation:high .8s;
+        -webkit-animation:high .8s; /* Safari 和 Chrome */
+        animation-iteration-count:1;
+        -webkit-animation-iteration-count:1; /* Safari 和 Chrome */
+
+      }
+      select {
+        height: 50px;
+        border-radius: 30px;
+        text-align: center;
+        /*height: 20px;*/
+        appearance:none;
+        -moz-appearance:none;
+        -webkit-appearance:none;
+        padding: 0 30px;
+        background-color: white;
+        display: inline-block;
+      }
+      div {
+        position: relative;
+      }
+      .aqi-chart-wrap {
+        /*position: absolute;*/
+        min-height: 380px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px; 
+        /*height: 100%;*/
+        padding: 20px;
+        box-shadow: 0px 0px 5px #999999;
+        -webkit-box-shadow: 0px 0px 5px #999999;
+        border-radius: 15px; 
+      }
+      ul > li {
+        float: left;
+        list-style: none;
+      }
+      @keyframes high
+      {
+        from {height: 0%;}
+      }
+
+      @-moz-keyframes high /* Firefox */
+      {
+        from {height: 0%;}
+      }
+
+      @-webkit-keyframes high /* Safari 和 Chrome */
+      {
+        from {height: 0%;}
+      }
+
+      @-o-keyframes high /* Opera */
+      {
+        from {height: 0%;}
+      }
+    </style>
+
+  </head>
+<body>
+  <fieldset id="form-gra-time">
+    <legend>请选择日期粒度：</legend>
+    <ul>
+      <li><label>日<input name="gra-time" value="day" type="radio" checked="checked"></label></li>
+      <li><label>周<input name="gra-time" value="week" type="radio"></label></li>
+      <li><label>月<input name="gra-time" value="month" type="radio"></label></li>
+      <li><select id="city-select"></select></li>
+    </ul>
+  </fieldset>
+
+  <div class="aqi-chart-wrap">
+  </div>
+    <!-- 引入自己封装好的组件 -->
+    <script type="text/javascript" src="../../jspublic/query.js"></script>
+    <script src="task.js"></script>
+</body>
+</html>

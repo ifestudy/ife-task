@@ -12,9 +12,14 @@
     //定义一个fn来初始化并执行一些操作
     /**
     * version 0.0.1存在以下目标
-    * 可以选择指定id的标签如#id
-    * 可以选择指定class的标签如.class
-    * 可以是复合标签如#id .class
+    * [X]-可以选择指定id的标签如#id
+    * [X]-可以选择指定class的标签如.class
+    * [X]-可以是复合标签如#id .class
+    * [X]-可以使tag标签或者html element
+    * [X]-可以是数组或者json或者object对象
+    * [ ]-低版本浏览器兼容
+    * [X]-可以使本身
+    * [ ]-可以使复杂混合标签
     */
     _$.fn = _$.prototype = {
         version: "0.0.1",
@@ -132,7 +137,7 @@
                 case 2:
                     //如果有两个参数那必然是遍历设置
                     this.each(function(i,item){ 
-                        item.style[attr] = css;
+                        this.style[attr] = css;
                     });
                     return this;
                     break;
@@ -179,14 +184,32 @@
             return this;
         },
         append: function (str) {
-            for (var i = 0; i < this.length; i++) {
-               this[i].insertAdjacentHTML('beforeEnd', str);
+            //如果是空的那就什么都不做
+            if(!str||(str=="")) return this;
+            if(typeof str == "string"){
+                //如果是一个string则调用inserhtml来处理
+                for (var i = 0; i < this.length; i++) {
+                    this[i].insertAdjacentHTML('beforeEnd', str);
+                }
+            }else{
+                //如果是一个query 对象并且nodetype表明是一个html的情况下
+                if(str.isQuery && str[0].nodeType && (str[0].nodeType != 11 )){
+                    for (var i = 0; i < this.length; i++) {
+                        this[i].appendChild( str[0] );
+                    }
+                //如果是一个element对象的情况下(去除跨域元素的)
+                }else if((str.nodeType)&&(str.nodeType != 11) ){
+                    for (var i = 0; i < this.length; i++) {
+                        this[i].appendChild( str );
+                    }
+                }
             }
+            //其余情况不处理！
             return this;
         },
         before: function (str) {
             for (var i = 0; i < this.length; i++) {
-               this[i].insertAdjacentHTML('beforeBegin', str);
+                this[i].insertAdjacentHTML('beforeBegin', str);
             }
             return this;
         },
@@ -236,6 +259,7 @@
             }else{
                 return $();
             }
+            //
             parent = ( (parent) && ( parent.nodeType !== 11) ) ? parent : null;
             return $(parent);
         },
