@@ -9,7 +9,7 @@ html {
 body {
   font-size: 100%;
   /*16 ÷ 16 × 100% = 100%*/
-  min-width: 768px;
+  min-width: 1080px;
   width: 100%;
   color: #000; }
 
@@ -35,7 +35,8 @@ nav {
   overflow: hidden; }
   .content .inside {
     float: right;
-    width: 79.6875%; }
+    width: 79.6875%;
+    min-width: 860.625px; }
     .content .inside > div {
       width: 69.53125%;
       padding: 1.25rem;
@@ -50,6 +51,7 @@ nav {
     background-color: #2a2e3d;
     color: #6e8095;
     width: 20.3125%;
+    min-width: 219.375px;
     border-box: inside;
     float: left; }
 

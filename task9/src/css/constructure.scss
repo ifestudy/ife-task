@@ -21,6 +21,7 @@ nav {
 	.inside{
 		float: right;
 		width: per(1020);
+		min-width: 1020/$width*1080*1px;
 		& > div {
 			width: per(890);
 			padding: rem(20);
@@ -40,6 +41,7 @@ nav {
 		background-color: #2a2e3d;
 		color: #6e8095;
 		width: per(260);
+		min-width: 260/$width*1080*1px;
 		// min-width: rem(260);
 		border-box: inside;
 		float: left;
