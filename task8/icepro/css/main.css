@@ -9,11 +9,13 @@ div {
   border: 1px black solid;
   background-color: grey;
   height: 50px;
-  margin: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
   box-sizing: border-box; }
 
 .grid .row {
   width: 100%;
+  padding-left: 20px;
   box-sizing: border-box; }
   .grid .row:after, .grid .row:before {
     content: "";
