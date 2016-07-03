@@ -76,17 +76,18 @@ function renderChart() {
     var baseColor = Math.floor(rand1).toString(16),//.toString(16)
         lighterColor = Math.floor(rand2).toString(16),
         darkerColor = Math.floor(delata).toString(16);
-    // d33434
+    // #d33434测试通过！
+    $("#title")[0].innerHTML = parseInt(detail.max) + "<hr>";
     $(chartData).each(function(i,item){
+        //首位位置添加空白
         sum += deltaWidth/2;
         var _div = $(document.createElement('div'));
-        _div[0].title = parseInt(item);
-        _div.css({"width":width+"%","height":(parseInt(item)/detail.max*100)+"%"});
+        _div[0].title = parseInt(item) + '/' + (pageState.nowGraTime == "day"?i:(pageState.nowGraTime == "week")?'第'+(parseInt(i)+1)+'周':i);
+        _div.css({"width":width+"%","height":(parseInt(item)/detail.max*100)+"%","left":sum+"%"});
         _div.addClass("column");
-        _div.css("left",sum+"%");
         var low = (detail.max-detail.min) * 1/3 + detail.min,
             middle = (detail.max-detail.min) * 2/3 + detail.min;
-
+        //不同级别的颜色选择
         if((item < low) && (item >= detail.min) ){
             _div.css("background-color",("#"+lighterColor))
         }
@@ -96,10 +97,12 @@ function renderChart() {
         if((item > middle) && (item <= detail.max) ){
             _div.css("background-color",("#"+darkerColor))
         }
+        //推入div
         chartWrap.append(_div);
+        //末尾位置添加空白
         sum += width + deltaWidth/2;
     });
-    chartWrap.append();
+    // chartWrap.append();
     //生成end ==========
     return true;
 }
@@ -149,6 +152,7 @@ function initCitySelector() {
     citySelect[0].innerHTML="";
     var index = 0;
     $(aqiSourceData).each(function(i){
+        //设置默认城市！
         if(index == 0){
             pageState.nowSelectCity = i;
             index++;
@@ -169,8 +173,8 @@ function initAqiChartData() {
     //for day情况下：counter统计所有
     var counter = 0,
         index = 0,
-        max=0,
-        min=999;
+        max = 0,
+        min = 999;
     $(aqiSourceData[pageState.nowSelectCity]).each(function(i,item){
         //day的处理
         var today = new Date(i);
@@ -183,11 +187,12 @@ function initAqiChartData() {
             //week的处理
             if(pageState.nowGraTime == "week"){
                 var day = today.getDay();
-                if((chartData[index])&&(day == 0)){
+                if( (chartData[index]) && (day == 0) ){
                     //到周一了说明要下移一位！
                     index++;
                 }
                 if(!chartData[index]){
+                    //要加上这个防止出现undefined
                     chartData[index] = [];
                 }
                 chartData[index].push(item);
@@ -195,8 +200,10 @@ function initAqiChartData() {
             }
             //month的处理
             if(pageState.nowGraTime == "month"){
+                //将日期补全0处理
                 var month = today.getFullYear()+"-"+((today.getMonth()+1)+"").replace(/(^\d$)/g,"0$1");
                 if(!chartData[month]){
+                    //要加上这个防止出现undefined
                     chartData[month] = [];
                 }
                 chartData[month].push(item);
@@ -204,7 +211,7 @@ function initAqiChartData() {
         }
     });
     //month/week需要计算平均值，而day不需要！
-    if((pageState.nowGraTime == "month")||(pageState.nowGraTime == "week")){
+    if( (pageState.nowGraTime == "month") || (pageState.nowGraTime == "week") ){
         index = 0;
         $(chartData).each(function(i,item){
             index++;
@@ -218,7 +225,7 @@ function initAqiChartData() {
         });
     }
     //最大值以及长度
-    //数据计算完毕！
+    //数据计算完毕！返回对应的最大最小和长度！
     return {length:index,max:max,min:min};
 }
 
@@ -229,6 +236,7 @@ function init() {
     initGraTimeForm()
     initCitySelector();
     initAqiChartData();
+    //开始先渲染一次
     renderChart();
 }
 

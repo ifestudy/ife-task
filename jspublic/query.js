@@ -9,6 +9,16 @@
         return new _$.fn.init(selector,rootQuery);
     };
 
+    /**
+    * 计划项目：
+    * [ ]-onready
+    * [ ]-onload
+    * [ ]-canvas
+    * [ ]-
+    */
+
+
+
     //定义一个fn来初始化并执行一些操作
     /**
     * version 0.0.1存在以下目标
@@ -236,7 +246,7 @@
         },
         //事件侦听！
         on : function( name,listener ) {
-            //预留检测位置！
+            //[x]-预留检测位置！
             if( isNaN(this.length) || (this.length < 0) ){
                 return false;
             //     this[0].addEventListener(name,listener);
@@ -247,6 +257,9 @@
                 });
             }
             //TODO:预留ie位置
+        },
+        live : function(){
+
         },
         //只返回第一个
         val : function() {
