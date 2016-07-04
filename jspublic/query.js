@@ -149,10 +149,12 @@
                     }
                     break;
                 case 2:
-                    //如果有两个参数那必然是遍历设置
-                    this.each(function(i,item){ 
-                        this.style[attr] = css;
-                    });
+                    if(css){
+                        //如果有两个参数那必然是遍历设置
+                        this.each(function(i,item){ 
+                            this.style[attr] = css;
+                        });
+                    }
                     return this;
                     break;
                 default: 
@@ -163,7 +165,7 @@
             if((this[0].nodeType)&&(this[0].nodeType != 11)){
                 $(this[0]).each(function(i,item){
                     if(!item.className.match(new RegExp("(\\s|^)"+ClassName+"(\\s|$)","g"))){
-                        item.className = ClassName;
+                        item.className += " "+ClassName;
                     }
                 });
                 return this;
@@ -363,14 +365,29 @@
             parent = ( (parent) && ( parent.nodeType !== 11) ) ? parent : null;
             return $(parent);
         },
-        //暂时只需要获取处理！可以利用arguments做设定处理！
-        data : function(dataName) {
-            // var dataName = dataName;
-            if ((!dataName) || (dataName=="")) {
-                return this[0].getAttribute('data');
+        //[x]-暂时只需要获取处理！可以利用arguments做设定处理！--已经完成
+        data : function(dataName,value) {
+            if( arguments.length = 2 ){
+                if (dataName=="") {
+                    this.each(function(i,item){
+                        this.data = value;
+                    });
+                }else{
+                    this.each(function(i,item){
+                        this.dataset[dataName] = value;
+                    });
+                };
+                return this;
             }else{
-                return this[0].getAttribute('data-'+dataName);
-            };
+                // var dataName = dataName;
+                if ((!dataName) || (dataName=="")) {
+                    this[0].getAttribute('data');
+                    return this;
+                }else{
+                    this[0].getAttribute('data-'+dataName);
+                    return this;
+                };
+            }
         },
         //常用数组功能
 
@@ -393,7 +410,7 @@
         },
         // push: [].push,
         //push如果你传入的一个json，那么push将会尝试将两个json合并处理（重复内容由data覆盖）
-        //如果你传入的是一个其他对象那么将会对两个array之间合并
+        //如果你传入的是一个html，则会依照规则在前后之间添加元素
         push : function(data,type){
             if (this.isJson) {
                 if(this[0] instanceof Array){
@@ -416,9 +433,9 @@
             }else{
                 //对于非json类型的对象而言（通常指的是一些诸如element之类的）
                 switch(type){
-                    case 'right': this.after(data);return this;break;
-                    case 'left': this.before(data);return this;break;
-                    default: this.after(data);return this;break;
+                    case 'right': this.append(data);return this;break;
+                    case 'left': this.appendBefore(data);return this;break;
+                    default: this.append(data);return this;break;
                 }
             }
         },

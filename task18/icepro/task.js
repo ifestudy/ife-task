@@ -2,19 +2,22 @@
 	"use strict";
 	//纯dom型写法！
 	//不良好的设计哈哈！！！
+	function pushElement(type){
+		var value = inputData.val().trim()+"";
+		if((/\d+/g.test(value))){
+			var _div = $(document.createElement("div")).addClass("bg-red");
+			_div[0].innerHTML = value;
+			$("#display").push(_div,type);
+		}
+		inputData.val("");
+	}
+
 	var inputData = $("#input-data");
 	$("#l-in").on('click',function(){
-		var _div = $(document.createElement("div"));
-		_div.addClass("bg-red");
-		_div[0].innerHTML = inputData.val();
-		$("#display").appendBefore(_div);
-		inputData.val("");
+		pushElement('left');
 	});
 	$("#r-in").on('click',function(){
-		var _div = $(document.createElement("div"));
-		_div.addClass("bg-red");
-		_div[0].innerHTML = inputData.val();
-		$("#display").append(_div);
+		pushElement('right');
 	});
 	$("#l-out").on('click',function(){
 		$("#display").pop('left');
