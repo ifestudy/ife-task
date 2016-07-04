@@ -1,10 +1,10 @@
 /*constructure start==============*/
 $width:1280;
 @function per($n) {
-    @return (($n/$width)*100%); 
+    @return (($n/$width)*100%);
 }
 @function rem($n) {
-	@return (($n/16)*1rem); 
+	@return (($n/16)*1rem);
 }
 //TODO:padding调整 =清除必要padding
 
@@ -23,7 +23,8 @@ nav {
 		width: per(1020);
 		min-width: 1020/$width*1080*1px;
 		& > div {
-			width: per(890);
+			width: per(1000);// TODO: 原宽度不够横向平铺两个表格，  original: per(890)
+            min-width: 530px;
 			padding: rem(20);
 			margin: rem(20) auto rem(0) auto;
 		}
@@ -32,7 +33,7 @@ nav {
 			background-color: grey;
 			padding: rem(20);
 			margin-top: rem(0);
-			width: rem(($width - 260));
+			width: rem($width); // TODO: 原方法拉伸到一定宽度就不符合要求，original: rem(($width-260))
 		}
 	}
 

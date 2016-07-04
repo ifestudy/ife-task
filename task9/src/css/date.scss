@@ -1,0 +1,217 @@
+@import "public";
+
+$index1: 48912001;
+$index2: 29307333;
+$index3: 23139070;
+$index4: 22885564;
+$index5: 22324792;
+$index6: 21444077;
+$index7: 20114969;
+$index8: 19251680;
+$index9: 19172837;
+$index10: 18544027;
+
+$indexColor1: #ec6d51;
+$indexColor2: #ef804f;
+$indexColor3: #f19e4f;
+$indexColor4: #7fcbf0;
+
+@mixin clearDfStyle {
+    border-radius: 0;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    display: block;
+}
+
+.date:before, .date:after{
+    @include clearFix;
+}
+
+$specialDayColor: #c9161d;
+$labelDayColor: #f5c52a;
+$weekBdColor: #a9cfec;
+
+.calendar-content{
+    margin: 10px 20px;
+    width: 310px;
+    .calendar-menu{
+        display: inline-block;
+        select, input{
+            @include clearDfStyle;
+            border: 1px solid #ccc;
+            background: #fff;
+            width: 70px;
+            height: 20px;
+            float: left;
+            margin-right: 10px;
+            text-align: center;
+        }
+        select{
+            text-indent: 5px;
+        }
+        input{
+            margin-right: -10px;
+        }
+    }
+    ul{
+
+    }
+    .calendar-week{
+        height: 30px;
+        margin-top: 10px;
+        border-top: 2px solid $weekBdColor;
+        border-bottom: 1px solid #ccc;
+        line-height: 30px;
+        li{
+            float: left;
+            display: block;
+            width: 40px;
+            margin-right: 5px;
+            text-align: center;
+            &:last-of-type{
+                margin-right: -5px;
+            }
+        }
+    }
+    .calendar-day{
+        li{
+            float: left;
+            margin-right: 5px;
+            margin-top: 5px;
+            display: block;
+            box-sizing: border-box;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            span{
+                display: block;
+            }
+            .weekend, .festival{
+                color: $specialDayColor;
+            }
+            &:first-of-type{
+                margin-left: 180px;
+            }
+            &:nth-of-type(7n+3){
+                margin-right: -5px;
+            }
+            & ~ .day-labeled{
+                border: 2px solid $labelDayColor;
+            }
+        }
+    }
+}
+
+.car-content{
+    min-width: 450px;
+    margin: 20px 40px;
+    table{
+        border-collapse: collapse;
+        th{
+            border: 1px solid #ccc;
+            &:last-of-type{
+                text-align: left;
+                text-indent: 30px;
+            }
+        }
+        tr{
+            height: 26px;
+            &:hover{
+                background: #eee;
+            }
+            td{
+                border: 1px solid #ccc;
+                &:nth-of-type(1){
+                    width: 68px;
+                    text-align: center;
+                }
+                &:nth-of-type(2){
+                    width: 92px;
+                    text-align: center;
+                }
+                &:nth-of-type(3){
+                    min-width: 290px;
+                    text-indent: 30px;
+                }
+                .index-back{
+                    float: right;
+                    display: block;
+                    margin-right: 15px;
+                    margin-top: 5px;
+                    width: 168px;
+                    height: 5px;
+                    background: #ccc;
+                }
+                @for $i from 1 through 10{
+                    @if $i < 2{
+                        .index-progress#{$i}{
+                            background: $indexColor1;
+                        }
+                    }@else if $i < 3{
+                        .index-progress#{$i}{
+                            background: $indexColor2;
+                        }
+                    }@else if $i < 4{
+                        .index-progress#{$i}{
+                            background: $indexColor3;
+                        }
+                    }@else{
+                        .index-progress#{$i}{
+                            background: $indexColor4;
+                        }
+                    }
+                }
+
+                @for $j from 1 through 10{
+                    .index-progress#{$j}{
+                        height: 5px;
+                    }
+                }
+
+                @for $i from 1 through 10{
+                    @if $i < 2{
+                        .index-progress#{$i}{
+                            width: $index1 / 60000000 * 168px;
+                        }
+                    }@else if $i < 3{
+                        .index-progress#{$i}{
+                            width: $index2 / 60000000 * 168px;
+                        }
+                    }@else if $i < 4{
+                        .index-progress#{$i}{
+                            width: $index3 / 60000000 * 168px;
+                        }
+                    }@else if $i < 5{
+                        .index-progress#{$i}{
+                            width: $index4 / 60000000 * 168px;
+                        }
+                    }@else if $i < 6{
+                        .index-progress#{$i}{
+                            width: $index5 / 60000000 * 168px;
+                        }
+                    }@else if $i < 7{
+                        .index-progress#{$i}{
+                            width: $index6 / 60000000 * 168px;
+                        }
+                    }@else if $i < 8{
+                        .index-progress#{$i}{
+                            width: $index7 / 60000000 * 168px;
+                        }
+                    }@else if $i < 9{
+                        .index-progress#{$i}{
+                            width: $index8 / 60000000 * 168px;
+                        }
+                    }@else if $i < 10{
+                        .index-progress#{$i}{
+                            width: $index9 / 60000000 * 168px;
+                        }
+                    }@else{
+                        .index-progress#{$i}{
+                            width: $index10 / 60000000 * 168px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

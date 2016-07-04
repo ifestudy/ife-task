@@ -1,0 +1,75 @@
+// background color
+$bgColor: #eee;
+// border color
+$borderColor: #999;
+// div height
+$divHeight: 50px;
+// padding value
+$pdValue: 10px;
+
+//
+@mixin reset {
+    margin: 0;
+    padding: 0;
+}
+
+//
+@mixin clearFix {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+//
+@mixin wrapperStyle {
+    box-sizing: border-box;
+    float: left;
+    padding: $pdValue;
+}
+
+@mixin innerStyle {
+    height: $divHeight;
+    background: $bgColor;
+    border: 1px solid $borderColor;
+}
+
+@mixin generateGrid($scr_flag) {
+    @if $scr_flag == true{
+        @for $i from 1 through 12{
+            .col-md-#{$i}{
+                width: (100% / 12 * $i);
+            }
+        }
+    }@else{
+        @for $i from 1 through 12{
+            .col-sm-#{$i}{
+                width: (100% / 12 * $i);
+            }
+        }
+    }
+}
+
+html, body{
+    @include reset;
+}
+.container{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    color: red;
+}
+.container:before, .container:after{
+    @include clearFix;
+}
+.wrapper{
+    @include wrapperStyle;
+}
+.inner{
+    @include innerStyle;
+}
+@media (min-width:769px){
+    @include generateGrid(true);
+}
+@media (max-width:768px) {
+    @include generateGrid(false);
+}

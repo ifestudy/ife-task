@@ -1,0 +1,114 @@
+
+@import "public";
+
+.form-content1{
+    min-width: 450px;
+    margin: 10px 20px;
+    ul{
+        position: relative;
+        list-style: none;
+        margin-bottom: -1px;
+        li{
+            z-index: -1;
+            box-sizing: border-box;
+            display: block;
+            width: 85px;
+            height: 30px;
+            background: #eeebf1;
+            float: left;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 30px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+        :first-child, :hover{
+            position: relative;
+            top: 0;
+            left: 0;
+            margin-right: 5px;
+            background: #fff;
+            border: 1px solid #aaa;
+            border-bottom: none;
+            z-index: 1;
+            cursor: pointer;
+        }
+    }
+    ul:after{
+        @include clearFix;
+    }
+    .table-container{
+        background: #fff;
+        border: 1px solid #aaa;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    table{
+        margin: 30px 40px;
+        border-collapse: collapse;
+        font-family: "宋体";
+        tr{
+            height: 30px;
+            td{
+                width: 100px;
+                text-align: center;
+                border: 1px solid #ccc;
+            }
+        }
+    }
+}
+.form-content2{
+    margin: 20px 40px;
+    table{
+        min-width: 280px;
+        border-collapse: collapse;
+        tr{
+            height: 44px;
+            line-height: 20px;
+            td{
+                padding-left: 10px;
+            }
+            td span{
+                display: block;
+                color: #aaa;
+            }
+            &:nth-of-type(2){
+                border-top: 1px solid #aaa;
+                border-bottom: 1px solid #aaa;
+                td{
+                    &:first-of-type{
+                        width: 96px;
+                        border-right: 1px solid #aaa;
+                    }
+                    &:last-of-type{
+                        width: 184px;
+                    }
+                }
+            }
+            &:nth-of-type(3){
+                width: inherit;
+                height: 146px;
+                border-bottom: 1px solid #aaa;
+                td{
+                    vertical-align: text-top;
+                }
+            }
+            &:last-of-type{
+                width: inherit;
+                .checkbox{
+                    margin-right: 5px;
+                }
+                .search{
+                    display: block;
+                    border: 1px solid #4a7cc4;
+                    float: right;
+                    width: 50px;
+                    height: 25px;
+                    color: #fff;
+                    background: #4a7cc4;
+                }
+            }
+        }
+    }
+}
