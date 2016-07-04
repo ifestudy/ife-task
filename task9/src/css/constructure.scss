@@ -16,7 +16,7 @@ nav {
 
 .content {
 	//TODO:清除颜色
-	background-color: green;
+	// background-color: green;
 	overflow: hidden;
 	.inside{
 		float: right;
@@ -24,13 +24,13 @@ nav {
 		min-width: 1020/$width*1080*1px;
 		& > div {
 			width: per(1000);// TODO: 原宽度不够横向平铺两个表格，  original: per(890)
-            min-width: 530px;
-			padding: rem(20);
+            min-width: 910px;//两边预留10magin
+			// padding: rem(20);
 			margin: rem(20) auto rem(0) auto;
 		}
 		.position {
 			//TODO:清除颜色
-			background-color: grey;
+			// background-color: grey;
 			padding: rem(20);
 			margin-top: rem(0);
 			width: rem($width); // TODO: 原方法拉伸到一定宽度就不符合要求，original: rem(($width-260))
@@ -46,6 +46,7 @@ nav {
 		// min-width: rem(260);
 		border-box: inside;
 		float: left;
+		height: rem(1212);
 	}
 }
 .statistic {
@@ -55,11 +56,11 @@ nav {
 
 .form {
 	//TODO:清除颜色
-	background-color: yellow;
+	// background-color: yellow;
 }
 .date {
 	//TODO:清除颜色
-	background-color: pink;
+	// background-color: pink;
 }
 
 /*constructure end===============*/
