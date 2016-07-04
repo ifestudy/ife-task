@@ -6,3 +6,7 @@ bower_components
 test1
 test2
 dest
+############
+##mac
+############
+.DS_Store
