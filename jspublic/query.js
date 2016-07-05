@@ -1,8 +1,11 @@
+/**
+*仅保证在chrome下正常工作
+*/
 (function() {
     "use strict";
     //确保不被重复加载
     var _$ = window.$,
-        // 用于保存整个
+        // 用于保存整个根query对象（可能将会用于快速查找目标）
         rootQuery = [],
         _$ = function(selector){
         //生成器每一次返回一个新的对象
@@ -16,6 +19,7 @@
     * [ ]-canvas
     * [ ]-
     */
+
 
 
 
@@ -98,11 +102,11 @@
             //预留他用！
             // if ( selector !== undefined ) {}
             // 数组和object类别(不做深拷贝处理)统一认为做json型处理！
-            if ( (typeof selector == 'array') || (typeof selector == 'object') ||((typeof elem == 'object')&&(Object.prototype.toString.call(elem).toLowerCase())=="[object object]"&&!elem.length) ) {
+            if ( (typeof selector instanceof Array) || (typeof selector == 'object')){ //||((typeof elem == 'object')&&(Object.prototype.toString.call(elem).toLowerCase())=="[object object]"&&!elem.length) ) {
                 var elem = selector;
                 this.selector = elem.selector;
                 this[0] = elem;
-                this.length = elem.length;
+                this.length = 1;//elem.length;
                 this.isJson = true;
                 return this;
             }
@@ -145,10 +149,12 @@
                     }
                     break;
                 case 2:
-                    //如果有两个参数那必然是遍历设置
-                    this.each(function(i,item){ 
-                        this.style[attr] = css;
-                    });
+                    if(css){
+                        //如果有两个参数那必然是遍历设置
+                        this.each(function(i,item){ 
+                            this.style[attr] = css;
+                        });
+                    }
                     return this;
                     break;
                 default: 
@@ -159,7 +165,7 @@
             if((this[0].nodeType)&&(this[0].nodeType != 11)){
                 $(this[0]).each(function(i,item){
                     if(!item.className.match(new RegExp("(\\s|^)"+ClassName+"(\\s|$)","g"))){
-                        item.className = ClassName;
+                        item.className += " "+ClassName;
                     }
                 });
                 return this;
@@ -182,12 +188,37 @@
             // tsk;
         },
         first : function(){
-
+            //对于不存在的如undefined之类的不做处理
+            if(!this[0]) return this;
+            //对于json而言之间返回this因为json类不支持该项操作
+            if (this.isJson) {
+                return this;
+            }else{
+                //那么理论上这个就应该是element元素了
+                //TODO:将所有符合的子元素取出而不是单个元素！
+                // var tmp = $();
+                // this.each(function(i,item){
+                //     tmp.push(item.firstElementChild)
+                // });
+                return $(this[0].firstElementChild);
+            }
         },
         last : function(){
-
+            //对于不存在的如undefined之类的不做处理
+            if(!this[0]) return this;
+            //对于json而言之间返回this因为json类不支持该项操作
+            if (this.isJson) {
+                return this;
+            }else{
+                //TODO:将所有符合的子元素取出而不是单个元素！
+                var array = [];
+                //那么理论上这个就应该是element元素了
+                return $(this[0].lastElementChild);
+            }
         },
+        //只允许移除本身，且只允许对element匀速作出处理
         remove : function(){
+            if(this.isJson) return this;
             for (var i = 0; i < this.length; i++) {
                 this[i].parentNode.removeChild(this[i]);
             }
@@ -217,15 +248,67 @@
             //其余情况不处理！
             return this;
         },
+        appendBefore: function(str){
+            if(!str||(str=="")) return this;
+            if(typeof str == "string"){
+                for (var i = 0; i < this.length; i++) {
+                    this[i].insertAdjacentHTML('beforeBegin', str);
+                }
+            }else{
+                //如果是一个query 对象并且nodetype表明是一个html的情况下
+                if(str.isQuery && str[0].nodeType && (str[0].nodeType != 11 )){
+                    for (var i = 0; i < this.length; i++) {
+                        this[i].insertBefore( str[0].cloneNode(true) , this[i].firstElementChild );
+                    }
+                //如果是一个element对象的情况下(去除跨域元素的)
+                }else if((str.nodeType)&&(str.nodeType != 11) ){
+                    for (var i = 0; i < this.length; i++) {
+                        this[i].insertBefore( str.cloneNode(true) , this[i].firstElementChild );
+                    }
+                }
+            }
+            return this;
+        },
+        //[x]-暂不支持element的添加！-划掉已支持
         before: function (str) {
-            for (var i = 0; i < this.length; i++) {
-                this[i].insertAdjacentHTML('beforeBegin', str);
+            if(!str||(str=="")) return this;
+            if(typeof str == "string"){
+                for (var i = 0; i < this.length; i++) {
+                    this[i].insertAdjacentHTML('beforeBegin', str);
+                }
+            }else{
+                //如果是一个query 对象并且nodetype表明是一个html的情况下
+                if(str.isQuery && str[0].nodeType && (str[0].nodeType != 11 )){
+                    for (var i = 0; i < this.length; i++) {
+                        $(this[i]).parent()[0].insertBefore( str[0].cloneNode(true) , this[i] );
+                    }
+                //如果是一个element对象的情况下(去除跨域元素的)
+                }else if((str.nodeType)&&(str.nodeType != 11) ){
+                    for (var i = 0; i < this.length; i++) {
+                        $(this[i]).parent()[0].insertBefore( str.cloneNode(true) , this[i] );
+                    }
+                }
             }
             return this;
         },
         after: function (str) {
-            for (var i = 0; i < this.length; i++) {
-                this[i].insertAdjacentHTML('afterEnd', str);
+            if(!str||(str=="")) return this;
+            if(typeof str == "string"){
+                for (var i = 0; i < this.length; i++) {
+                    this[i].insertAdjacentHTML('afterEnd', str);
+                }
+            }else{
+                //如果是一个query 对象并且nodetype表明是一个html的情况下
+                if(str.isQuery && str[0].nodeType && (str[0].nodeType != 11 )){
+                    for (var i = 0; i < this.length; i++) {
+                        $(this[i]).parent()[0].insertBefore( str[0].cloneNode(true) , this[i].nextSibling );
+                    }
+                //如果是一个element对象的情况下(去除跨域元素的)
+                }else if((str.nodeType)&&(str.nodeType != 11) ){
+                    for (var i = 0; i < this.length; i++) {
+                        $(this[i]).parent()[0].insertBefore( str.cloneNode(true) , this[i].nextSibling );
+                    }
+                }
             }
             return this;
         },
@@ -262,9 +345,15 @@
 
         },
         //只返回第一个
-        val : function() {
-            return this[0].value;
+        val : function(value) {
+            if(value||(value=="")){
+                this[0].value = value;
+                return this;
+            }else{
+                return this[0].value;
+            }
         },
+        //只返回第一个元素的父亲
         parent : function() {
 
             if((this[0])&&('parentNode' in this[0])){
@@ -276,15 +365,98 @@
             parent = ( (parent) && ( parent.nodeType !== 11) ) ? parent : null;
             return $(parent);
         },
-        data : function(dataName) {
-            // var dataName = dataName;
-            if ((!dataName) || (dataName=="")) {
-                return this[0].getAttribute('data');
+        //[x]-暂时只需要获取处理！可以利用arguments做设定处理！--已经完成
+        data : function(dataName,value) {
+            if( arguments.length = 2 ){
+                if (dataName=="") {
+                    this.each(function(i,item){
+                        this.data = value;
+                    });
+                }else{
+                    this.each(function(i,item){
+                        this.dataset[dataName] = value;
+                    });
+                };
+                return this;
             }else{
-                return this[0].getAttribute('data-'+dataName);
-            };
-        }
+                // var dataName = dataName;
+                if ((!dataName) || (dataName=="")) {
+                    this[0].getAttribute('data');
+                    return this;
+                }else{
+                    this[0].getAttribute('data-'+dataName);
+                    return this;
+                };
+            }
+        },
+        //常用数组功能
+
+        //队列功能
+        pop : function(type){
+            if (this.isJson) {
+                switch(type){
+                    case 'right': return this[0].pop();break;
+                    case 'left': return this[0].shift();break;
+                    default: return this[0].pop();break;
+                }
+            }else{
+                //对于非json类型的对象而言（通常指的是一些诸如element之类的）
+                switch(type){
+                    case 'right': var tmp = this.last();this.last().remove();return tmp;break;
+                    case 'left': var tmp = this.first();this.first().remove();return tmp;break;
+                    default: var tmp = this.last();this.last().remove();return tmp;break;
+                }
+            }
+        },
+        // push: [].push,
+        //push如果你传入的一个json，那么push将会尝试将两个json合并处理（重复内容由data覆盖）
+        //如果你传入的是一个html，则会依照规则在前后之间添加元素
+        push : function(data,type){
+            if (this.isJson) {
+                if(this[0] instanceof Array){
+                    switch(type){
+                        case 'right': this[0].push(data.isQuery?data[0].concat():data.concat());return this;break;
+                        case 'left': this[0].unshift(data);return this;break;
+                        default: this[0].push(data.isQuery?data[0].concat():data.concat());return this;break;
+                    }
+                }else if($.isJsonType(data)){
+                    //这里就不会存在所谓的什么左右插入了！
+                    //如果不是array那么添加的data必须也是json格式的
+                    $(data).each(function(i,item){
+                        //重复的将会被更新！
+                        this[i] = item;
+                    });
+                    return this;
+                }else{
+                    return this;
+                }
+            }else{
+                //对于非json类型的对象而言（通常指的是一些诸如element之类的）
+                switch(type){
+                    case 'right': this.append(data);return this;break;
+                    case 'left': this.appendBefore(data);return this;break;
+                    default: this.append(data);return this;break;
+                }
+            }
+        },
+        //这将会丢失两个元素的所有附加属性！
+        // concat: function(data){
+        //     this
+        //     return $()
+        // }
+        //堆栈功能
+
+        //链表功能
+
     };
+    //顶层方法 === 脱离继承树！
+    _$.isJsonType = (function(elem){
+        if((typeof elem == 'object')&&(Object.prototype.toString.call(elem).toLowerCase())=="[object object]"&&!elem.length){
+            return true;
+        }else{
+            return false;
+        }
+    });
     //全局声明
     _$.fn.init.prototype = _$.fn;
     window.$ = _$;

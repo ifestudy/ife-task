@@ -59,7 +59,7 @@
     }
 }
 .form-content2{
-    margin: 20px 40px;
+    margin: 20px 25px;//量错了吧，这里最多边距50否则就超了 original:20px 40px;
     table{
         min-width: 280px;
         border-collapse: collapse;
