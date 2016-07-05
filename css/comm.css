@@ -26,6 +26,7 @@ a:hover{
 
 .main a{
     font-size: 20px;
+    display: inline-block;
 }
 /**
  *header的样式
