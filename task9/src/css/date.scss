@@ -1,20 +1,8 @@
 @import "public";
 
-$index1: 48912001;
-$index2: 29307333;
-$index3: 23139070;
-$index4: 22885564;
-$index5: 22324792;
-$index6: 21444077;
-$index7: 20114969;
-$index8: 19251680;
-$index9: 19172837;
-$index10: 18544027;
+$indexNum: (48912001, 29307333, 23139070, 22885564, 22324792, 21444077, 20114969, 19251680, 19172837, 18544027);
 
-$indexColor1: #ec6d51;
-$indexColor2: #ef804f;
-$indexColor3: #f19e4f;
-$indexColor4: #7fcbf0;
+$indexColor: (#ec6d51, #ef804f, #f19e4f, #7fcbf0);
 
 @mixin clearDfStyle {
     border-radius: 0;
@@ -142,75 +130,89 @@ $weekBdColor: #a9cfec;
                     height: 5px;
                     background: #ccc;
                 }
+
                 @for $i from 1 through 10{
-                    @if $i < 2{
+                    @if $i < 4{
                         .index-progress#{$i}{
-                            background: $indexColor1;
-                        }
-                    }@else if $i < 3{
-                        .index-progress#{$i}{
-                            background: $indexColor2;
-                        }
-                    }@else if $i < 4{
-                        .index-progress#{$i}{
-                            background: $indexColor3;
+                            background: nth($indexColor, $i);
                         }
                     }@else{
                         .index-progress#{$i}{
-                            background: $indexColor4;
+                            background: nth($indexColor, 4);
                         }
                     }
                 }
+
+                // @for $i from 1 through 10{
+                //     @if $i < 2{
+                //         .index-progress#{$i}{
+                //             background: $indexColor1;
+                //         }
+                //     }@else if $i < 3{
+                //         .index-progress#{$i}{
+                //             background: $indexColor2;
+                //         }
+                //     }@else if $i < 4{
+                //         .index-progress#{$i}{
+                //             background: $indexColor3;
+                //         }
+                //     }@else{
+                //         .index-progress#{$i}{
+                //             background: $indexColor4;
+                //         }
+                //     }
+                // }
 
                 @for $j from 1 through 10{
                     .index-progress#{$j}{
                         height: 5px;
+                        width: nth($indexNum, $j) / 60000000 * 168px;
                     }
                 }
 
-                @for $i from 1 through 10{
-                    @if $i < 2{
-                        .index-progress#{$i}{
-                            width: $index1 / 60000000 * 168px;
-                        }
-                    }@else if $i < 3{
-                        .index-progress#{$i}{
-                            width: $index2 / 60000000 * 168px;
-                        }
-                    }@else if $i < 4{
-                        .index-progress#{$i}{
-                            width: $index3 / 60000000 * 168px;
-                        }
-                    }@else if $i < 5{
-                        .index-progress#{$i}{
-                            width: $index4 / 60000000 * 168px;
-                        }
-                    }@else if $i < 6{
-                        .index-progress#{$i}{
-                            width: $index5 / 60000000 * 168px;
-                        }
-                    }@else if $i < 7{
-                        .index-progress#{$i}{
-                            width: $index6 / 60000000 * 168px;
-                        }
-                    }@else if $i < 8{
-                        .index-progress#{$i}{
-                            width: $index7 / 60000000 * 168px;
-                        }
-                    }@else if $i < 9{
-                        .index-progress#{$i}{
-                            width: $index8 / 60000000 * 168px;
-                        }
-                    }@else if $i < 10{
-                        .index-progress#{$i}{
-                            width: $index9 / 60000000 * 168px;
-                        }
-                    }@else{
-                        .index-progress#{$i}{
-                            width: $index10 / 60000000 * 168px;
-                        }
-                    }
-                }
+                // @for $i from 1 through 10{
+                //     @if $i < 2{
+                //         .index-progress#{$i}{
+                //             width: $index1 / 60000000 * 168px;
+                //         }
+                //     }@else if $i < 3{
+                //         .index-progress#{$i}{
+                //             width: $index2 / 60000000 * 168px;
+                //         }
+                //     }@else if $i < 4{
+                //         .index-progress#{$i}{
+                //             width: $index3 / 60000000 * 168px;
+                //         }
+                //     }@else if $i < 5{
+                //         .index-progress#{$i}{
+                //             width: $index4 / 60000000 * 168px;
+                //         }
+                //     }@else if $i < 6{
+                //         .index-progress#{$i}{
+                //             width: $index5 / 60000000 * 168px;
+                //         }
+                //     }@else if $i < 7{
+                //         .index-progress#{$i}{
+                //             width: $index6 / 60000000 * 168px;
+                //         }
+                //     }@else if $i < 8{
+                //         .index-progress#{$i}{
+                //             width: $index7 / 60000000 * 168px;
+                //         }
+                //     }@else if $i < 9{
+                //         .index-progress#{$i}{
+                //             width: $index8 / 60000000 * 168px;
+                //         }
+                //     }@else if $i < 10{
+                //         .index-progress#{$i}{
+                //             width: $index9 / 60000000 * 168px;
+                //         }
+                //     }@else{
+                //         .index-progress#{$i}{
+                //             width: $index10 / 60000000 * 168px;
+                //         }
+                //     }
+                // }
             }
         }
     }
