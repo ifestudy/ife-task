@@ -252,7 +252,7 @@
             if(!str||(str=="")) return this;
             if(typeof str == "string"){
                 for (var i = 0; i < this.length; i++) {
-                    this[i].insertAdjacentHTML('beforeBegin', str);
+                    this[i].insertAdjacentHTML('afterbegin', str);
                 }
             }else{
                 //如果是一个query 对象并且nodetype表明是一个html的情况下
@@ -340,6 +340,9 @@
                 });
             }
             //TODO:预留ie位置
+
+            //返回自己使得可以连续操作
+            return this;
         },
         live : function(){
 
