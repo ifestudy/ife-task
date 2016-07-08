@@ -1,0 +1,54 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+    // * 10 / 16 * 100%
+    font-family: "Microsoft Yahei";
+}
+
+body{
+    padding: 2rem;
+}
+
+// TODO: 设置成flex，但是不要设置成flex－flow
+.flex{
+    font-size: 1.6rem;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: space-between;
+    div{
+        box-sizing: border-box;
+        width: 15rem;
+        border: 0.2rem solid #f00;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .one{
+        height: 12rem;
+    }
+    .two{
+        height: 10rem;
+    }
+    .three{
+        height: 4rem;
+    }
+    .four{
+        border-color: #00f;
+        height: 20rem;
+    }
+}
+
+@media all and (max-width: 640px) {
+    .flex{
+        flex-wrap: wrap;
+        align-items: flex-start;
+        .four{
+            order: -1;
+        }
+    }
+}

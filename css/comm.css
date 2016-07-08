@@ -26,6 +26,7 @@ a:hover{
 
 .main a{
     font-size: 20px;
+    display: inline-block;
 }
 /**
  *header的样式
@@ -38,15 +39,15 @@ a:hover{
     border-bottom: 1px solid #e8e8e8;
     color: #036;
     text-align: center;
-    line-height: 100px;
 }
 .header h1{
+    line-height: 100px;
     margin: 0.325rem !important;
     padding: 0px;
 }
 .header p{
     margin: 0px !important;
-    padding: 0px;
+    padding: 5px 0;
 }
 
 /**
@@ -58,7 +59,6 @@ a:hover{
     overflow: hidden;
     padding: 20px;
 }
-
 /**
  *footer的样式
  */

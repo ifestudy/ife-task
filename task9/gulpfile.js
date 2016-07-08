@@ -13,7 +13,9 @@ var fileinclude = require('gulp-file-include');
 var rev = require('gulp-rev-append');
 //gulp监视器
 var watch = require('gulp-watch');
-var gulpSequence = require('gulp-sequence'); 
+var gulpSequence = require('gulp-sequence');
+
+
 
 gulp.task('html', function(){
 	gulp.src('src/html/index.html')

@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html {
+  font-size: 62.5%;
+  font-family: "Microsoft Yahei"; }
+
+body {
+  padding: 2rem; }
+
+.flex {
+  font-size: 1.6rem;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between; }
+  .flex div {
+    box-sizing: border-box;
+    width: 15rem;
+    border: 0.2rem solid #f00;
+    text-align: center;
+    margin-bottom: 2rem; }
+  .flex .one {
+    height: 12rem; }
+  .flex .two {
+    height: 10rem; }
+  .flex .three {
+    height: 4rem; }
+  .flex .four {
+    border-color: #00f;
+    height: 20rem; }
+
+@media all and (max-width: 640px) {
+  .flex {
+    flex-wrap: wrap;
+    align-items: flex-start; }
+    .flex .four {
+      order: -1; } }
