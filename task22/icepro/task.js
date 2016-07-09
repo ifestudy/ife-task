@@ -97,6 +97,8 @@
 				return this;
 			}
 		},
+		//由于只需要显示一次所以加个callback就好了！
+		//中序
 		inOrder: function(callback){
 			var orderloop = function(node,callback){
 				if(node){
