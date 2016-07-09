@@ -71,6 +71,7 @@
 
 		},
 		//广度优先算法
+		//参考至 http://code.tutsplus.com/articles/data-structures-with-javascript-tree--cms-23393
 		traverseBF : function(callback) {
 			//先访问本级节点->入栈
 			//堆栈->取出最先放入节点->将该节点的孩子放入堆栈->执行操作
@@ -99,7 +100,7 @@
 (function(){
 	var speed = 500,
 		randerStack = [];
-	
+	//数据
 	var data = 
 		{data:'x',children:[
 			{data:'a',children:[
@@ -140,17 +141,9 @@
 	})(mtree.node,mtree.node.element);
 	
 	$("#order").on("change",function(){
+		//
 		var visitElement = function(element){
-			randerStack.push(
-				function(){
-					$(element).addClass("bg-blue");
-					setTimeout(
-						function(){
-							$(element).removeClass("bg-blue");
-						}
-					,speed);
-				}
-			);
+			randerStack.push($.visitElement(element,"bg-blue",speed));
 		}
 		switch($(this).val()){
 			case "1":mtree.traverseDF(visitElement);break;

@@ -147,16 +147,7 @@
 	
 	$("#order").on("change",function(){
 		var visitElement = function(element){
-			randerStack.push(
-				function(){
-					$(element).addClass("bg-blue");
-					setTimeout(
-						function(){
-							$(element).removeClass("bg-blue");
-						}
-					,speed);
-				}
-			);
+			randerStack.push($.visitElement(element,"bg-blue",speed));
 		}
 		switch($(this).val()){
 			case "1":btree.preOrder(visitElement);break;
