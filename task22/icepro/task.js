@@ -97,6 +97,8 @@
 				return this;
 			}
 		},
+		//由于只需要显示一次所以加个callback就好了！
+		//中序
 		inOrder: function(callback){
 			var orderloop = function(node,callback){
 				if(node){
@@ -145,16 +147,7 @@
 	
 	$("#order").on("change",function(){
 		var visitElement = function(element){
-			randerStack.push(
-				function(){
-					$(element).addClass("bg-blue");
-					setTimeout(
-						function(){
-							$(element).removeClass("bg-blue");
-						}
-					,speed);
-				}
-			);
+			randerStack.push($.visitElement(element,"bg-blue",speed));
 		}
 		switch($(this).val()){
 			case "1":btree.preOrder(visitElement);break;

@@ -460,6 +460,17 @@
             return false;
         }
     });
+    //访问方法-用于显示差异颜色，afterClass待定！
+    _$.visitElement = function(element,beforeClass,delay){
+        return function(){
+                $(element).addClass(beforeClass);
+                setTimeout(
+                    function(){
+                        $(element).removeClass(beforeClass);
+                    }
+                ,delay);
+            }
+    }
     //全局声明
     _$.fn.init.prototype = _$.fn;
     window.$ = _$;
