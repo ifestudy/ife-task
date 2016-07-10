@@ -140,23 +140,30 @@
 		});
 	})(mtree.node,mtree.node.element);
 	
-	$("#order").on("change",function(){
+	$("#search").on("click",function(){
 		//
+		var query = $("#query").val();
+		mtree.traverseDF(function(element){$(element).removeClass('bg-grey');});
 		var visitElement = function(element){
 			randerStack.push($.visitElement(element,"bg-blue",speed));
+			//TODO:光顾着写遍历了，忘记写查询了！！！！
+			if(this.data == query) randerStack.push(
+				function(){
+					$(element).addClass('bg-grey');
+				});
 		}
-		switch($(this).val()){
+		switch($("#order").val()){
 			case "1":mtree.traverseDF(visitElement);break;
 			case "2":mtree.traverseBF(visitElement);break;
 		}
-		$("#order")[0].disabled = true;
+		$("#search")[0].disabled = true;
 		var rander = setInterval(
 			function() {
 				if(randerStack.length > 0){
 					randerStack.shift()();
 				}else{
 					clearInterval(rander);
-					$("#order")[0].disabled = false;
+					$("#search")[0].disabled = false;
 				}
 			}
 		,speed);
