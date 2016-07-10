@@ -176,7 +176,7 @@
         removeClass : function( ClassName ) {
             if((this[0].nodeType)&&(this[0].nodeType != 11)){
                 $(this[0]).each(function(i,item){
-                    item.className = item.className.replace(new RegExp("(\\s|^)"+ClassName+"(\\s|$)","g"),"");
+                    item.className = item.className.replace(new RegExp("(\\s|^)("+ClassName+")(\\s|$)","g"),"$1");
                 });
                 return this;
             }else{
