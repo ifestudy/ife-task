@@ -3,6 +3,7 @@
 *后面有看到这里的小伙伴注意啦！这里的操作完全可以直接用element代替，而不是自己写一个bTree！
 *因为element本身就是一个多叉树，添加一个方法就可以做到了
 */
+//mtree start======================================
 (function(window,$,undefined){
 	//采用工厂生成node
 	var _node = function(data){
@@ -18,7 +19,31 @@
 		},
 		data: null,
 		parent: null,
-		children: []
+		index: 0,
+		children: [],
+		setData: function(data,element){
+			//施工中！
+		}
+		remove: function(){
+			if(this.parent){
+				$(this.element).remove();
+				this.parent.children.splice(this.index,1);
+				return true;
+			}else{
+				console.log("不能删除根节点，若删除根节点，请使用mTree.remove()");
+				return false;
+			}
+		},
+		addNew: function(data,element){
+			if(data) {
+				var newNode = _node(data);
+				newNode.parent = this;
+				newNode.element = element;
+				newNode.index = this.children.length;
+				$(this.element).append(element);
+				this.children.push(newNode);
+			}
+		}
 	};
 	//采用工厂产生btree
 	var _mTree = function(data){
@@ -34,6 +59,10 @@
 					$(data).each(function(i,item){
 						if(item.data){
 							node.children[i] = _node(item.data);
+							//记录父亲
+							node.children[i].parent = node;
+							//记录位于父亲元素中的位置
+							node.children[i].index = i;
 							loop(node.children[i],item.children);
 						}
 					});
@@ -50,6 +79,10 @@
 				$(data.children).each(function(i,item){
 					if(item.data){
 						node.children[i] = _node(item.data);
+						//记录父亲
+						node.children[i].parent = node;
+						//记录位于父亲元素中的位置
+						node.children[i].index = i;
 						loop(node.children[i],item.children);
 					}
 				});
@@ -96,8 +129,10 @@
 	//映射btree至windows，但不映射node以保护节点类不被直接访问
 	window.mTree = _mTree;
 })(window,$);
+//mtree end======================================
 
 (function(){
+	//变量声明start======================================
 	var speed = 500,
 		randerStack = [];
 	//数据
@@ -119,26 +154,49 @@
 			]}
 		]};
 	var mtree = mTree(data);
-	//根节点单独设置
-	mtree.node.element = document.createElement("div");
-	$(mtree.node.element).addClass("bTree");
-	$("#display").append(mtree.node.element);
-	//输出结构
-	(function buildConstrut(node,content){
-		//如果存在根节点则输出p
-		if(node.data){
-			_p = document.createElement("p");
-			_p.innerText = node.data;
-			$(content).append(_p);
-		}
-		//如果是子节点则生成div
-		$(node.children).each(function(){
-			this.element = document.createElement("div");
-			$(this.element).addClass("bTree");
-			$(content).append(this.element);
-			buildConstrut(this,this.element);
+	var selectedNode;
+	//变量声明end======================================
+	var createNewElement = function(){
+		var newElement = document.createElement("div");
+		$(newElement).addClass("bTree").addClass("bg-white");
+		return newElement;
+	};
+	(function init(){
+
+		//根节点单独设置
+		mtree.node.element = createNewElement();
+		$(mtree.node.element).on('click',function(){
+			if(selectedNode) $(selectedNode.element).removeClass('selectedTree');
+			selectedNode = mtree.node;
+			$(selectedNode.element).addClass('selectedTree');
+			event.stopPropagation();
 		});
-	})(mtree.node,mtree.node.element);
+		$("#display").append(mtree.node.element);
+
+		//输出结构
+		(function buildConstrut(node,content){
+			//如果存在根节点则输出p
+			if(node.data){
+				_p = document.createElement("p");
+				_p.innerText = node.data;
+				$(content).append(_p);
+			}
+			//如果是子节点则生成div
+			$(node.children).each(function(){
+				var node = this;
+				this.element = createNewElement();
+				$(this.element).on('click',function(event){
+					if(selectedNode) $(selectedNode.element).removeClass('selectedTree');
+					selectedNode = node;
+					$(selectedNode.element).addClass('selectedTree');
+					event.stopPropagation();
+					// return false;
+				});
+				$(content).append(this.element);
+				buildConstrut(this,this.element);
+			});
+		})(mtree.node,mtree.node.element);
+	})();
 	
 	$("#search").on("click",function(){
 		//
@@ -167,5 +225,16 @@
 				}
 			}
 		,speed);
+	});
+
+	$("#delete").on('click',function(){
+		if(!selectedNode.remove()) alert("不允许移除根节点");
+	});
+
+	$("#addNew").on('click',function(){
+		var data = $("#newNode").val();
+		var newElement = createNewElement();
+		$(newElement).append("<p>"+data+"</p>");
+		selectedNode.addNew(data,newElement);
 	});
 })();
