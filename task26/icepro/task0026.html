@@ -6,14 +6,41 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-	<div>
-		<canvas id="display" width="800" height="600" style="border:1px #000 solid;">
+	<div class="space">
+		<canvas id="display" width="800" height="600">
 			你的浏览器可能不支持canvas，请更换支持canvas的浏览器。
 		</canvas>
-		
 	</div>
-	<div id="control">
-
+	<div class="control">
+		<fieldset class="controltab">
+			<legend>欢迎您指挥官，请下达指令</legend>
+			<div class="console">
+				<p>console</p>
+				<br>
+				<ul>
+					<li>$ > 系统启动！</li>
+					<li>$ > 系统启动！</li>
+					<li>$ > 系统启动！</li>
+					<li>$ > 系统启动！</li>
+					<li>$ > 系统启动！</li>
+					<li>$ > 系统启动！</li>
+					<li>$ > 系统启动！</li>
+					<li>$ > 系统启动！</li>
+					<li>$ > 系统启动！</li>
+				</ul>
+			</div>
+			<div id="control" class="contol-tab">
+				<div class="single">
+					<p>1号旗舰<button class="primary" data-type="start">启动引擎</button><button class="primary" data-type="stop">关闭引擎</button><button class="warning" data-type="destroy">销毁</button></p>
+				</div>
+				<div class="single">
+					<p>2号旗舰<button class="primary">启动引擎</button><button class="primary">关闭引擎</button><button class="warning">销毁</button></p>
+				</div>
+				<div class="new">
+					<button class="primary">发射火箭</button>
+				</div>
+			</div>
+		</fieldset>
 	</div>
 	
 	<script type="text/javascript" src="../../jspublic/query.js"></script>
