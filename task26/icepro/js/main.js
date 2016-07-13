@@ -1,6 +1,13 @@
-// (function(){
+(function(window,undefined){
 	//常量命名start=====================
-
+	var MAX_NUMBER_OF_SPACESHIP = 4;
+	var SIGNAL_SUCCEE_RATE = 0.7;
+	var CHARGE_INTERVAL = 5000;
+	var TOTAL_ENERGY = 100;
+	var CHARGE_RATE = 15;
+	var DESTROY = 'destroy';
+	var STOP = 'stop';
+	var RUN = 'run';
 	//常量命名end=======================
 	// universe 
 	// contain one planet and several spaceship
@@ -26,10 +33,12 @@
 			if( _single !== undefined ){
 				return _single; 
 			}
-			this.spaceshipList = [];
+			this.getSpaceshipList = function(){
+				return spaceshipList;
+			};
 			this.setCommander = function(pCommander){
 				_commander = pCommander;
-			}
+			};
 			this.getCommander = function(pCommander){
 				return commander;
 			};
@@ -70,7 +79,7 @@
 				spaceshipList = space.spaceshipList;
 				//遍历订阅对象，并按照指定概率发布给对象
 				for(var i in spaceshipList){
-					if(Math.random() <= 0.7) setTimeout(function(){spaceshipList[i].signalReceiver(pSignal)},1000);
+					if(Math.random() <= SIGNAL_SUCCEE_RATE ) setTimeout(function(){spaceshipList[i].signalReceiver(pSignal)},1000);
 				}
 			}
 			return this;
@@ -85,6 +94,7 @@
 	* 2. signalReceiver
 	* 3. id
 	* 4. orbital
+	* 这是一个常见的简单工厂模式，只负责组装一个全新的spaceship
 	*/ 
 	//依赖-- energysystem --enginesystem
 	var SpaceShip = function(id,orbital){
@@ -96,10 +106,11 @@
 	SpaceShip.fn = SpaceShip.prototype = {
 		init: function(id,orbital,where){
 			this.id = id;
-			this.orbital = orbital;
-			this._states = 'stop';
-			this.energy = 100;
+			this.orbital = orbital+1;
+			this._states = STOP;
+			this.energy = 15;//TOTAL_ENERGY;
 			this.where = where;
+			this.angle = 0;
 			return this;
 		},
 		constructor: SpaceShip,
@@ -111,9 +122,9 @@
 			this.engineeSystem = new pEngineeSystem(this);
 		},
 		set states(states){
-			if(states == 'destroy') ;
+			if(states == DESTROY) ;
 			//当state被设置的时候
-			if(( states == 'stop' ) && (this.energySystem) && (this.energySystem.start && this.energySystem.stop) ) {
+			if(( states == STOP ) && (this.energySystem) && (this.energySystem.start && this.energySystem.stop) ) {
 				this.engineeSystem.stop();
 				this.energySystem.start();
 			}else{
@@ -132,14 +143,15 @@
 	SpaceShip.prototype.signalReceiver = function(signal){
 		if(signal.getId() == this.id){
 			switch(signal.getCommand()){
-				case 'run': 
+				case RUN: 
 					this.engineeSystem.run();
 					break;
-				case 'stop': 
+				case STOP: 
 					this.engineeSystem.stop();
 					break;
-				case 'destroy': 
+				case DESTROY: 
 					var space = new Space();
+					//快告诉宇宙我已经完蛋啦/(ㄒoㄒ)/~~
 					space.destroySpaceship(this);
 					break;
 			}
@@ -154,19 +166,24 @@
 			clearInterval(_timer);
 		}
 		function start(){
-			var chargeRate = 15;
 			_timer = setInterval(
 				function(){
-					if(spaceship.states != 'run'){
-						spaceship.energy += 15;
-					}
-					if(spaceship.energy >= 100){
-						spaceship.energy = 100;
+					if(spaceship.states != RUN && (parseInt(spaceship.energy) < TOTAL_ENERGY)){
+						//动画补间--每隔0.01秒执行一次，共执行50次
+						var _times = 0;
+						var curation_energy = setInterval(function(){
+							_times++;
+							if(_times <= CHARGE_RATE){
+								spaceship.energy = (parseInt(spaceship.energy) >= TOTAL_ENERGY)?TOTAL_ENERGY:(parseInt(spaceship.energy) + 1).toFixed(0);
+							}else{
+								clearInterval(curation_energy);
+							}
+						},33);
 					}
 					console.log(spaceship.energy);
 					//log(_energy);
 				}
-			,5000);
+			,CHARGE_INTERVAL);
 		}
 		return {
 			stop: stop,
@@ -188,15 +205,25 @@
 		function run(){
 			if(spaceship){
 				if(spaceship.energy >= 5) {
+					//每隔1秒检测一次
 					_timer = setInterval(
 						function(){
-							if(spaceship.energy >= 5){
-								spaceship.energy -= 5;
+							if(parseInt(spaceship.energy) >= 5){
+								//动画补间--每隔0.01秒执行一次，共执行50次
+								var _times = 0;
+								var curation_energy = setInterval(function(){
+									_times++;
+									if(_times <= 50){
+										spaceship.energy = (spaceship.energy - .1).toFixed(1);
+									}else{
+										clearInterval(curation_energy);
+									}
+								},10);
 							}else{
+								spaceship.states = STOP;
 								clearInterval(_timer);
 							}
-						}
-					,1000);
+					},1000);
 				}
 			}
 		}
@@ -254,7 +281,7 @@
 	Commander.prototype.postCommand = function(pSignal){
 		var signal = new Signal(Log).setSignal(pSignal);
 		var mediator = new Mediator(Log);
-		if(pSignal.getCommand=='destroy'){
+		if(pSignal.getCommand==DESTROY){
 			for(var i in this.orbital){
 				if(pSignal.getId() == this.orbital[i]){
 					this.orbital[i] == null;
@@ -264,7 +291,7 @@
 	};
 	//发射一艘新的宇宙飞船，该命令不会丢失！
 	Commander.prototype.launchRocket = function(){
-		if(lanuchedRocket < 4 ){
+		if(this.lanuchedRocket < MAX_NUMBER_OF_SPACESHIP ){
 			for(var i in this.orbital){
 				if(!this.orbital[i]) {
 					var space = new Space();
@@ -279,12 +306,108 @@
 		}
 	}
 	
-// });
+
+	//rander 模块
+
+	window.Commander = Commander;
+	window.Space = Space;
+})(window);
+
 	function init(){
 		//初始化
 		var commander = new Commander();
 		var space = new Space();
 		space.setCommander(commander);
+		commander.launchRocket();
+		space.getSpaceshipList()[0].states = 'run';
 	}
 
 	init();
+
+
+
+	var canvas = document.getElementById('display');
+	function randerSpaceShip(ctx,pId,pEnergy,pX,pY,orbital,angle){
+			//保存位置
+			ctx.save();
+			//位移到中心点
+			ctx.translate(pX,pY);
+			//移动到自己的位置，x：，y：需要向上基础50，以及每轨道间隔50
+			ctx.translate( 0 ,-50-50*orbital);
+			//每层间隔50
+			ctx.translate(0,50+50*orbital);
+			//角度位置
+			ctx.rotate(angle);
+			ctx.translate(0,-50-50*orbital);
+			//开始绘制飞船
+			//x:需要向左本身的大小/2
+			ctx.translate( -50 ,0);
+			ctx.beginPath();
+			var x              = 20;               // x 坐标值
+			var y              = 20;               // y 坐标值
+			var radius         = 20;               // 圆弧半径
+			var w              = 60;
+			var startAngle     = -Math.PI/2;                     // 开始点
+			var endAngle       = Math.PI*1/2; // 结束点
+			//左边
+			ctx.arc(x, y, radius, startAngle, endAngle, true);
+			//右边
+			ctx.arc(x+w, y, radius, endAngle, startAngle, true);
+			ctx.closePath();
+			ctx.fillStyle = "orange";
+			ctx.fill();
+			ctx.font = "18px serif";
+			ctx.textBaseline = "middle";
+			ctx.fillStyle = "white"
+			ctx.fillText("id:"+pId+"/"+pEnergy, 10 , 20);
+			//绘制结束，返回储存坐标点
+			ctx.restore();
+	}
+	if (canvas.getContext){
+		var ctx = canvas.getContext('2d');
+		//声明一个计数器
+		var time = 0;
+		var centerX = 400,
+			centerY = 300;
+		function randerSpace(time,ctx){
+			ctx.save();
+			var space = new Space();
+			//绘制space
+			//从stack中取出spaceship并渲染
+			for(var i in space.getSpaceshipList()){
+				var spaceship = space.getSpaceshipList()[i];
+				//暂未找到更好的同步方法
+				if(spaceship.states == 'run'){
+					if (spaceship.angle >= Math.PI*2) {
+						spaceship.angle -= Math.PI*2;
+					}else{
+						spaceship.angle += Math.PI*1/50;
+					}
+				}
+				randerSpaceShip(ctx,spaceship.id,spaceship.energy,centerX,centerY,spaceship.orbital,spaceship.angle);//Math.PI*1/50*(time%100));
+				
+			}
+
+			ctx.restore();	
+			
+		}
+		setInterval(function(){
+			//全地图大小：800*600
+			ctx.clearRect(0,0,800,600);
+
+			randerSpace(time,ctx,centerX,centerY);
+
+			//绘制地球位置
+			ctx.beginPath();
+			ctx.arc(centerX, centerY , 20, 0, 2*Math.PI, true);
+			ctx.closePath();
+			ctx.fillStyle = "black";
+			ctx.fill();
+
+			//计数器累加1
+			time++;
+			if(time>=100) time = 0;
+		},33);
+	}
+
+
