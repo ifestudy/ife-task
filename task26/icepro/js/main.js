@@ -396,13 +396,14 @@
 
 					break;
 			}
+			event.preventDefault();
 		});
 	}
 	Commander.prototype.destoryButton = function(orbital){
 		this.controlButton[orbital][0].innerHTML = "";
+		this.controlButton[orbital].unbind('click');
 	}
 	Commander.prototype.postCommand = function(pSignal){
-		
 		var signal = new Signal(Log)
 		signal.setSignal(pSignal);
 		var mediator = new Mediator(Log);
