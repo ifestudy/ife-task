@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>IFE JavaScript Task 21</title>
+	</head>
+	<style>
+		.bTree{
+			position: relative;
+			display: inline-block;
+			padding: 20px;
+			margin: 20px;
+			color: red;
+			text-align: center;
+			border: 1px solid #000;
+		}
+		.bg-blue {
+			background-color: blue;
+		}
+		p {
+			text-align: center;
+		}
+	</style>
+<body>
+<p>
+	<select id="order">
+		<option style="display:none;">-请选择-</option>
+		<option value="1">前序</option>
+		<option value="2">中序</option>
+		<option value="3">后序</option>
+	</select>
+</p>
+<div id="display">
+
+</div>
+<!-- 引入自己封装好的组件 -->
+<script type="text/javascript" src="../../jspublic/query.js"></script>
+<script src="task.js"></script>
+</body>
+</html>

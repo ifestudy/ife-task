@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>IFE JavaScript Task 21</title>
+	</head>
+	<style>
+		div {
+			position: relative;
+		}
+		.bTree{
+			position: relative;
+			display: inline-block;
+			padding: 20px;
+			margin: 20px;
+			color: red;
+			text-align: center;
+			border: 1px solid #000;
+		}
+		.bg-white {
+			background-color: white;
+		}
+		.bg-blue {
+			background-color: blue !important;
+		}
+		.bg-grey {
+			background-color: grey;
+		}
+		.selectedTree {
+			background-color: green;
+			color: white 
+		} 
+		#display {
+			height: 400px;
+		}
+		p {
+			text-align: center;
+		}
+	</style>
+<body>
+	<p>
+		<input id="newNode">
+		<button id="addNew">添加新节点</button>
+	</p>
+	<p>
+		<select id="order">
+			<option style="display:none;">-请选择-</option>
+			<option value="1">深度优先</option>
+			<option value="2">广度优先</option>
+		</select>
+		<input id="query" placeholder="输入字符以查询">
+		<button id="search">查询</button>
+		<button id="delete">删除元素</button>
+	</p>
+	<div id="display">
+
+	</div>
+	<!-- 引入自己封装好的组件 -->
+	<script type="text/javascript" src="../../jspublic/query.js"></script>
+	<script src="task.js"></script>
+</body>
+</html>

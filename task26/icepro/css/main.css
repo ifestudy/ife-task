@@ -1,0 +1,85 @@
+* {
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+.space {
+	width: 850px;
+	height: 650px;
+	float: left;
+}
+.space canvas {
+	margin-left: 24px;
+	margin-top: 24px;
+	width: 800px;
+	height: 600px;
+	border:1px #000 solid;
+}
+.control {
+	width: 400px;
+	height: 650px;
+	float: right;
+}
+.control .controltab {
+	padding: 20px;
+	width: 310px;
+	margin-right: 24px;
+	margin-top: 24px;
+}
+.controltab ul li {
+	list-style: none;
+}
+.controltab .console {
+	background-color: #333;
+	padding: 20px;
+	color: white;
+}
+.control .console {
+	margin-top: 20px;
+}
+.control .contol-tab {
+	margin-top: 20px;
+}
+.contol-tab .single {
+	margin-top: 10px;
+}
+.contol-tab .new {
+	margin-top: 20px;
+}
+button{
+	margin-left: 6px;
+	margin-right: 6px;
+    padding: 5px 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+}
+button.primary {
+    background-color: rgb(25,99,150);
+    color: white;
+}
+button.primary:hover {
+	background-color: rgb(59,169,238);
+	color: white;
+}
+button.primary:active {
+	background-color: #e64a19;
+	color: white;
+}
+button.warning {
+    background-color: rgb(197,0,14);
+    color: white;
+}
+button.warning:hover {
+    background-color: rgb(230,115,124);
+    color: white;
+}
+button.warning:active {
+    background-color: #e64a19;
+    color: white;
+}
+body{
+	margin: auto;
+	min-width: 1280px;
+}
