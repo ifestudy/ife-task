@@ -370,7 +370,7 @@
         },
         //[x]-暂时只需要获取处理！可以利用arguments做设定处理！--已经完成
         data : function(dataName,value) {
-            if( arguments.length = 2 ){
+            if( arguments.length == 2 ){
                 if (dataName=="") {
                     this.each(function(i,item){
                         this.data = value;
@@ -384,11 +384,11 @@
             }else{
                 // var dataName = dataName;
                 if ((!dataName) || (dataName=="")) {
-                    this[0].getAttribute('data');
-                    return this;
+                    return this[0].getAttribute('data');
+                    // return this;
                 }else{
-                    this[0].getAttribute('data-'+dataName);
-                    return this;
+                    return this[0].getAttribute('data-'+dataName);
+                    // return this;
                 };
             }
         },
