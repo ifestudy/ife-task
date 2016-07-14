@@ -1,4 +1,5 @@
-(function(window,undefined){
+(function(window,$,undefined){
+	"use strict";
 	//常量命名start=====================
 	var MAX_NUMBER_OF_SPACESHIP = 4;
 	var SIGNAL_SUCCEE_RATE = 0.7;
@@ -24,13 +25,13 @@
 	* 3. callMediator
 	* 这是一个单利模式用于返回指定的space，因为space只有一个，且任意地点都可以发现并呼叫space
 	*/
-	var Space = (function(){
+	var Space = (function(undefined){
 		var _single,
 			_commander,
 			spaceshipList = [];
 		function Constructor(){
 			//
-			if( _single !== undefined ){
+			if(  _single !== undefined ){
 				return _single; 
 			}
 			this.getSpaceshipList = function(){
@@ -75,12 +76,17 @@
 			}
 			//在介质中传播
 			this.spread = function(pSignal){
-				var space = new space();
-				spaceshipList = space.spaceshipList;
+				var space = new Space();
+				var spaceshipList = space.getSpaceshipList();
 				//遍历订阅对象，并按照指定概率发布给对象
-				for(var i in spaceshipList){
-					if(Math.random() <= SIGNAL_SUCCEE_RATE ) setTimeout(function(){spaceshipList[i].signalReceiver(pSignal)},1000);
-				}
+				setTimeout(function(){
+					for(var i in spaceshipList){
+						if(Math.random() <= SIGNAL_SUCCEE_RATE ) {
+							var spaceship = spaceshipList[i];
+							spaceship.signalReceiver(pSignal)
+						}	
+					}
+				},1000);
 			}
 			return this;
 		}
@@ -106,7 +112,7 @@
 	SpaceShip.fn = SpaceShip.prototype = {
 		init: function(id,orbital,where){
 			this.id = id;
-			this.orbital = orbital+1;
+			this.orbital = parseInt(orbital)+1;
 			this._states = STOP;
 			this.energy = 15;//TOTAL_ENERGY;
 			this.where = where;
@@ -123,6 +129,7 @@
 		},
 		set states(states){
 			if(states == DESTROY) ;
+			states && ( this._states = states );
 			//当state被设置的时候
 			if(( states == STOP ) && (this.energySystem) && (this.energySystem.start && this.energySystem.stop) ) {
 				this.engineeSystem.stop();
@@ -131,7 +138,6 @@
 				this.engineeSystem.run();
 				this.energySystem.stop();
 			}
-			states && ( this._states = states );
 		},
 		get states(){
 			//states的读取
@@ -144,10 +150,10 @@
 		if(signal.getId() == this.id){
 			switch(signal.getCommand()){
 				case RUN: 
-					this.engineeSystem.run();
+					this.states = RUN;
 					break;
 				case STOP: 
-					this.engineeSystem.stop();
+					this.states = STOP;
 					break;
 				case DESTROY: 
 					var space = new Space();
@@ -166,6 +172,7 @@
 			clearInterval(_timer);
 		}
 		function start(){
+			if(!_timer) clearInterval(_timer);
 			_timer = setInterval(
 				function(){
 					if(spaceship.states != RUN && (parseInt(spaceship.energy) < TOTAL_ENERGY)){
@@ -204,7 +211,8 @@
 		var _timer;
 		function run(){
 			if(spaceship){
-				if(spaceship.energy >= 5) {
+				if(_timer) clearInterval(_timer);
+				if((parseInt(spaceship.energy) >= 5)) {
 					//每隔1秒检测一次
 					_timer = setInterval(
 						function(){
@@ -245,7 +253,7 @@
 			_log = log;
 		return {
 			setSignal: function(pSignal){
-				if(this.caller instanceof commander){
+				if(true){
 					_signal = pSignal;
 					console.log("your command has been sended");
 					// log.input("your command has been sended");
@@ -259,10 +267,10 @@
 				return _signal;
 			},
 			getId: function(){
-				return _signal.id;
+				return _signal['id'];
 			},
 			getCommand: function(){
-				return _signal.command;
+				return _signal['command'];
 			}
 		};
 	};
@@ -270,21 +278,89 @@
 	* commander
 	* 
 	*/
-	var Commander = function(){
-		this.newid = 0;
+	var Commander = function(control){
+		this.newid = 1;
 		this.lanuchedRocket = 0;
+		this.control = control;
 		//轨道记录器
 		this.orbital = [null,null,null,null];
+		//轨道（飞船）对应的按钮记录
+		this.controlButton = [];
+		for (var i = 4 ; i > 0 ; i--) {
+			var _div = $(document.createElement("div"));
+			_div.addClass("single");
+			var _p = $(document.createElement("p"));
+			_div.append(_p);
+			$(this.control).append(_div);
+			this.controlButton.push(_p);
+		};
+		//渲染发射菜单
+		var _div = $(document.createElement("div"));
+		var _button = $(document.createElement("button"));
+		_button[0].innerHTML = "发射火箭";
+		_button.addClass("primary");
+		var self = this;
+		//增加按钮的侦听（如果按下则发射）
+		_button.on('click',function(){
+			self.launchRocket();
+		});
+		_div.addClass("new");
+		_div.append(_button);
+		$(this.control).append(_div);
 		return this;
 	};
+	Commander.prototype.buildButton = function(orbital){
+		var id = parseInt(this.orbital[orbital]);
+		var _start = $(document.createElement("button"));
+		_start.addClass("primary").data('type',RUN).data('id',id);
+		_start[0].innerHTML = "启动引擎";
+		var _stop = $(document.createElement("button"));
+		_stop.addClass("primary").data('type',STOP).data('id',id);
+		_stop[0].innerHTML = "关闭引擎";
+		var _destroy = $(document.createElement("button"));
+		_destroy.addClass("warning").data('type',DESTROY).data('id',id);
+		_destroy[0].innerHTML = "摧毁";
+		this.controlButton[orbital].append('<span>第'+id+'号旗舰：</span>');
+		this.controlButton[orbital].append(_start);
+		this.controlButton[orbital].append(_stop);
+		this.controlButton[orbital].append(_destroy);
+		var self = this;
+		this.controlButton[orbital].on('click',function(event){
+			var target = $(event.target);
+			switch(target.data('type')){
+				case RUN: 
+					var pSignal = {id:target.data('id'),command:RUN};
+					self.postCommand(pSignal);
+					break;
+				case STOP: 
+					var pSignal = {id:target.data('id'),command:STOP};
+					self.postCommand(pSignal);
+					break;
+				case DESTROY: 
+					var pSignal = {id:target.data('id'),command:DESTROY};
+					self.postCommand(pSignal);
+					break;
+				default:
 
+					break;
+			}
+		});
+	}
+	Commander.prototype.destoryButton = function(orbital){
+		this.controlButton[orbital].innerHTML = "";
+	}
 	Commander.prototype.postCommand = function(pSignal){
-		var signal = new Signal(Log).setSignal(pSignal);
+		var signal = new Signal(Log)
+		signal.setSignal(pSignal);
 		var mediator = new Mediator(Log);
+		mediator.spread(signal);
+		//如果命令是destory则在记录的轨道上也删除他
 		if(pSignal.getCommand==DESTROY){
 			for(var i in this.orbital){
 				if(pSignal.getId() == this.orbital[i]){
 					this.orbital[i] == null;
+					this.destoryButton(parseInt(i));
+					this.lanuchedRocket--;
 				}
 			}
 		}
@@ -294,12 +370,13 @@
 		if(this.lanuchedRocket < MAX_NUMBER_OF_SPACESHIP ){
 			for(var i in this.orbital){
 				if(!this.orbital[i]) {
+					//如果轨道上面没船就创建
 					var space = new Space();
 					var neworbital = parseInt(i);
 					this.orbital[i] = this.newid;
 					space.addNewSpaceship( SpaceShip(this.newid,neworbital) );
 					this.newid++;
-					lanuched = true;
+					this.buildButton(neworbital);
 					break;
 				}
 			}
@@ -311,15 +388,13 @@
 
 	window.Commander = Commander;
 	window.Space = Space;
-})(window);
+})(window,$);
 
 	function init(){
 		//初始化
-		var commander = new Commander();
+		var commander = new Commander($("#control"));
 		var space = new Space();
 		space.setCommander(commander);
-		commander.launchRocket();
-		space.getSpaceshipList()[0].states = 'run';
 	}
 
 	init();
