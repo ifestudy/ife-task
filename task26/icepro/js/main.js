@@ -15,9 +15,53 @@
 	/**
 	* log寄存器
 	*/
-	var Log = function(){
-
-	};
+	var Log = (function(){
+		var _single,
+			log = [],
+			randerPlace;
+		function Constructor(){
+			//
+			if(  _single !== undefined ){
+				return _single; 
+			}
+			this.setRanderPlace = function(obj){
+				randerPlace = obj;
+			}
+			this.log = function(str){
+				if(log.length >= 10){
+					log.shift();
+					$(randerPlace).pop('left');
+				}
+				log.push(str);
+				this.pushLog(str);
+			}
+			this.pushLog = function(str){
+				str = '$ > ' + str;
+				var _li = document.createElement('li');
+				$(randerPlace).append(_li);
+				var times = 1,
+					time = 40;
+				var _timer = function(){
+					if(time > 20 ) time--;
+					if(times <= str.length ){
+						_li.innerHTML = str.substr(0,times);
+						times++
+						setTimeout(_timer,time);
+					}
+				}
+				setTimeout(_timer,time);
+			}
+			this.randerLog = function(){
+				$(randerPlace)[0].innerHTML = "";
+				$(log).each(function(){
+					$(randerPlace).append('<li>$ > '+this+'</li>');
+				});
+			}
+			return this;
+		}
+		_single = new Constructor();
+		return _single;
+	})();
 	/**
 	* spaceManager
 	* 1. create
@@ -114,7 +158,7 @@
 			this.id = id;
 			this.orbital = parseInt(orbital)+1;
 			this._states = STOP;
-			this.energy = 15;//TOTAL_ENERGY;
+			this.energy = 100;//TOTAL_ENERGY;
 			this.where = where;
 			this.angle = 0;
 			return this;
@@ -129,13 +173,18 @@
 		},
 		set states(states){
 			if(states == DESTROY) ;
-			states && ( this._states = states );
 			//当state被设置的时候
-			if(( states == STOP ) && (this.energySystem) && (this.energySystem.start && this.energySystem.stop) ) {
+			if( states == STOP ) {
 				this.engineeSystem.stop();
 				this.energySystem.start();
-			}else{
-				this.engineeSystem.run();
+				this._states = states ;
+			}
+			if( states == RUN && (this._states == STOP)){
+				if(parseInt(this.energy)>=5) {
+					this.engineeSystem.run();
+					this._states = states ;
+
+				} 
 				this.energySystem.stop();
 			}
 		},
@@ -249,18 +298,18 @@
 	* getSignal
 	*/
 	var Signal = function(log){
-		var _signal,
-			_log = log;
+		var _signal;
 		return {
 			setSignal: function(pSignal){
 				if(true){
 					_signal = pSignal;
-					console.log("your command has been sended");
-					// log.input("your command has been sended");
-				}else{
-					console.log("your command has been denied");
-					// log.input("your command has been denied");
+					// console.log("your command has been sended");
+					Log.log("命令正在介质中传播......");
 				}
+				// }else{
+					// console.log("your command has been denied");
+					// log.input("your command has been denied");
+				// }
 				return this;
 			},
 			getSignal: function(){
@@ -331,14 +380,17 @@
 				case RUN: 
 					var pSignal = {id:target.data('id'),command:RUN};
 					self.postCommand(pSignal);
+					Log.log("{id:"+pSignal.id+",command:"+pSignal.command+"}指令已发出，将在1秒后生效");
 					break;
 				case STOP: 
 					var pSignal = {id:target.data('id'),command:STOP};
 					self.postCommand(pSignal);
+					Log.log("{id:"+pSignal.id+",command:"+pSignal.command+"}指令已发出，将在1秒后生效");
 					break;
 				case DESTROY: 
 					var pSignal = {id:target.data('id'),command:DESTROY};
 					self.postCommand(pSignal);
+					Log.log("{id:"+pSignal.id+",command:"+pSignal.command+"}指令已发出，将在1秒后生效");
 					break;
 				default:
 
@@ -347,18 +399,20 @@
 		});
 	}
 	Commander.prototype.destoryButton = function(orbital){
-		this.controlButton[orbital].innerHTML = "";
+		this.controlButton[orbital][0].innerHTML = "";
 	}
 	Commander.prototype.postCommand = function(pSignal){
+		
 		var signal = new Signal(Log)
 		signal.setSignal(pSignal);
 		var mediator = new Mediator(Log);
 		mediator.spread(signal);
 		//如果命令是destory则在记录的轨道上也删除他
-		if(pSignal.getCommand==DESTROY){
+		if(signal.getCommand() == DESTROY){
 			for(var i in this.orbital){
-				if(pSignal.getId() == this.orbital[i]){
-					this.orbital[i] == null;
+				if(signal.getId() == this.orbital[i]){
+					Log.log("截获指令摧毁旗舰，id:"+this.orbital[i]+"号旗舰已从信号队列删除");
+					this.orbital[i] = null;
 					this.destoryButton(parseInt(i));
 					this.lanuchedRocket--;
 				}
@@ -377,15 +431,18 @@
 					space.addNewSpaceship( SpaceShip(this.newid,neworbital) );
 					this.newid++;
 					this.buildButton(neworbital);
+					Log.log("成功发射火箭");
 					break;
 				}
 			}
+		}else{
+			Log.log("轨道已满，请求拒绝");
 		}
 	}
 	
 
 	//rander 模块
-
+	window.Log = Log;
 	window.Commander = Commander;
 	window.Space = Space;
 })(window,$);
@@ -394,6 +451,10 @@
 		//初始化
 		var commander = new Commander($("#control"));
 		var space = new Space();
+		// var Log = new Log();
+		Log.setRanderPlace($("#console"));
+		Log.log("系统启动完毕 > ....");
+		Log.log("请输入指令 > ....");
 		space.setCommander(commander);
 	}
 
