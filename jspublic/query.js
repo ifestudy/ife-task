@@ -336,6 +336,12 @@
             }else{
                 /*更改为全部绑定*/
                 this.each(function(i,item){
+                    var func_name = $.getFuncName(listener) || Math.random();
+                    var _json = {};
+                    _json[func_name] = listener;
+                    item.eventFnStack = item.eventFnStack || {} ;
+                    item.eventFnStack[name] = item.eventFnStack[name] || [] ;
+                    item.eventFnStack[name].push(_json);
                     item.addEventListener(name,listener);
                 });
             }
@@ -343,6 +349,17 @@
 
             //返回自己使得可以连续操作
             return this;
+        },
+        unbind : function(name,listener){
+            //现在没空搞单个的先全部删除得了
+             this.each(function(i,item){
+                var obj = item;
+                $(item.eventFnStack[name]).each(function(){
+                    $(this).each(function(){
+                        obj.removeEventListener(name,this,false) 
+                    });
+                });
+            });
         },
         live : function(){
 
@@ -470,6 +487,12 @@
                     }
                 ,delay);
             }
+    }
+    _$.getFuncName = function(fn){
+        if(!fn)return null;    //如果没有传函数名,则返回空
+        var reg = /\bfunction\s+([^(]+)/;    //正则匹配函数名
+        var result = fn.toString().match(reg);   //通过正则表达式在函数转的字符串中得到数组
+        return result ? result[1] : null; //取出第一个子项的结果 即为函数名 若没有找到
     }
     //全局声明
     _$.fn.init.prototype = _$.fn;
