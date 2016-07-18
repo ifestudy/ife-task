@@ -8,6 +8,91 @@
 	<canvas id="display" id='display' width='1' height='1' style='width: 100%; height: 100%;' >
 		你的浏览器不支持canvas请更换你的浏览器至合适的版本
 	</canvas>
+	<script>
+		// function player(x,y,direction){
+		// 	//所在的x,y
+		// 	this.x = x;
+		// 	this.y = y;
+		// 	this.height = 0.2;
+		// 	this.width = 0.2;
+		// 	//所面向的方向，依照x轴方向为准
+		// 	this.direction = direction;
+		// }
+		// function entity(x,y,direction){
+		// 	//所在的x,y
+		// 	this.x = x;
+		// 	this.y = y;
+		// 	this.height = 0.2;
+		// 	this.width = 0.2;
+		// 	//所面向的方向，依照x轴方向为准
+		// 	this.direction = direction;
+		// }
+		// function map(){
+		// 	this.size = size;
+		// 	//0-空,
+		// 	//1-墙,
+		// 	//2-实体,
+		// 	//40
+		// 	// 1234567890123456789012345678901234567890
+		// 	// ########################################
+		// 	// #                                      #
+		// 	// #                                      #
+		// 	// #                                      #
+		// 	// #                                      #
+		// 	// #                                      #
+		// 	// #                                      #
+		// 	// #                                      #
+		// 	// #                                      #
+		// 	// #                                      #
+		// 	// #                                      #
+		// 	// #                                      #
+		// 	// #                                      #
+		// 	// ########################################
+		// 	this.grid = new Uint8Array(size * size);
+
+		// 	//环境亮度
+		// 	this.light = 0;
+		// }
+		// map.prototype.cast = function(){
+		// 	//放出射线查找目标上的点
+
+		// }
+		// //设定游戏主循环
+		// function GameLoop() {
+		// 	//将frame中的上下文绑定为GameLoop
+		// 	this.frame = this.frame.bind(this);
+		// 	//上一次时间
+		// 	this.lastTime = 0;
+		// 	//回调函数
+		// 	this.callback = function() {};
+		// }
+		// //开始循环钱先绑定callback
+		// GameLoop.prototype.start = function(callback) {
+		// 	this.callback = callback;
+		// 	//requestAnimationFrame是一个动画优化版的setTimeout
+		// 	//注意调用它只会执行一次
+		// 	//第一个参数为回调函数
+		// 	//他的返回值是一个timestamp
+		// 	//通常来说，被调用的频率是每秒60次
+		// 	//也就是说你的函数执行时间如果需要16.67ms以内
+		// 	//则不会影响到刷新率
+		// 	requestAnimationFrame(this.frame);
+		// };
+		// GameLoop.prototype.frame = function(time) {
+		// 	var seconds = (time - this.lastTime) / 1000;
+		// 	this.lastTime = time;
+		// 	//告诉回调函数这一次间隔一共经历了多少秒
+		// 	//同时如果这一一次的计算超出太多则跳过改帧
+		// 	if (seconds < 0.2) this.callback(seconds);
+		// 	requestAnimationFrame(this.frame);
+		// };
+		// //初始化loop
+		// var loop = new GameLoop();
+		// loop.start(function frame(seconds) {
+		// 	var x;
+		// 	console.log(seconds);
+		// });
+	</script>
 	<!-- demo参考至http://www.playfuljs.com/a-first-person-engine-in-265-lines/ -->
 	<script type="text/javascript" src="js/map.js"></script>
 	<script type="text/javascript" src="js/player.js"></script>
