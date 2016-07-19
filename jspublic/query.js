@@ -176,7 +176,7 @@
         removeClass : function( ClassName ) {
             if((this[0].nodeType)&&(this[0].nodeType != 11)){
                 $(this[0]).each(function(i,item){
-                    item.className = item.className.replace(new RegExp("(\\s|^)"+ClassName+"(\\s|$)","g"),"");
+                    item.className = item.className.replace(new RegExp("(\\s|^)("+ClassName+")(\\s|$)","g"),"$1");
                 });
                 return this;
             }else{
@@ -252,7 +252,7 @@
             if(!str||(str=="")) return this;
             if(typeof str == "string"){
                 for (var i = 0; i < this.length; i++) {
-                    this[i].insertAdjacentHTML('beforeBegin', str);
+                    this[i].insertAdjacentHTML('afterbegin', str);
                 }
             }else{
                 //如果是一个query 对象并且nodetype表明是一个html的情况下
@@ -336,10 +336,30 @@
             }else{
                 /*更改为全部绑定*/
                 this.each(function(i,item){
+                    var func_name = $.getFuncName(listener) || Math.random();
+                    var _json = {};
+                    _json[func_name] = listener;
+                    item.eventFnStack = item.eventFnStack || {} ;
+                    item.eventFnStack[name] = item.eventFnStack[name] || [] ;
+                    item.eventFnStack[name].push(_json);
                     item.addEventListener(name,listener);
                 });
             }
             //TODO:预留ie位置
+
+            //返回自己使得可以连续操作
+            return this;
+        },
+        unbind : function(name,listener){
+            //现在没空搞单个的先全部删除得了
+             this.each(function(i,item){
+                var obj = item;
+                $(item.eventFnStack[name]).each(function(){
+                    $(this).each(function(){
+                        obj.removeEventListener(name,this,false) 
+                    });
+                });
+            });
         },
         live : function(){
 
@@ -367,7 +387,7 @@
         },
         //[x]-暂时只需要获取处理！可以利用arguments做设定处理！--已经完成
         data : function(dataName,value) {
-            if( arguments.length = 2 ){
+            if( arguments.length == 2 ){
                 if (dataName=="") {
                     this.each(function(i,item){
                         this.data = value;
@@ -381,11 +401,11 @@
             }else{
                 // var dataName = dataName;
                 if ((!dataName) || (dataName=="")) {
-                    this[0].getAttribute('data');
-                    return this;
+                    return this[0].getAttribute('data');
+                    // return this;
                 }else{
-                    this[0].getAttribute('data-'+dataName);
-                    return this;
+                    return this[0].getAttribute('data-'+dataName);
+                    // return this;
                 };
             }
         },
@@ -457,6 +477,23 @@
             return false;
         }
     });
+    //访问方法-用于显示差异颜色，afterClass待定！
+    _$.visitElement = function(element,beforeClass,delay){
+        return function(){
+                $(element).addClass(beforeClass);
+                setTimeout(
+                    function(){
+                        $(element).removeClass(beforeClass);
+                    }
+                ,delay);
+            }
+    }
+    _$.getFuncName = function(fn){
+        if(!fn)return null;    //如果没有传函数名,则返回空
+        var reg = /\bfunction\s+([^(]+)/;    //正则匹配函数名
+        var result = fn.toString().match(reg);   //通过正则表达式在函数转的字符串中得到数组
+        return result ? result[1] : null; //取出第一个子项的结果 即为函数名 若没有找到
+    }
     //全局声明
     _$.fn.init.prototype = _$.fn;
     window.$ = _$;
