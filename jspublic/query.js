@@ -336,11 +336,16 @@
             }else{
                 /*更改为全部绑定*/
                 this.each(function(i,item){
+                    //这里存在一个可能的bug就是如果存在相同的函数会覆盖掉后者，但listener中却不会覆盖
+                    //重命名函数，以组织重复和匿名函数
                     var func_name = $.getFuncName(listener) || Math.random();
+                    //一个全新的json对象，用来存放lisener
                     var _json = {};
                     _json[func_name] = listener;
+                    //一个如果dom上以及有了则不重新负值，否则给予{}
                     item.eventFnStack = item.eventFnStack || {} ;
                     item.eventFnStack[name] = item.eventFnStack[name] || [] ;
+                    //放置进eventFnStack，到时候可以遍历取出就可以定向删除
                     item.eventFnStack[name].push(_json);
                     item.addEventListener(name,listener);
                 });
@@ -375,7 +380,7 @@
         },
         //只返回第一个元素的父亲
         parent : function() {
-
+            //待添加！
             if((this[0])&&('parentNode' in this[0])){
                 var parent = this[0].parentNode;
             }else{
@@ -470,6 +475,7 @@
 
     };
     //顶层方法 === 脱离继承树！
+    //json判定方法，用于简单的辨别是否是一个json对象
     _$.isJsonType = (function(elem){
         if((typeof elem == 'object')&&(Object.prototype.toString.call(elem).toLowerCase())=="[object object]"&&!elem.length){
             return true;
@@ -487,12 +493,17 @@
                     }
                 ,delay);
             }
-    }
+    };
+    //该方法参考至……没记下来，如有看见欢迎提出
     _$.getFuncName = function(fn){
-        if(!fn)return null;    //如果没有传函数名,则返回空
-        var reg = /\bfunction\s+([^(]+)/;    //正则匹配函数名
-        var result = fn.toString().match(reg);   //通过正则表达式在函数转的字符串中得到数组
-        return result ? result[1] : null; //取出第一个子项的结果 即为函数名 若没有找到
+        //如果没有传函数名,则返回空
+        if(!fn)return null;   
+        //正则匹配函数名
+        var reg = /\bfunction\s+([^(]+)/;  
+        //通过正则表达式在函数转的字符串中得到数组  
+        var result = fn.toString().match(reg);   
+        //取出第一个子项的结果 即为函数名 若没有找到
+        return result ? result[1] : null; 
     }
     //全局声明
     _$.fn.init.prototype = _$.fn;
