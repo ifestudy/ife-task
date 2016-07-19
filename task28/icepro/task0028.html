@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>IFE JavaScript Task 28</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<div class="slider active">
+		<table cellspacing=0>
+			<tr><th>飞船编号</th><th>动力系统</th><th>能源系统</th><th>状态</th><th>剩余能源</th><tr>
+			<tbody id="ship_display">
+			</tbody>
+		</table>
+		<div class="open" data-display="true"><<</div>
+	</div>
+	<div class="space">
+		<canvas id="display" width="800" height="600">
+			你的浏览器可能不支持canvas，请更换支持canvas的浏览器。
+		</canvas>
+	</div>
+	<div class="control">
+		<fieldset class="controltab">
+			<legend>欢迎您指挥官，请下达指令</legend>
+			<div class="console">
+				<p>console</p>
+				<br>
+				<ul id="console">
+					
+				</ul>
+			</div>
+			<div id="control" class="contol-tab">
+				
+			</div>
+		</fieldset>
+	</div>
+	
+	<script type="text/javascript" src="../../jspublic/query.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
