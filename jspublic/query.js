@@ -88,6 +88,16 @@
                 this[0] = elem;
                 return this;
             }
+            //html元素集合//这个要在前面判断！
+            if(selector[0].nodeType){
+                var elem = selector;
+                this.selector = elem.selector;
+                this.length = elem.length?elem.length:1;
+                for (var i = 0; i < elem.length; i++) {
+                    this[i] = elem[i];
+                }
+                return this;
+            }
             //如果本身是query对象 
             if ( selector.isQuery ) {
                 //如果判断为query，还存在说明这个已经一个query对象了，现在直接返回就行了
@@ -102,7 +112,7 @@
             //预留他用！
             // if ( selector !== undefined ) {}
             // 数组和object类别(不做深拷贝处理)统一认为做json型处理！
-            if ( (typeof selector instanceof Array) || (typeof selector == 'object')){ //||((typeof elem == 'object')&&(Object.prototype.toString.call(elem).toLowerCase())=="[object object]"&&!elem.length) ) {
+            if ( (typeof selector instanceof Array) || ($.isJsonType(selector) ) ){ //== 'object')){ //||((typeof elem == 'object')&&(Object.prototype.toString.call(elem).toLowerCase())=="[object object]"&&!elem.length) ) {
                 var elem = selector;
                 this.selector = elem.selector;
                 this[0] = elem;
@@ -151,6 +161,10 @@
                 case 2:
                     if(css){
                         //如果有两个参数那必然是遍历设置
+                        if(this.length == 1) {
+                            this[0].style[attr] = css;
+                            return this;
+                        }
                         this.each(function(i,item){ 
                             this.style[attr] = css;
                         });
@@ -186,6 +200,7 @@
         //dom操作！TODO:采用了讨巧的办法，不合时宜！
         find : function(selector){
             // tsk;
+            return $(this[0].querySelectorAll(selector));
         },
         first : function(){
             //对于不存在的如undefined之类的不做处理
