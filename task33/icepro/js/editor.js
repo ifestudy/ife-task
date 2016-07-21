@@ -1,6 +1,9 @@
+//依赖于$
 (function($,window){
 	class editor {
 		constructor(selector) {
+			//用于记录是否呼出自动补全
+			this.flag = false;
 			this.element = $(selector);
 			this.lines = this.element.find(".command-line");
 			this.editor = this.element.find(".editor");
@@ -36,7 +39,8 @@
 		*/
 		getCode() {
 			let content = this.editor.val();
-			return content.split("\n").map((value)=>value.trim());
+			//map循环去除前后空格并全部转化为小写
+			return content.split("\n").map((value)=>value.trim().toLowerCase());
 		}
 		/**
 		* 更新行号
@@ -51,5 +55,5 @@
 			
 		}
 	}
-	window.Editor = editor;
-})($,window);
+	square.prototype.editor = editor;
+})($,square);
