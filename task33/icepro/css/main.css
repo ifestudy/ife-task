@@ -1,0 +1,56 @@
+@charset "UTF-8";
+* {
+  margin: 0rem;
+  padding: 0rem; }
+
+html {
+  font-family: "MicrosoftYaHei"; }
+
+body {
+  font-size: 100%;
+  /*16 ÷ 16 × 100% = 100%*/
+  width: 100%; }
+
+div, section, header, article, h1, h2, h3, h4, h5, h6, p {
+  position: relative; }
+
+p {
+  font-size: rem(12);
+  font-family: "MicrosoftYaHei"; }
+
+.hidden {
+  display: none; }
+
+.content {
+  margin-top: rem(65);
+  width: 100%; }
+
+.command-editor {
+  width: 360px;
+  height: 210px;
+  overflow: hidden; }
+  .command-editor .editor {
+    float: left;
+    width: 300px;
+    font-size: 20px;
+    padding-left: 5px;
+    padding-top: 5px;
+    background-color: #5c6bc0;
+    border: none;
+    resize: none;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none; }
+  .command-editor .command-line-wrap {
+    float: left;
+    width: 60px;
+    padding: 5px;
+    background-color: #3f4ea9;
+    font-size: 20px;
+    text-align: right; }
+  .command-editor .command-line-wrap, .command-editor .editor {
+    line-height: 25px;
+    color: white;
+    cursor: default;
+    box-sizing: border-box;
+    height: 210px; }
