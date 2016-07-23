@@ -4,8 +4,10 @@
 		constructor( map ) {
 			var self = this;
 			this.ROBOT_COMMAND = [
-				/^(go)$/i,
-				/^(tun)\s+(lef|rig|bac)$/i
+				/^(go)\s*(\d*)$/i,
+				/^(tun)\s+(lef|rig|bac)$/i,
+				/^(tra)\s+(lef|top|bot|rig)\s*(\d*)$/i,
+				/^(mov)\s+(lef|top|bot|rig)\s*(\d*)$/i
 			];
 			// this.picture = pictureUrl;
 			//perDelta代表每秒增量
@@ -36,19 +38,24 @@
 		*@param array[code1,code2,……]
 		*@return arr[fn1,fn2,fn3……]
 		*/
-		run( codes ) {
-			var arr = [];
-			var self = this;
-			for( var i in codes ) {
-				//由于需要保留i所以这里需要闭包
-				//TODO：不确定是否会引起内存泄漏
-				(function(self){
-					var exec = self.isInCommandList( codes[i] );
-					if( exec )
-						arr.push( function() { self.invoke( exec ); } );
-				})(self);
+		run( codes , syntaxError) {
+			if(!syntaxError){
+				var arr = [];
+				var self = this;
+				for( var i in codes ) {
+					//由于需要保留i所以这里需要闭包
+					//TODO：不确定是否会引起内存泄漏
+					(function(self){
+						var exec = self.isInCommandList( codes[i] );
+						if( exec )
+							arr.push( function() { return self.invoke( exec ); } );
+					})(self);
+				}
+				return arr;
+			}else{
+				return false;
 			}
-			return arr;
+
 		}
 		//TODO：实现一个invoke接口
 		//invoke接受详细的exec
@@ -65,6 +72,7 @@
 				//第一个参数默认是匹配项
 				return this.command[ inject ]( ...x );
 			}
+			return false;
 		}
 		//判断是否在commandlist中，如果存在，返回对应的exec列表
 		//不存在则返回exec
@@ -98,31 +106,32 @@
 			var map = this.map;
 			//command必须返回成功或者失败！
 			return {
-				go : function() {
+				go : function(numS) {
 					let x = self.property.x.value,
-						y = self.property.y.value;
+						y = self.property.y.value,
+						num = parseInt(numS===""?1:numS);
 					switch( self.property.direction.value % 360 ) {
 						case 0: 
-							if( map.haveWall(x,y-1) )
-								self.property.y.delta -= 1;
+							if( map.haveWall(x,y-num) )
+								self.property.y.delta -= num;
 							else
 								return false;
 							break;
 						case 90: 
-							if( map.haveWall(x+1,y) )
-								self.property.x.delta += 1;
+							if( map.haveWall(x+num,y) )
+								self.property.x.delta += num;
 							else
 								return false;
 							break;
 						case 180: 
-							if( map.haveWall(x,y+1) )
-								self.property.y.delta += 1;
+							if( map.haveWall(x,y+num) )
+								self.property.y.delta += num;
 							else
 								return false;
 							break;
 						case 270: 
-							if( map.haveWall(x-1,y) )
-								self.property.x.delta -= 1;
+							if( map.haveWall(x-num,y) )
+								self.property.x.delta -= num;
 							else
 								return false;
 							break;
@@ -138,7 +147,52 @@
 					}
 					console.log('tun has been called');
 					return true;
+				},
+				tra : function( direction , numS ) {
+					let x = self.property.x.value,
+						y = self.property.y.value,
+						num = parseInt(numS === ""?1:numS);
+					switch(direction){
+						case 'lef': 
+							if( map.haveWall(x-num,y) )
+								self.property.x.delta -= num;
+							else
+								return false;
+							break;
+						case 'top': 
+							if( map.haveWall(x,y-num) )
+								self.property.y.delta -= num;
+							else
+								return false;
+							break;
+						case 'rig': 
+							if( map.haveWall(x+num,y) )
+								self.property.x.delta += num;
+							else
+								return false;
+							break;
+						case 'bot': 
+							if( map.haveWall(x,y+num) )
+								self.property.y.delta += num;
+							else
+								return false;
+							break;
+					}
+					console.log('tra has been called');
+					return true;
+				},
+				mov : function( direction , numS ){
+					let num = parseInt(numS === ""?1:numS);
+					switch(direction){
+						case 'lef': self.property.direction.delta = -self.property.direction.value +270;break;
+						case 'rig': self.property.direction.delta = -self.property.direction.value +90;break;
+						case 'top': self.property.direction.delta = -self.property.direction.value +0;break;
+						case 'bot': self.property.direction.delta = -self.property.direction.value +180;break;
+					}
+					if(!self.command.tra( direction , numS )) return false;
+					return true;
 				}
+
 			};
 		}
 		get commandList() {

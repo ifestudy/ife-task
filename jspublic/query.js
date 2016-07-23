@@ -188,14 +188,16 @@
             }
         },
         removeClass : function( ClassName ) {
-            if((this[0].nodeType)&&(this[0].nodeType != 11)){
-                $(this[0]).each(function(i,item){
-                    item.className = item.className.replace(new RegExp("(\\s|^)("+ClassName+")(\\s|$)","g"),"$1");
-                });
-                return this;
-            }else{
-                return this;
-            }
+            this.each(function(){
+                if((this.nodeType)&&(this.nodeType != 11)){
+                    $(this).each(function(i,item){
+                        item.className = item.className.replace(new RegExp("(\\s|^)("+ClassName+")(\\s|$)","g"),"$1");
+                    });
+                    return this;
+                }else{
+                    return this;
+                }
+            });
         },
         //dom操作！TODO:采用了讨巧的办法，不合时宜！
         find : function(selector){

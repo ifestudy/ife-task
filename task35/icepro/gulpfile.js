@@ -50,7 +50,7 @@ gulp.task('server', ['sass','script'], function () {
     browserSync.init({
         server: {
             baseDir: ["./","../../jspublic"],
-            index: "./task0033.html"
+            index: "./task0035.html"
         },
         rewriteRules: [
             {
@@ -71,7 +71,7 @@ gulp.task('server', ['sass','script'], function () {
     // 所有的浏览器重载后任务完成。
     gulp.watch("sass/**/*.scss", ['sass']);
     gulp.watch("js/**/*.js", ['script-watch']);
-    gulp.watch("task0033.html").on("change", reload);
+    gulp.watch("*.html").on("change", reload);
 });
 
 gulp.task('watch', function(){

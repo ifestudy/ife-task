@@ -48,6 +48,10 @@ p {
     background-color: #3f4ea9;
     font-size: 20px;
     text-align: right; }
+    .command-editor .command-line-wrap .command-line-item.error {
+      background: deepskyblue; }
+    .command-editor .command-line-wrap .command-line-item.visit {
+      background: yellowgreen; }
   .command-editor .command-line-wrap, .command-editor .editor {
     line-height: 25px;
     color: white;

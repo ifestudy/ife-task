@@ -23,6 +23,14 @@
 		background-color: #3f4ea9;
 		font-size: 20px;
 		text-align: right;
+		.command-line-item{
+			&.error {
+				background: deepskyblue;
+			}
+			&.visit {
+				background: yellowgreen;
+			}
+		}
 	}
 	.command-line-wrap,.editor {
 		line-height: 25px;

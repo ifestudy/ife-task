@@ -64,7 +64,7 @@
 				ctx.translate( 5 + this.space*x , 0 );
 				ctx.font = "18px serif";
 				ctx.textBaseline = "middle";
-				ctx.fillStyle = "black"
+				ctx.fillStyle = "black";
 				ctx.fillText( x , 10 , this.space/2);
 				//绘制结束，返回到之前储存状态
 				ctx.restore();
@@ -76,7 +76,7 @@
 				ctx.translate( 0 , 0 + this.space*y );
 				ctx.font = "18px serif";
 				ctx.textBaseline = "middle";
-				ctx.fillStyle = "black"
+				ctx.fillStyle = "black";
 				ctx.fillText( y , 10 , this.space/2);
 				//绘制结束，返回到之前储存状态
 				ctx.restore();

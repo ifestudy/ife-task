@@ -5,7 +5,9 @@
 			var self = this;
 			this.ROBOT_COMMAND = [
 				/^(go)$/i,
-				/^(tun)\s+(lef|rig|bac)$/i
+				/^(tun)\s+(lef|rig|bac)$/i,
+				/^(tra)\s+(lef|top|bot|rig)$/i,
+				/^(mov)\s+(lef|top|bot|rig)$/i
 			];
 			// this.picture = pictureUrl;
 			//perDelta代表每秒增量
@@ -138,7 +140,48 @@
 					}
 					console.log('tun has been called');
 					return true;
+				},
+				tra : function( direction ) {
+					let x = self.property.x.value,
+						y = self.property.y.value;
+					switch(direction){
+						case 'lef': 
+							if( map.haveWall(x-1,y) )
+								self.property.x.delta == 1;
+							else
+								return false;
+							break;
+						case 'top': 
+							if( map.haveWall(x,y-1) )
+								self.property.y.delta -= 1;
+							else
+								return false;
+							break;
+						case 'rig': 
+							if( map.haveWall(x+1,y) )
+								self.property.x.delta += 1;
+							else
+								return false;
+							break;
+						case 'bot': 
+							if( map.haveWall(x,y+1) )
+								self.property.y.delta += 1;
+							else
+								return false;
+							break;
+					}
+					console.log('tra has been called');
+					return true;
+				},
+				mov : function( direction ){
+					switch(direction){
+						case 'lef': self.property.direction.delta = -self.property.direction.value +270;break;
+						case 'rig': self.property.direction.delta = -self.property.direction.value +90;break;
+						case 'top': self.property.direction.delta = -self.property.direction.value +0;break;
+						case 'bot': self.property.direction.delta = -self.property.direction.value +180;break;
+					}
 				}
+
 			};
 		}
 		get commandList() {
