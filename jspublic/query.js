@@ -112,7 +112,7 @@
             //预留他用！
             // if ( selector !== undefined ) {}
             // 数组和object类别(不做深拷贝处理)统一认为做json型处理！
-            if ( (typeof selector instanceof Array) || ($.isJsonType(selector) ) ){ //== 'object')){ //||((typeof elem == 'object')&&(Object.prototype.toString.call(elem).toLowerCase())=="[object object]"&&!elem.length) ) {
+            if ( (typeof selector instanceof Array) || ($.isJsonType(selector) ) || typeof selector  == 'object'){ //== 'object')){ //||((typeof elem == 'object')&&(Object.prototype.toString.call(elem).toLowerCase())=="[object object]"&&!elem.length) ) {
                 var elem = selector;
                 this.selector = elem.selector;
                 this[0] = elem;

@@ -23,7 +23,7 @@
 		children: [],
 		setData: function(data,element){
 			//施工中！
-		}
+		},
 		remove: function(){
 			if(this.parent){
 				$(this.element).remove();
