@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>task 34</title>
+	<link rel="stylesheet" type="text/css" href="css/main.min.css">
+</head>
+<body>
+<button id="run">运行</button>
+<div class="command-editor">
+	<div class="command-line-wrap">
+		<div class="command-line"></div>
+	</div>
+	<textarea class="editor" spellcheck="false"></textarea>
+</div>
+<canvas class="map" id="canvas" width="800" height="600">
+	你的浏览器不能够支持canvas，请更换支持的浏览器
+</canvas>
+	<script type="text/javascript" src="../../jspublic/query.js"></script>
+	<script type="text/javascript" src="js/square.js"></script>
+	<script type="text/javascript" src="js/map.js"></script>
+	<script type="text/javascript" src="js/editor.js"></script>
+	<script type="text/javascript" src="js/robot.js"></script>
+	<!-- rander 依赖上面所有的模块，所以必须最后引入 -->
+	<script type="text/javascript" src="js/rander.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
