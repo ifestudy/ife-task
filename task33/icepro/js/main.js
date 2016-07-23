@@ -12,7 +12,7 @@ $("#run").on('click',function(){
 	console.log(arr);
 	timer = setInterval(function(){
 		if(arr.length > 0){
-			var fn = arr.pop();
+			var fn = arr.shift();
 			fn();
 		}else{
 			clearInterval(timer);
