@@ -1,35 +1,35 @@
 (function( square ) {
 	//该模块是下面所有模块的总类，定义一些常量和访问接口
 	class robot {
-		constructor(pictureUrl) {
+		constructor( map ) {
 			var self = this;
 			this.ROBOT_COMMAND = [
-				/^(go)$/,
-				/^(tun)\s+(lef|rig|bac)$/
+				/^(go)$/i,
+				/^(tun)\s+(lef|rig|bac)$/i
 			];
-			this.picture = pictureUrl;
+			// this.picture = pictureUrl;
 			//perDelta代表每秒增量
 			this.property = {
 				direction:{
-					//90 18*90= 
+					//90 14*90= 
 					delta: 0,
 					value: 0,
-					perDelta: 1620
+					perDelta: 1260
 				},
 				x:{
-					//1 18*1
+					//1 9*1
 					delta: 0,
 					value: 0,
-					perDelta: 18
+					perDelta: 9
 				},
 				y:{
-					//1 18*1
+					//1 9*1
 					delta: 0,
 					value: 0,
-					perDelta: 18
+					perDelta: 9
 				}
 			};
-
+			this.map = map;
 		}
 		/**
 		*运行
@@ -37,14 +37,18 @@
 		*@return arr[fn1,fn2,fn3……]
 		*/
 		run( codes ) {
-			let arr = [];
-			for( let i in codes ) {
-				var exec = isInCommandList( codes[i] );
-				if( exec )
-					arr.push( function() { invoke( exec ); } );
-				else
-					return arr;
+			var arr = [];
+			var self = this;
+			for( var i in codes ) {
+				//由于需要保留i所以这里需要闭包
+				//TODO：不确定是否会引起内存泄漏
+				(function(self){
+					var exec = self.isInCommandList( codes[i] );
+					if( exec )
+						arr.push( function() { self.invoke( exec ); } );
+				})(self);
 			}
+			return arr;
 		}
 		//TODO：实现一个invoke接口
 		//invoke接受详细的exec
@@ -56,12 +60,10 @@
 		*/
 		invoke( exec ) {
 			if( exec.length >= 2 ) {
-				//弹出总参数
-				exec.pop();
-				//弹出匹配参数
-				var inject = exec.pop();
+				//解构参数
+				var [ mainString , inject , ...x ] = exec;
 				//第一个参数默认是匹配项
-				return this.command[ inject ]( ...exec );
+				return this.command[ inject ]( ...x );
 			}
 		}
 		//判断是否在commandlist中，如果存在，返回对应的exec列表
@@ -78,7 +80,7 @@
 				if( arr ) {
 					let index = this.commandList.indexOf(arr[1]);
 					if ( index > -1 ) {
-						return exec;
+						return arr;
 					}
 				}
 			}
@@ -92,34 +94,35 @@
 			// TUN RIG：向右转（顺时针旋转90度）
 			// TUN BAC：向右转（旋转180度）
 
-
+			var self = this;
+			var map = this.map;
 			//command必须返回成功或者失败！
 			return {
 				go : function() {
-					let x = this.property.x.value,
-						y = this.property.y.value;
-					switch( this.property.direction.value % 360 ) {
+					let x = self.property.x.value,
+						y = self.property.y.value;
+					switch( self.property.direction.value % 360 ) {
 						case 0: 
-							if( square.map.haveWall(x,y+1) )
-								this.property.y.delta += 1;
+							if( map.haveWall(x,y-1) )
+								self.property.y.delta -= 1;
 							else
 								return false;
 							break;
 						case 90: 
-							if( square.map.haveWall(x+1,y) )
-								this.property.x.delta += 1;
+							if( map.haveWall(x+1,y) )
+								self.property.x.delta += 1;
 							else
 								return false;
 							break;
 						case 180: 
-							if( square.map.haveWall(x-1,y) )
-								this.property.x.delta -= 1;
+							if( map.haveWall(x,y+1) )
+								self.property.y.delta += 1;
 							else
 								return false;
 							break;
 						case 270: 
-							if( square.map.haveWall(x,y-1) )
-								this.property.y.delta -= 1;
+							if( map.haveWall(x-1,y) )
+								self.property.x.delta -= 1;
 							else
 								return false;
 							break;
@@ -129,9 +132,9 @@
 				},
 				tun : function( direction ) {
 					switch(direction){
-						case 'lef': this.property.x.delta = -90;break;
-						case 'rig': this.property.x.delta = +90;break;
-						case 'bac': this.property.x.delta = +180;break;
+						case 'lef': self.property.direction.delta -= 90;break;
+						case 'rig': self.property.direction.delta += 90;break;
+						case 'bac': self.property.direction.delta += 180;break;
 					}
 					console.log('tun has been called');
 					return true;
@@ -143,21 +146,25 @@
 			for(let i in this.command) list.push(i);
 			return list;
 		}
+		//TODO：test update
 		update(time){
 			for(let i in this.property){
+				//结构参数
+				let { delta, value , perDelta } = this.property[i];
 				//当前剩余delta属性不为0则进行更新
-				if( this.property[i].delta !== 0 ){
+				if( delta!== 0 ){
 					//计算绝对值
-					if( Math.abs(this.property[i].delta) - this.property[i].perDelta * time * 0.5 > 0 ){
+					if( Math.abs(delta) - perDelta * time  > 0 ){
 						//如果绝对值大于0，则说明剩余量大于当前时间的计算量
-						this.property[i].value += this.property[i].delta > 0 ? this.property[i].perDelta * time * 0.5 : - this.property[i].perDelta * time * 0.5;
-						this.property[i].delta += this.property[i].delta > 0 ? this.property[i].perDelta * time * 0.5 : - this.property[i].perDelta * time * 0.5;
+						this.property[i].value += delta > 0 ? + perDelta * time  : - perDelta * time ;
+						this.property[i].delta += delta > 0 ? - perDelta * time  : + perDelta * time ;
 					}else{
 						//若小于0，则说明需要将delta归零，并减去剩余的delta
-						this.property[i].value += this.property[i].delta;
+						this.property[i].value += delta;
 						this.property[i].delta = 0;
 					}
 				}
+				// this.property[i] = {delta:delta, value:value , perDelta:perDelta};
 			}
 			//专门修正角度
 			if(this.property.direction.value < 0) this.property.direction.value += 360;

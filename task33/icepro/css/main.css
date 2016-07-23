@@ -54,3 +54,6 @@ p {
     cursor: default;
     box-sizing: border-box;
     height: 210px; }
+
+.map {
+  border: 1px #000 solid; }
