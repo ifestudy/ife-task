@@ -429,8 +429,8 @@
 			},
 			getSignal: function(){
 				var id = _codeBin.substr(0,4);
-				var command = _codeBin.substr(4,8);
-				var energy = _codeBin.substr(8,16);
+				var command = _codeBin.substr(4,4);
+				var energy = _codeBin.substr(8,8);
 				switch(command){
 					case "0001": command = RUN;break;
 					case "0010":command = DESTROY;break;
