@@ -39,7 +39,7 @@
 		onInput( event  ) {
 			// this.lines.appen()
 			var value = this.editor.val();
-			this.poscheck[0].innerHTML = value;
+			// this.poscheck[0].innerHTML = value;
 			this.update();
 		}
 		// onKeypress( event ) {
