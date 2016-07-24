@@ -33,7 +33,7 @@
 			if(this.randering) requestAnimationFrame(this.frame);
 		}
 		randerLoop(seconds) {
-			this.ctx.clearRect(0,0,800,600);
+			this.ctx.clearRect(0,0,800,800);
 			this.randerMap(seconds);
 			this.randerRob(seconds);
 		}

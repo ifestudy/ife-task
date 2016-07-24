@@ -7,16 +7,25 @@
 	<link rel="stylesheet" type="text/css" href="css/main.min.css">
 </head>
 <body>
-<button id="run">运行</button>
-<div class="command-editor">
-	<div class="command-line-wrap">
-		<div class="command-line"></div>
+<div class="control">
+	<div class="button-group">
+		<button class="primary" id="run">运行</button>
 	</div>
-	<textarea class="editor" spellcheck="false"></textarea>
+	<div class="command-editor">
+		<div class="command-line-wrap">
+			<div class="command-line"></div>
+		</div>
+		<textarea class="editor" spellcheck="false"></textarea>
+		<div class="syntax"></div>
+	</div>
+
 </div>
-<canvas class="map" id="canvas" width="800" height="600">
-	你的浏览器不能够支持canvas，请更换支持的浏览器
-</canvas>
+		<div class="poscheck"></div>
+<div class="display">
+	<canvas class="map" id="canvas" width="800" height="800">
+		你的浏览器不能够支持canvas，请更换支持的浏览器
+	</canvas>
+</div>
 	<script type="text/javascript" src="../../jspublic/query.js"></script>
 	<script type="text/javascript" src="js/square.js"></script>
 	<script type="text/javascript" src="js/map.js"></script>
