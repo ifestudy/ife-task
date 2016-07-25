@@ -537,13 +537,13 @@
 	};
 	Commander.prototype.getOrbital = function(pId){
 		var _id ;
-		$(this.orbital).each(function(){
+		$(this.orbital).each(function(i){
 			if(this == pId) {
-				_id = pId;
+				_id = parseInt(i);
 				return false;
 			}
 		});
-		return (_id-1);
+		return _id;
 	};
 	Commander.prototype.buildButton = function(orbital,engine,energy){
 		//创建按钮
