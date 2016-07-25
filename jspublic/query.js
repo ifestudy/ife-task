@@ -53,7 +53,7 @@
             var quickTag = /^\s(<[\w\W]+>)[^>]$/g,
                 matchs = quickCheck.exec(selector);
             //如果是null，undefined，和false则直接返回自己就好了
-            if ((!selector) || selector.length == 0) {
+            if (!selector) {
                 this.length = 0;
                 return this;
             }
@@ -119,6 +119,11 @@
                 this[0] = elem;
                 this.length = 1; //elem.length;
                 this.isJson = true;
+                return this;
+            }
+            //必须放在这里--理由是前置元素如果是一个集合元素比如select，等等将有可能呗判断为空，在此前提下先做node的判断
+            if (selector.length == 0) {
+                this.length = 0;
                 return this;
             }
             //最后使用queryselectorAll
