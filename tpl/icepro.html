@@ -3,39 +3,25 @@
     <head>
         <meta charset="utf-8">
         <title>百度前端学院任务</title>
-        <link type="text/css" rel="stylesheet" href="css/comm.css" />
-        <script type="text/javascript" src="js/comm.js"></script>
+        <link type="text/css" rel="stylesheet" href="../css/comm.css" />
+        <script type="text/javascript" src="../js/comm.js"></script>
+        <script type="text/javascript" src="../jspublic/query.js"></script>
     </head>
     <body>
         <div class="header">
             <h1>
-                百度前端学院任务进度展示
+                icepro的任务进度展示
             </h1>
         </div>
         <div class="main">
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
-            <a href="#">task1</a>
+           <!--  <a href="../task1/icepro/task0001.html"><div class="author">
+                <div class="move-l">
+                    <figure>
+                        <p>task1</p>
+                        <img src="icepro/img/task1.png">
+                    </figure>
+                </div>
+            </a> -->
         </div>
         <div class="footer">
             <p>
@@ -45,6 +31,43 @@
                 <a href="https://github.com/ifestudy/ife-task">Source Code</a>
             </p>
         </div>
-
+        <script type="text/javascript">
+            for (var i = 1; i < 9; i++) {
+                var id = ("0000" + i);
+                id = id.substring(id.length-4);
+                $(".main").append('<a href="../task'+i+'/icepro/task'+id+'.html"><div class="author">'+
+                    '<div class="move-l">'+
+                        '<figure>'+
+                            '<p>task'+i+'</p>'+
+                            '<img src="icepro/img/task'+i+'.png">'+
+                        '</figure>'+
+                    '</div>'+
+                '</div></a>');
+                };
+            for (var i = 13; i < 29; i++) {
+                var id = ("0000" + i);
+                id = id.substring(id.length-4);
+                $(".main").append('<a href="../task'+i+'/icepro/task'+id+'.html"><div class="author">'+
+                    '<div class="move-l">'+
+                        '<figure>'+
+                            '<p>task'+i+'</p>'+
+                            '<img src="icepro/img/task'+i+'.png">'+
+                        '</figure>'+
+                    '</div>'+
+                '</div></a>');
+            };
+            for (var i = 33; i < 36; i++) {
+                var id = ("0000" + i);
+                id = id.substring(id.length-4);
+                $(".main").append('<a href="../task'+i+'/icepro/task'+id+'.html"><div class="author">'+
+                    '<div class="move-l">'+
+                        '<figure>'+
+                            '<p>task'+i+'</p>'+
+                            '<img src="icepro/img/task'+i+'.png">'+
+                        '</figure>'+
+                    '</div>'+
+                '</div></a>');
+            };
+        </script>
     </body>
 </html>
