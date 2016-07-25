@@ -89,7 +89,7 @@
                 return this;
             }
             //html元素集合//这个要在前面判断！
-            if (selector[0].nodeType) {
+            if (selector[0] && selector[0].nodeType) {
                 var elem = selector;
                 this.selector = elem.selector;
                 this.length = elem.length ? elem.length : 1;
@@ -194,11 +194,9 @@
                     $(this).each(function(i, item) {
                         item.className = item.className.replace(new RegExp("(\\s|^)(" + ClassName + ")(\\s|$)", "g"), "$1");
                     });
-                    return this;
-                } else {
-                    return this;
                 }
             });
+            return this;
         },
         //dom操作！TODO:采用了讨巧的办法，不合时宜！
         find: function(selector) {
