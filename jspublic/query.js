@@ -53,7 +53,7 @@
             var quickTag = /^\s(<[\w\W]+>)[^>]$/g,
                 matchs = quickCheck.exec(selector);
             //如果是null，undefined，和false则直接返回自己就好了
-            if (!selector) {
+            if ((!selector) || selector.length == 0) {
                 this.length = 0;
                 return this;
             }

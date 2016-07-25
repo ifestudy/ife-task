@@ -24,7 +24,7 @@
 		setData: function(data){
 			this.data = data;
 			if(this.element){
-				$(this.element.querySelectorAll("p")).remove();
+				$(this.element).find('p').remove();
 				$(this.element).append("<p>"+data+"</p>");
 			}
 		},
