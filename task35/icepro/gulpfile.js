@@ -16,7 +16,7 @@ var gutil = require('gulp-util');
 //浏览器同步
 var browserSync = require('browser-sync').create();
 //简化reload
-var reload      = browserSync.reload;
+var reload = browserSync.reload;
 
 gulp.task('default',['server']);
 
