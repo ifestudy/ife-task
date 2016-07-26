@@ -1,0 +1,112 @@
+@charset "UTF-8";
+* {
+  margin: 0rem;
+  padding: 0rem; }
+
+html {
+  font-family: "MicrosoftYaHei"; }
+
+body {
+  font-size: 100%;
+  /*16 ÷ 16 × 100% = 100%*/
+  width: 100%; }
+
+div, section, header, article, h1, h2, h3, h4, h5, h6, p {
+  position: relative; }
+
+p {
+  font-size: rem(12);
+  font-family: "MicrosoftYaHei"; }
+
+.hidden {
+  display: none; }
+
+.content {
+  margin-top: rem(65);
+  width: 100%; }
+
+body {
+  min-width: 1200px; }
+
+.command-editor {
+  width: 360px;
+  height: 600px;
+  overflow: hidden; }
+  .command-editor .editor {
+    float: left;
+    width: 300px;
+    font-size: 20px;
+    padding-left: 5px;
+    padding-top: 5px;
+    background-color: #5c6bc0;
+    border: none;
+    resize: none;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none; }
+  .command-editor .command-line-wrap {
+    float: left;
+    width: 60px;
+    padding: 5px;
+    background-color: #3f4ea9;
+    font-size: 20px;
+    text-align: right; }
+    .command-editor .command-line-wrap .command-line-item {
+      padding-right: 2px; }
+      .command-editor .command-line-wrap .command-line-item.error {
+        background: deepskyblue; }
+      .command-editor .command-line-wrap .command-line-item.visit {
+        background: yellowgreen; }
+  .command-editor .command-line-wrap, .command-editor .editor {
+    line-height: 25px;
+    color: white;
+    cursor: default;
+    box-sizing: border-box;
+    height: 600px; }
+  .command-editor .syntax {
+    position: absolute;
+    width: 80px;
+    height: 170px;
+    background-color: white;
+    display: none; }
+  .command-editor .poscheck {
+    z-index: -1;
+    left: 60px;
+    height: 595px;
+    width: 295px;
+    font-size: 20px;
+    padding-left: 5px;
+    padding-top: 5px;
+    background-color: #5c6bc0; }
+
+.control {
+  float: left;
+  padding-left: 20px; }
+  .control .button-group {
+    margin-top: 10px;
+    margin-bottom: 10px; }
+
+button {
+  padding: 5px 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none; }
+
+button.primary {
+  background-color: #196396;
+  color: white; }
+
+button.primary:hover {
+  background-color: #3ba9ee;
+  color: white; }
+
+button.primary:active {
+  background-color: #e64a19;
+  color: white; }
+
+.display {
+  float: right; }
+
+.map {
+  border: 1px #000 solid; }
