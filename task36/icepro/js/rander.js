@@ -48,9 +48,13 @@
 				for( let x = 0 ; x < this.map.size ; x++ ) {
 					//保存位置
 					ctx.save();
-
-					ctx.fillStyle = "#" + (this.map.getWall(x,y)?this.map.getWall(x,y):"FFFFFF");
-			 		ctx.strokeRect(this.space + this.space*x,this.space + this.space*y,this.space,this.space); 
+					if(this.map.getWall(x,y)){
+						ctx.fillStyle = "#" + this.map.getWall(x,y);
+			 			ctx.fillRect(this.space + this.space*x,this.space + this.space*y,this.space,this.space); 
+			 			ctx.strokeRect(this.space + this.space*x,this.space + this.space*y,this.space,this.space); 
+					}else{
+			 			ctx.strokeRect(this.space + this.space*x,this.space + this.space*y,this.space,this.space); 
+					}
 					//绘制结束，返回到之前储存状态
 					ctx.restore();
 				}
