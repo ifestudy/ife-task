@@ -159,6 +159,7 @@
                 return result;
             };
             //command必须返回成功或者失败！
+            //允许依次返回function数组，但每个function必须返回成功或者失败
             return {
                 go: function(numS) {
                     let num = parseInt(numS === "" ? 1 : numS);
@@ -218,9 +219,37 @@
                 },
                 mov: function(direction, numS) {
                     if (arguments.length == 3) {
-                        let x = arguments[1],
-                            y = arguments[2];
-                        map.findWay(self.property.x.value, self.property.y.value, x, y);
+                        let x = parseInt(arguments[1]) - 1,
+                            y = parseInt(arguments[2]) - 1;
+                        var pos = map.findWay(self.property.x.value, self.property.y.value, x, y);
+                        var result = [];
+                        //递归取出信息
+                        while (pos) {
+                            if (pos.delatx === 0 && pos.delaty === 0) break;
+                            if (pos.delatx !== 0) {
+                                if (pos.delatx > 0) {
+                                    result.push(function() {
+                                        return self.invoke(["mov", "mov", "rig", ""]);
+                                    });
+                                } else {
+                                    result.push(function() {
+                                        return self.invoke(["mov", "mov", "lef", ""]);
+                                    });
+                                }
+                            } else {
+                                if (pos.delaty > 0) {
+                                    result.push(function() {
+                                        return self.invoke(["mov", "mov", "bot", ""]);
+                                    });
+                                } else {
+                                    result.push(function() {
+                                        return self.invoke(["mov", "mov", "top", ""]);
+                                    });
+                                }
+                            }
+                            pos = pos.posLast;
+                        }
+                        return result;
                     } else {
                         let num = parseInt(numS === "" ? 1 : numS);
                         switch (direction) {
