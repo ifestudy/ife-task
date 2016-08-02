@@ -314,7 +314,7 @@
 			alert("不允许移除根节点")
 		}else{
 			if(!parentNode.children) {
-				$(parentNode.title).removeClass("drop-down").addClass("file");
+				$(parentNode.title).removeClass("drop-down").removeClass("open").addClass("file");
 			}
 		}
 	});
