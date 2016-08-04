@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task0004</title>
+	<style type="text/css">
+		*{
+			padding:0px;
+			margin:0px;
+		}
+		.container{
+			width:400px;
+			height:200px;
+			border:1px solid #999;
+			background:#ccc;
+            position:fixed;/*或者
+            absolute*/
+            margin-top: -100px;
+            margin-left:-200px;
+            top:50%;
+            left:50%;
+
+			
+		}
+		.circle{
+			width:50px;
+			height:50px;
+			background:#fc0;
+			border:1px solid #fc0;
+		}
+		.left{
+			border-radius:0px 0px 50px 0px;
+             
+		}
+		.right{
+			border-radius:50px 0px 0px 0px;
+            position:relative;
+            top:96px;
+            left:348px;
+            /*或者
+            position: absolute;
+            right: 0;
+			bottom: 0;*/
+		}
+
+	</style>
+</head>
+<body>
+<div class="nav">
+		<div class='container'>
+			<div class="left circle"></div>
+			<div class='right circle'></div>
+		</div>
+	</div>
+</body>
+</html>
