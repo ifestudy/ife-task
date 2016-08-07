@@ -1,0 +1,8 @@
+@@include('public/header.html')
+    <title></title>
+</head>
+
+<body>
+
+    <script src="./js/demo.js?rev=@@hash"></script>
+@@include('public/footor.html')

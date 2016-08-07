@@ -79,7 +79,9 @@
             var self = this;
 
             function add(x, y) {
+            	//在close中寻找是否有一个节点
                 if ((self.close.indexOf(self.map.size * y + x) < 0)) {
+                	//没墙把它加进去
                     if (self.map.haveWall(x, y)) {
                         self.open.push(new pos(this, x, y, self.px, self.py));
                     } else {

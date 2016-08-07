@@ -1,0 +1,20 @@
+.nav {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	background-color: $orange;
+	color: $white;
+	h3 {
+		text-align: center;
+		vertical-align: middle;
+		font-weight: bolder;
+	}
+	div {
+		padding: rem(6);
+		& > p {
+			line-height: rem(20);
+		}
+	}
+
+}
+
