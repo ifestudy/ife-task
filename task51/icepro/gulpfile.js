@@ -28,7 +28,7 @@ var uglify = require('gulp-uglify');
 //react
 var react = require('gulp-react');
 
-var jshintConfig = { "undef": false, "esnext": true, "predef": ["$","window","jQuery"]};
+var jshintConfig = { "undef": false, "esnext": true, "predef": ["$","window","jQuery","React","ReactDOM","document"]};
 gulp.task('default', ['server']);
 
 gulp.task('sass', function() {
@@ -59,11 +59,11 @@ gulp.task('script', function() {
         .pipe(babel({
             presets: ['es2015','react']
         }))
-        .pipe(gulp.dest("dest/js"))
         .on('error', function(err) {
             gutil.log('js Error!', err.message)
             this.emit('end')
         })
+        .pipe(gulp.dest("dest/js"))
         .pipe(jshint(jshintConfig)) //{"esnext" : true}))
         .pipe(jshint.reporter('default'))
         .pipe(uglify())
