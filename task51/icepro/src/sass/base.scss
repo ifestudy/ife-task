@@ -1,0 +1,57 @@
+@mixin transition($param){
+	transition: $param;
+	-moz-transition: $param; /* Firefox 4 */
+	-webkit-transition: $param; /* Safari 和 Chrome */
+	-o-transition: $param; /* Opera */
+}
+@function per($n) {
+    @return (($n/$width)*100%);
+}
+@function rem($n) {
+	@return (($n/16)*1rem);
+}
+* {
+	margin: 0rem;
+	padding: 0rem;
+}
+
+html {
+	font-family: "MicrosoftYaHei";
+}
+body {
+	font-size: (16/16*100%);
+	/*16 ÷ 16 × 100% = 100%*/
+	width: 100%;
+	background: $light-grey;
+}
+
+div ,section,header,article,h1,h2,h3,h4,h5,h6,p{
+	position: relative;
+}
+//默认的p样式
+p {
+	font-size: rem(12);
+	font-family: "MicrosoftYaHei";
+}
+
+//默认的隐藏样式
+.hidden {
+	display: none;
+}
+
+
+.content {
+	margin-top: rem(65);
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    min-height: 300px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 -1px 10px rgba(0,0,0,.5);
+    -moz-box-shadow: 0 -1px 10px rgba(0,0,0,.5);
+    box-shadow: 0 -1px 10px rgba(0,0,0,.5);
+	background-color: $white;
+}
+
